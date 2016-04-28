@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 
  * @author 邹璐
- * 	cbid number(20) primary key,  --编号--
+ * 	cid number(20) primary key,  --编号--
 	jid number(20),				--用户id--
 	bid number(20)				--企业id--
  *

@@ -9,7 +9,6 @@ import java.io.Serializable;
 	aid number(20),				--地址id--
 	is_val number(2),			--订单状态--
 	onumber number,				--订单数量商品数量--
-	
  * **/
 public class Jorder implements Serializable {
 	private int orid;

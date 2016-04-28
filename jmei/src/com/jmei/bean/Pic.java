@@ -2,24 +2,26 @@ package com.jmei.bean;
 
 import java.io.Serializable;
 /***
+ * @author 汤亮
+ * @since 2016-04-26
  * 	picid number(20) primary key,		--编号--
-	pname varchar2(20),					--商品名--					
+	picpname varchar2(20),				--商品图片名--					
 	gid number(20)						--商品库存编号--
 	flag number
 	**/
 public class Pic implements Serializable {
 	private int picid;
-	private String pname;
+	private String picpname;
 	private Goods gid;
 	private int flag;
 	
 	public Pic() {
 	}
 
-	public Pic(int picid, String pname, Goods gid, int flag) {
+	public Pic(int picid, String picpname, Goods gid, int flag) {
 		super();
 		this.picid = picid;
-		this.pname = pname;
+		this.picpname = picpname;
 		this.gid = gid;
 		this.flag = flag;
 	}
@@ -32,12 +34,12 @@ public class Pic implements Serializable {
 		this.picid = picid;
 	}
 
-	public String getPname() {
-		return pname;
+	public String getPicpname() {
+		return picpname;
 	}
 
-	public void setPname(String pname) {
-		this.pname = pname;
+	public void setPicpname(String picpname) {
+		this.picpname = picpname;
 	}
 
 	public Goods getGid() {
@@ -63,7 +65,8 @@ public class Pic implements Serializable {
 		result = prime * result + flag;
 		result = prime * result + ((gid == null) ? 0 : gid.hashCode());
 		result = prime * result + picid;
-		result = prime * result + ((pname == null) ? 0 : pname.hashCode());
+		result = prime * result
+				+ ((picpname == null) ? 0 : picpname.hashCode());
 		return result;
 	}
 
@@ -85,21 +88,18 @@ public class Pic implements Serializable {
 			return false;
 		if (picid != other.picid)
 			return false;
-		if (pname == null) {
-			if (other.pname != null)
+		if (picpname == null) {
+			if (other.picpname != null)
 				return false;
-		} else if (!pname.equals(other.pname))
+		} else if (!picpname.equals(other.picpname))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Pic [picid=" + picid + ", pname=" + pname + ", gid=" + gid
-				+ ", flag=" + flag + "]";
+		return "Pic [picid=" + picid + ", picpname=" + picpname + ", gid="
+				+ gid + ", flag=" + flag + "]";
 	}
-
-	
-	
 	
 }

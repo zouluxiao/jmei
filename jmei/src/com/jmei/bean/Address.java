@@ -8,7 +8,7 @@ import java.io.Serializable;
 	jid number(20),				--普通用户名--
 	address varchar2(100),		--地址--
 	consigneename varchar2(50),	--收货人姓名--
-	consigneeid varchar2(20),		--收货人身份证号码--
+	consigneeid number(20),		--收货人身份证号码--
 	detailaddress varchar2(100),--详细地址--
 	tel varchar2(20),			--电话号码--
 	pnumber varchar2(20)		--固定号码--
@@ -22,11 +22,9 @@ public class Address implements Serializable {
 	private String detailaddress;
 	private String tel;
 	private String pnumber;
-	
-	public Address() {
-		super();
+	public Address(){
+		
 	}
-
 	public Address(int aid, Juser juser, String address, String consigneename,
 			String consigneeid, String detailaddress, String tel, String pnumber) {
 		super();
@@ -39,71 +37,61 @@ public class Address implements Serializable {
 		this.tel = tel;
 		this.pnumber = pnumber;
 	}
-
 	public int getAid() {
 		return aid;
 	}
-
 	public void setAid(int aid) {
 		this.aid = aid;
 	}
-
 	public Juser getJuser() {
 		return juser;
 	}
-
 	public void setJuser(Juser juser) {
 		this.juser = juser;
 	}
-
 	public String getAddress() {
 		return address;
 	}
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 	public String getConsigneename() {
 		return consigneename;
 	}
-
 	public void setConsigneename(String consigneename) {
 		this.consigneename = consigneename;
 	}
-
 	public String getConsigneeid() {
 		return consigneeid;
 	}
-
 	public void setConsigneeid(String consigneeid) {
 		this.consigneeid = consigneeid;
 	}
-
 	public String getDetailaddress() {
 		return detailaddress;
 	}
-
 	public void setDetailaddress(String detailaddress) {
 		this.detailaddress = detailaddress;
 	}
-
 	public String getTel() {
 		return tel;
 	}
-
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-
 	public String getPnumber() {
 		return pnumber;
 	}
-
 	public void setPnumber(String pnumber) {
 		this.pnumber = pnumber;
 	}
-
+	@Override
+	public String toString() {
+		return "Address [aid=" + aid + ", juser=" + juser + ", address="
+				+ address + ", consigneename=" + consigneename
+				+ ", consigneeid=" + consigneeid + ", detailaddress="
+				+ detailaddress + ", tel=" + tel + ", pnumber=" + pnumber + "]";
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -121,7 +109,6 @@ public class Address implements Serializable {
 		result = prime * result + ((tel == null) ? 0 : tel.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -170,14 +157,7 @@ public class Address implements Serializable {
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "Address [aid=" + aid + ", juser=" + juser + ", address="
-				+ address + ", consigneename=" + consigneename
-				+ ", consigneeid=" + consigneeid + ", detailaddress="
-				+ detailaddress + ", tel=" + tel + ", pnumber=" + pnumber + "]";
-	}
+	
 	
 
 }

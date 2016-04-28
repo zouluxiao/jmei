@@ -37,7 +37,7 @@ public interface JorderDAO {
 	public void addJorder(Jorder jorder) throws DAOException;
 	
 	/**
-	 * 根据普通用户id修改订单状态
+	 * 根据订单id修改订单状态
 	 * @param jid 普通用户id
 	 * @return  
 	 * @exception DAOException DAO层获取数据过程发生的异常

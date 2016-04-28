@@ -18,7 +18,7 @@
   	<!-- 头部搜索框、导航条 -->
     <div id="head" style="height: 117px;width: 100%;background-color: #aaa;"></div>
     <!-- 右部个人条 -->
-   	<!--  <div id="right">
+   	<!-- <div id="right">
     	
     </div> -->
     <!-- 化妆品首页 -->
@@ -38,15 +38,51 @@
     	</div>
     </div>
     <!-- 在筛选 -->
-    <div id="searchOther"></div>
-    <!-- 品牌 -->
-    <div id="buserName"></div>
-    <!-- 分类 -->
-    <div id="type"></div>
-    <!-- 功效 -->
-    <div id="effect"></div>
-    <!-- 价格 -->
-    <div id="price"></div>
+    <div id="searchOther" class="w">
+    	<div class="inline">
+    		<span class="span">在</span>
+    		<span id="searchOther_span">口红</span>
+    		<span class="span">中筛选</span>
+    	</div>
+    </div>
+    <!-- 品牌、分类、功效、价格 -->
+    <div id="btep" class="w">
+    	<!-- 品牌 -->
+	    <div id="buserName">
+	    	<div class="buser_name">
+	    		<span>品牌:</span>
+	    	</div>
+	    	<div class="buser_all">
+	    		<ul>
+	    			<li>美宝莲</li>
+	    			<li>伊蒂之屋</li>
+	    			<li>迪奥</li>
+	    			<li>魅可</li>
+	    			<li>光芮</li>
+	    			<li>思亲肤</li>
+	    			<li>欧莱雅</li>
+	    			<li>曼秀雷敦</li>
+	    			<li>倩碧</li>
+	    			<li>美宝莲</li>
+	    			<li>伊蒂之屋</li>
+	    			<li>迪奥</li>
+	    			<li>魅可</li>
+	    			<li>光芮</li>
+	    			<li>思亲肤</li>
+	    			<li>欧莱雅</li>
+	    			<li>曼秀雷敦</li>
+	    			<li>倩碧</li>
+	    		</ul>
+	    	</div>
+	    	<div class="buser_right"></div>
+	    </div>
+	    <!-- 分类 -->
+	    <div id="type"></div>
+	    <!-- 功效 -->
+	    <div id="effect"></div>
+	    <!-- 价格 -->
+	    <div id="price"></div>
+    </div>
     <!-- 排序 -->
     <div id="sort"></div>
     <!-- 商品展示 -->

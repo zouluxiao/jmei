@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -11,6 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="css/common.css"/>
 	<link rel="stylesheet" type="text/css" href="css/login.css"/>
 </head>
+<!--haha-->
 <body>
 	<div id="header">
 		<div id="logo">
@@ -53,9 +54,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						</div>
 						<div class="dynamic_pass_wrap line">
-							
+							<div class="textbox_ui dynamic_pass pass">
+								<input id="dynamic_password" type="text" placeholder="动态密码">
+								<a href="" id="getPhoneCode" class="phonecode">
+									<strong>获取手机动态密码</strong>
+								</a>
+							</div>	
 						</div>
+						<p>
+							<label>
+								<input type="checkbox" checked="checked"> 自动登录
+							</label>
+						</p>
+						<input type="submit" style=" display: block;width: 100%;" value="登 录" class="loginbtn submit_btn">
 					</form>
+					<div class="iconAccout">
+						<div>你也可以使用以下账号登录</div>
+						<p>
+							<a href="" class="a1"></a>
+							<a href="" class="a2"></a>
+							<a href="" class="a3"></a>
+							<a href="" class="a4"></a>
+							<a href="" class="a5"></a>
+							<span>更多
+								<i></i>
+							</span>
+						</p>
+					</div>
 				</div>
 				
 			</div>

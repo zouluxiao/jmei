@@ -138,11 +138,11 @@ strong{
     vertical-align: middle;
     width: 284px;
 }
-.user input,.textbox_ui .invalid i{
+ .pass input, .user input, .textbox_ui .invalid i{
     background-image: url("../images/login/sign.png?2");
     background-repeat: no-repeat;
 }
-.user input{
+ .pass input, .user input{
     padding-left: 38px;
     width: 262px;
 }
@@ -183,22 +183,143 @@ strong{
     position: absolute;
     top: 50%;
 }
+.dynamic_pass {
+    display: inline-block;
+    margin-top: 0;
+}
 .dynamic_pass_wrap {
     height: 44px;
     margin-bottom: 28px;
     margin-top: 10px;
 }
-.sign .line {
+.line .textbox_ui {
+    display: inline-block;
+    vertical-align: middle;
+}
+#content .line {
     clear: both;
     color: #333;
     font-size: 12px;
     margin: 30px 0;
 }
+#content .textbox_ui {
+    position: relative;
+}
 
+.textbox_ui {
+    display: inline-block;
+    margin-bottom: 0;
+}
+.dynamic_pass input {
+    display: inline-block;
+    width: 88px;
+}
+.pass input {
+    background-position: 5px -50px;
+}
 #content .dynamic_pass_wrap {
     margin-top: 10px;
 }
+.phonecode {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #fcfcfc, #f2f2f2) repeat scroll 0 0;
+    border: 1px solid #d9d9d9;
+    color: #666;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    height: 41px;
+    line-height: 41px;
+    margin-left: 10px;
+    padding: 0 8px;
+    text-align: center;
+    text-decoration: none;
+    width: 140px;
+}
+#content form p {
+    margin: 10px 0;
+}
+input[type="submit"] {
+    background: #f8296d none repeat scroll 0 0;
+    border: 0 none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 30px;
+    text-align: center;
+    white-space: nowrap;
+    word-break: keep-all;
+}
+input[type="submit"] {
+    overflow: visible;
+}
+.loginbtn {
+    margin-bottom: 10px;
+    outline: 0 none;
+}
+.iconAccout div {
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+.iconAccout p {
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+.iconAccout .a1 {
+    background-position: 0 0;
+}
+.loginBord p a {
+    color: inherit;
+}
+.iconAccout a {
+    background-image: url("../images/login/icon_light.jpg");
+    background-repeat: no-repeat;
+    display: inline-block;
+    float: left;
+    height: 43px;
+    margin-right: 12px;
+    text-indent: -9999px;
+    width: 43px;
+}
+.iconAccout .a2 {
+    background-position: -57px 0;
+}
+.iconAccout .a3 {
+    background-position: -114px 0;
+}
+.iconAccout .a4 {
+    background-position: -169px 0;
+}
+.iconAccout .a5 {
+    background-position: -224px 0;
+}
+.iconAccout span {
+    cursor: pointer;
+    float: left;
+    left: -7px;
+    line-height: 30px;
+    margin-top: 5px;
+    position: relative;
+}
 
+.iconAccout span i {
+    background-position: -274px -23px;
+    display: inline-block;
+    height: 17px;
+    position: absolute;
+    right: -21px;
+    top: 7px;
+    transition: all 0.3s ease-in 0s;
+    width: 18px;
+}
+.iconAccout span i {
+    background-image: url("../images/login/icon.jpg");
+    background-repeat: no-repeat;
+}
 #home{
 	 background: rgba(0, 0, 0, 0) url("../images/login/logo_new_v1.jpg") no-repeat scroll left top;
 	 float: left;

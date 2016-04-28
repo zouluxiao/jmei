@@ -19,5 +19,9 @@
 			<attribute name="owner.project.facets" value="jst.web.jstl"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="E:/Java常用jar包/ojdbc6_g.jar"/>
+	<classpathentry kind="lib" path="E:/Java常用jar包/activation.jar"/>
+	<classpathentry kind="lib" path="E:/Java常用jar包/javax.mail.jar"/>
+	<classpathentry kind="lib" path="E:/Java常用jar包/commons-email-1.2.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

@@ -1,23 +1,30 @@
 package com.jmei.exception;
 
 public class DAOException extends Exception {
-	
+
 	public DAOException() {
 		super();
-	}
-
-	public DAOException(String arg0, Throwable arg1) {
-		super(arg0, arg1);
 		// TODO Auto-generated constructor stub
 	}
 
-	public DAOException(String arg0) {
-		super(arg0);
+	public DAOException(String message, Throwable cause,
+			boolean enableSuppression, boolean writableStackTrace) {
+		super(message, cause, enableSuppression, writableStackTrace);
 		// TODO Auto-generated constructor stub
 	}
 
-	public DAOException(Throwable arg0) {
-		super(arg0);
+	public DAOException(String message, Throwable cause) {
+		super(message, cause);
+		// TODO Auto-generated constructor stub
+	}
+
+	public DAOException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
+
+	public DAOException(Throwable cause) {
+		super(cause);
 		// TODO Auto-generated constructor stub
 	}
 

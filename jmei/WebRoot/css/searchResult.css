@@ -1,0 +1,94 @@
+#searchResult{
+	background: #f7f7f7;
+}
+
+#right{
+	float:right;
+	width: 40px;
+	height: 100%;
+	position: absolute;
+	background: #444851;
+	z-index: 2;
+	top: 0;
+	font-family: 'microsoft yahei',arial;
+	left: 0px;
+}
+
+.w{
+	width: 1000px;
+}
+
+#frist{
+	padding: 3px 0 10px;
+	color: #333;
+	margin: 0 auto;
+	height: 41px;
+}
+
+#frist .ful{
+	margin-top: 19px;
+	float: left;
+	display: inline;	
+}
+
+#frist .ful .fli{
+	margin-left: -9px;
+}
+
+#frist .ful .fli a{
+	color: #000;
+	font-weight: 700;
+	font-family: "ËÎÌו";
+}
+
+#frist .ful .fli a:HOVER{
+	color: red;
+	text-decoration: none;
+}
+
+#frist .span{
+	position: relative;
+	top: 17px;
+	left: 3px;
+	font-family: "ËÎÌו";
+	font-weight: 700;
+	color: #333
+}
+
+#frist_search{
+	
+}
+
+.bread_search_img{
+	background: url(../images/cssSearchResult/right_fdj.jpg) no-repeat;
+    position: relative;
+	width: 16px;
+	height: 16px;
+	top: -14px;
+	border: 0;
+}
+
+.frist_search_span{
+	display:block;
+	position: relative;
+	left: 23px;
+	top: 3px;
+	color: #696767;
+	font-size: 12px;
+	z-index: 11;
+}
+
+.frist_search_input{
+	border: 0;
+	outline: 0;
+	height: 17px;
+	line-height: 17px;
+	margin-top: -2px;
+	position: relative;
+	top: -15px;
+	left: 20px;
+}
+
+
+
+

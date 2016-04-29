@@ -1,0 +1,235 @@
+a{
+    color: #ed145b;
+    text-decoration: none;
+}
+input{
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+strong {
+    font-weight: 800;
+}
+#header{
+	background: #fff none repeat scroll 0 0;
+    min-width: 960px;
+}
+#logo{
+	height: 85px;
+}
+#logo{
+	margin: 0 auto;
+    width: 960px;
+}
+#home{
+	 background: rgba(0, 0, 0, 0) url("../images/login/logo_new_v1.jpg") no-repeat scroll left top;
+	 float: left;
+     font-size: 0;
+     height: 85px;
+     line-height: 0;
+     overflow: hidden;
+     width: 360px;
+}
+#logo .header_login_box{
+    display: inline-block;
+    float: right;
+    padding-top: 35px;
+}
+#logo a.top_link{
+    float: right;
+    height: 31px;
+    margin-right: 24px;
+    overflow: hidden;
+    width: 110px;
+}
+#logo a.top_link{
+     background: transparent url("../images/login/header_corn_new_v2.png") no-repeat scroll center top;
+}
+#logo a.lighting{
+    background-position: 0 -64px;
+}
+#logo a.gild{
+    background-image: url("../images/login/gild.png");
+    width: 170px;
+}
+#logo a.credit{
+    background-position: 0 0;
+}
+#content{
+	line-height: 1.5;
+}
+.clear {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+.loginWrap {
+    line-height: 1.5;
+    margin: 100px auto;
+    width: 965px;
+}
+.loginWrap {
+    height: 460px;
+    margin-bottom: 70px;
+    margin-top: 120px;
+}
+.loginPic {
+    background: rgba(0, 0, 0, 0) url("../images/regist/signPic.jpg.png") no-repeat scroll 0 0;
+    height: 370px;
+    position: relative;
+    width: 960px;
+}
+.signup_link {
+    display: block;
+    height: 370px;
+    position: absolute;
+    width: 420px;
+}
+.loginWrap .loginBord {
+    background: rgba(255, 255, 255, 0.85) none repeat scroll 0 0;
+    border: 1px solid #ededed;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.075);
+    color: #333;
+    min-height: 400px;
+    padding: 0 23px;
+    position: absolute;
+    right: 0;
+    top: -60px;
+    width: 310px;
+}
+.loginBord .loginTit {
+    line-height: 60px;
+    margin-bottom: 15px;
+}
+.loginTit .tosignup {
+    color: #969696;
+    float: right;
+}
+.loginWrap .loginBord {
+    top: -80px;
+}
+.loginWrap .loginBord {
+    border: 0 none;
+}
+#content h1, .pre_login h2 {
+    color: #e31256;
+    font-weight: 400;
+}
+.loginTit h1 {
+    color: #e31256;
+    font-size: 20px;
+    font-weight: 400;
+}
+#content h1 {
+    font-family: "Microsoft YaHei","微软雅黑","黑体";
+}
+#content .act, #content .line {
+    clear: both;
+    color: #333;
+    font-size: 12px;
+    margin: 30px 0;
+}
+#content .line {
+    height: 44px;
+}
+#content .act, #content .line {
+    margin: 0 0 28px;
+}
+.loginWrap .textbox_ui {
+    margin-bottom: 26px;
+}
+.line label, .line .textbox_ui {
+    display: inline-block;
+    vertical-align: middle;
+}
+.loginWrap .textbox_ui {
+    margin-bottom: 0;
+}
+#content .textbox_ui{
+	 position: relative;
+}
+#content input {
+    vertical-align: middle;
+}
+.textbox_ui input {
+    background-color: #fff;
+    border: 1px solid #cfcfcf;
+    box-shadow: none;
+    font-size: 14px;
+    height: auto;
+    line-height: 1.5;
+    outline: 0 none;
+    padding: 10px 8px;
+    vertical-align: middle;
+    width: 284px;
+}
+.loginWrap .verityWrap, .loginWrap .textbox_ui {
+    margin-bottom: 26px;
+}
+.loginWrap .verityWrap .textbox_ui {
+    display: inline-block;
+    margin-bottom: 0;
+}
+.loginWrap .verityWrap, .loginWrap .textbox_ui {
+    margin-bottom: 0;
+}
+.verityWrap a, .verityWrap img, .verityWrap .textbox_ui {
+    margin-right: 12px;
+    vertical-align: middle;
+}
+#foot{
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border-top: medium none;
+    padding-top: 5px;
+    bottom: -1px;
+    overflow: hidden;
+    position: relative;
+}
+#foot #footer_copyright{
+	background: #fff none repeat scroll 0 0;
+    color: #000;
+    text-align: center;
+    line-height: 20px;
+    padding-bottom: 80px;
+}
+.footer-con{
+	margin: 0 auto;
+    overflow: hidden;
+    width: 1090px;
+}
+#footer_copyright .footer_copy_con {
+    padding: 10px 0;
+}
+#footer_copyright .footer_copy_con {
+    line-height: 23px;
+    padding: 14px 0 18px;
+}
+#footer_copyright a {
+    color: #000;
+}
+#footer_copyright .footer_copy_logo {
+    background: rgba(0, 0, 0, 0) url("../images/login/footer_btm_icon.png") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 50px;
+    margin-right: 8px;
+    overflow: hidden;
+    width: 126px;
+}
+#footer_copyright .logo01, #footer_copyright .logo03, #footer_copyright .logo04 {
+    cursor: default;
+}
+#footer_copyright .logo02 {
+    background-position: -126px 0;
+}
+#footer_copyright .logo03 {
+    background-position: -252px 0;
+}
+#footer_copyright .logo04 {
+    background-position: -378px 0;
+}
+#footer_copyright .logo05 {
+    background-position: -504px 0;
+}
+.footer_copy_logo {
+    border-bottom: 1px solid #d7d7d7;
+}

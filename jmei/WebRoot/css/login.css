@@ -16,7 +16,6 @@ input{
 }
 #login-text{
 		height: 418px;
-    	margin-bottom: 50px;
 }
 
 .loginWrap{
@@ -118,7 +117,7 @@ strong{
     vertical-align: middle;
 }
 .loginWrap .textbox_ui {
-    margin-bottom: 26px;
+    margin-bottom: 16px;
 }
 .textbox_ui{
     height: 44px;
@@ -320,6 +319,30 @@ input[type="submit"] {
     background-image: url("../images/login/icon.jpg");
     background-repeat: no-repeat;
 }
+.iconAccout p {
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+#content .shadow_l {
+    left: -9px;
+}
+#content .shadow_l, #content .shadow_r {
+    background: rgba(0, 0, 0, 0) url("../images/login/shadow.png?1") no-repeat scroll center center;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 8px;
+}
+#content .shadow_r {
+    background-color: #fff;
+    right: -9px;
+    transform: scaleX(-1);
+}
+#content .shadow_r {
+    background-color: transparent;
+    filter: none;
+}
+
 #home{
 	 background: rgba(0, 0, 0, 0) url("../images/login/logo_new_v1.jpg") no-repeat scroll left top;
 	 float: left;
@@ -328,6 +351,11 @@ input[type="submit"] {
      line-height: 0;
      overflow: hidden;
      width: 360px;
+}
+.clear {
+    clear: both;
+    height: 0;
+    overflow: hidden;
 }
 #foot{
 	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
@@ -348,4 +376,99 @@ input[type="submit"] {
 	margin: 0 auto;
     overflow: hidden;
     width: 1090px;
+}
+#footer_copyright .footer_copy_con {
+    padding: 10px 0;
+}
+#footer_copyright .footer_copy_con {
+    line-height: 23px;
+    padding: 14px 0 18px;
+}
+#footer_copyright a {
+    color: #000;
+}
+#footer_copyright .footer_copy_logo {
+    background: rgba(0, 0, 0, 0) url("../images/login/footer_btm_icon.png") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 50px;
+    margin-right: 8px;
+    overflow: hidden;
+    width: 126px;
+}
+#footer_copyright .logo01, #footer_copyright .logo03, #footer_copyright .logo04 {
+    cursor: default;
+}
+#footer_copyright .logo02 {
+    background-position: -126px 0;
+}
+#footer_copyright .logo03 {
+    background-position: -252px 0;
+}
+#footer_copyright .logo04 {
+    background-position: -378px 0;
+}
+#footer_copyright .logo05 {
+    background-position: -504px 0;
+}
+.footer_copy_logo {
+    border-bottom: 1px solid #d7d7d7;
+}
+.textBtnsWrap {
+    border: 1px solid #cfcfcf;
+    height: 40px;
+    overflow: hidden;
+}
+.t_v_txt_btn {
+    background-repeat: no-repeat;
+    cursor: default;
+    float: left;
+    height: 40px;
+}
+.input_big_wrap {
+    clear: both;
+    line-height: 42px;
+    padding-top: 20px;
+    position: relative;
+}
+.inputWrap {
+    border: 1px solid #cfcfcf;
+    float: left;
+    height: 40px;
+    width: 161px;
+}
+.verImg {
+    background-repeat: no-repeat;
+    border: 1px solid #cfcfcf;
+    cursor: pointer;
+    float: left;
+    height: 40px;
+    margin-left: 4px;
+    vertical-align: middle;
+    width: 80px;
+}
+.t_v_delBtn {
+    background: rgba(0, 0, 0, 0) url("../images/login/del_btn.jpg") repeat scroll 0 0;
+    float: left;
+    height: 40px;
+    width: 38px;
+}
+.t_v_input {
+    background-position: 200px 0;
+    background-repeat: no-repeat;
+    border-right: 1px solid #cfcfcf;
+    float: left;
+    height: 40px;
+    width: 40px;
+}
+.refresh_btn {
+    display: block;
+    float: left;
+    margin-left: 4px;
+}
+.t_v_err {
+    clear: both;
+    line-height: 20px;
+    overflow: hidden;
+    padding-top: 5px;
+    visibility: hidden;
 }

@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,10 +8,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 	<title>登录聚美</title>
 	<Link Rel="SHORTCUT ICON" href="">
-	<link rel="stylesheet" type="text/css" href="css/common.css"/>
-	<link rel="stylesheet" type="text/css" href="css/login.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/login.css"/>
 </head>
-<!--haha-->
 <body>
 	<div id="header">
 		<div id="logo">
@@ -68,6 +67,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</p>
 						<input type="submit" style=" display: block;width: 100%;" value="登 录" class="loginbtn submit_btn">
 					</form>
+					<form id="login-user-form" method="post" action="" style="display:none;">
+						<div class="textbox_ui user">
+							<input id="username" type="text" placeholder="已验证手机/邮箱/用户名">
+						</div>
+						<div class="textbox_ui pass">
+							<input id="login_password" type="password" autocomplete="off" placeholder="密码">
+						</div>
+						<div class="ver_text">
+							<div style="line-height:30px;">验证码：点击与验证码相应的文字到验证码输入框内</div>
+							<div class="textBtnsWrap">
+								<div class="t_v_txt_btn"></div>
+								<div class="t_v_txt_btn"></div>
+								<div class="t_v_txt_btn"></div>
+								<div class="t_v_txt_btn"></div>
+								<div class="t_v_txt_btn"></div>
+								<div class="t_v_txt_btn"></div>
+
+							</div>
+							<div class="input_big_wrap">
+								<div class="inputWrap">
+									<div class="t_v_input"></div>
+									<div class="t_v_input"></div>
+									<div class="t_v_input"></div>
+									<a href="" class="t_v_delBtn"></a>
+								</div>
+								<div class="verImg"></div>
+								<a href="" class="refresh_btn">换一张</a>
+							</div>
+							<div class="t_v_err"></div>
+							<p>
+								<a href="" class="fr">
+									忘记密码？
+								</a>
+								<label>
+									<input id="auto_login" type="checkbox" checked="checked">
+									自动登陆
+								</label>
+							</p>
+							<input class="loginbtn submit_btn" type="submit" style=" display: block;width: 100%;" value="登 录">
+						</div>
+					</form>
 					<div class="iconAccout">
 						<div>你也可以使用以下账号登录</div>
 						<p>
@@ -81,14 +121,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</span>
 						</p>
 					</div>
+					<div class="shadow_l"></div>
+					<div class="shadow_r"></div>
 				</div>
 				
 			</div>
 		</div>
 	</div>
+	<div class="clear"></div>
 	<div id="foot">
 		<div id="footer_copyright" class="footer-con">
-			
+			<p class="footer_copy_con">
+				 Copyright &copy;2010-2015 北京创锐文化传媒有限公司 Jumei.com 保留一切权利。客服热线：400-123-8888<br>
+				    京公网安备 11010102001226 号 |              | 
+				  <a href="">京ICP证111033号</a>
+				   | 食品流通许可证 SP1101051110165515（1-1）             | 
+				   <a href="">营业执照</a>
+			</p>
+			<p>
+				<a href="" class="footer_copy_logo logo01"></a>
+				<a href="" class="footer_copy_logo logo02"></a>
+				<a href="" class="footer_copy_logo logo03"></a>
+				<a href="" class="footer_copy_logo logo04"></a>
+				<a href="" class="footer_copy_logo logo05"></a>
+			</p>
 		</div>
 	</div>
 </body>

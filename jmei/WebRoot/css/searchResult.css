@@ -2,27 +2,18 @@
 	background: #f7f7f7;
 }
 
-#right{
-	float:right;
-	width: 40px;
-	height: 100%;
-	position: absolute;
-	background: #444851;
-	z-index: 2;
-	top: 0;
-	font-family: 'microsoft yahei',arial;
-	left: 0px;
-}
-
 .w{
 	width: 1000px;
 }
+
 
 #frist{
 	padding: 3px 0 10px;
 	color: #333;
 	margin: 0 auto;
 	height: 41px;
+	left: 15px;
+	position: relative;
 }
 
 #frist .ful{
@@ -120,12 +111,15 @@
 	margin-bottom: 22px;
 	margin: 0 auto;
 	background-color: #fff;
+	position: relative;
+	left:19px;
 }
 
 #buserName{
 	padding: 12px 10px 2px 6px;
-	border-bottom: solid 1px #f2f2f2;
 	position: relative;
+	height: 63px;
+	border-bottom: solid 1px #f2f2f2;
 }
 
 #buserName .buser_name{
@@ -133,6 +127,7 @@
 	margin-right: 20px;
 	height: 46px;
 	width: 64px;
+	background-color: #FBFBFB;
 }
 
 #buserName .buser_name span{
@@ -153,7 +148,444 @@
 	height: 22px;
 }
 
-#buserName .buser_right{
-	
+ul li a{
+	text-decoration: none;
+	color: #666;
+	cursor: pointer;
 }
+ul li a:HOVER{
+	text-decoration: none;
+	color: #ed145b;
+	cursor: pointer;
+}
+
+#btep #buserName .buser_right{
+	position: relative;
+	top: -60px;
+	/* right: -20px; */
+	height: 20px;
+	width: 60px;
+	left: 940px;
+}
+
+#btep #buserName .buser_right a{
+	clear:both;
+	display:block;
+	background: url(../images/cssSearchResult/filter_down_red.png) 26px 5px no-repeat;
+	/* color: #ed145b; */
+	text-decoration: none;
+	height: 20px;
+	position: relative;
+	top:-18px;
+}
+
+.buser_all_ul{
+	display:block;
+	float:left;
+	width: 860px;
+	height: 60px;
+	margin: 0 auto;
+}
+
+#type{
+	padding: 12px 10px 2px 6px;
+	position: relative;
+	height: 63px;
+	border-bottom: solid 1px #f2f2f2;
+}
+
+#type .buser_name{
+	float: left;
+	margin-right: 20px;
+	height: 46px;
+	width: 64px;
+	background-color: #FBFBFB;
+}
+
+#type .buser_name span{
+	color: #000;
+	font-weight: 700;
+	font-family: "宋体";
+}
+
+#type .buser_all ul li{
+	list-style: none;
+	margin: 0 14px 10px 0;
+	width: 72px;
+	float: left;
+	display: inline;
+	white-space: nowrap;
+	overflow: hidden;
+	background: 0;
+	height: 22px;
+}
+
+#btep #type .buser_right{
+	position: relative;
+	top: -60px;
+	/* right: -20px; */
+	height: 20px;
+	width: 60px;
+	left: 940px;
+}
+
+#btep #type .buser_right a{
+	clear:both;
+	display:block;
+	background: url(../images/cssSearchResult/filter_down_red.png) 26px 5px no-repeat;
+	/* color: #ed145b; */
+	text-decoration: none;
+	height: 20px;
+	position: relative;
+	top:-18px;
+}
+
+#effect{
+	padding: 12px 10px 2px 6px;
+	position: relative;
+	height: 63px;
+	border-bottom: solid 1px #f2f2f2;
+}
+
+#effect .buser_name{
+	float: left;
+	margin-right: 20px;
+	height: 46px;
+	width: 64px;
+	background-color: #FBFBFB;
+}
+
+#effect .buser_name span{
+	color: #000;
+	font-weight: 700;
+	font-family: "宋体";
+}
+
+#effect .buser_all ul li{
+	list-style: none;
+	margin: 0 14px 10px 0;
+	width: 72px;
+	float: left;
+	display: inline;
+	white-space: nowrap;
+	overflow: hidden;
+	background: 0;
+	height: 22px;
+}
+
+#btep #effect .buser_right{
+	position: relative;
+	top: -60px;
+	/* right: -20px; */
+	height: 20px;
+	width: 60px;
+	left: 940px;
+}
+
+#btep #effect .buser_right a{
+	clear:both;
+	display:block;
+	background: url(../images/cssSearchResult/filter_down_red.png) 26px 5px no-repeat;
+	/* color: #ed145b; */
+	text-decoration: none;
+	height: 20px;
+	position: relative;
+	top:-18px;
+}
+
+
+#price{
+	padding: 12px 10px 2px 6px;
+	position: relative;
+	height: 63px;
+	border-bottom: solid 1px #f2f2f2;
+}
+
+#price .buser_name{
+	float: left;
+	margin-right: 20px;
+	height: 46px;
+	width: 64px;
+	background-color: #FBFBFB;
+}
+
+#price .buser_name span{
+	color: #000;
+	font-weight: 700;
+	font-family: "宋体";
+}
+
+#price .buser_all ul li{
+	list-style: none;
+	margin: 0 14px 10px 0;
+	width: 72px;
+	float: left;
+	display: inline;
+	white-space: nowrap;
+	overflow: hidden;
+	background: 0;
+	height: 22px;
+}
+
+#btep #price .buser_right{
+	position: relative;
+	top: -60px;
+	/* right: -20px; */
+	height: 20px;
+	width: 60px;
+	left: 940px;
+}
+
+#btep #price .buser_right a{
+	clear:both;
+	display:block;
+	background: url(../images/cssSearchResult/filter_down_red.png) 26px 5px no-repeat;
+	/* color: #ed145b; */
+	text-decoration: none;
+	height: 20px;
+	position: relative;
+	top:-18px;
+}
+
+#search_list_wrap{
+	border: 1px solid #eeeded;
+	background: #fff;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#sort{
+	margin: 0 auto;
+	position: relative;
+	height: 34px;
+}
+
+.search_list_head_fiex{
+	float:left;
+	width: 100%;
+	height: 33px;
+	margin: 0 auto;
+	overflow: hidden;
+	background-image: url(../images/cssSearchResult/search_paixu_bg.jpg);
+}
+
+.sort_s{
+	float: left;
+	height: 34px;
+	display: inline;
+	line-height: 34px;
+	width: 80px;
+	text-align: center;
+	font-weight: 700;
+	margin-left: 8px;
+	color: #333;
+	border-right: 1px solid #e7e3e3;
+}
+
+.selected{
+	float: left;
+	display: inline;
+	border-right: 1px solid #e7e3e3;
+}
+
+#search_list_wrap #sort ul li{
+	list-style: none;
+}
+
+.sort_u{
+	float: left;
+	display: inline;
+}
+
+#search_list_wrap #sort .sort_u .selected a{
+	color: #ed145b;
+	height: 34px;
+	border: 0;
+	line-height: 34px;
+}
+
+/* .down{
+	background: url(../images/cssSearchResult/desc_selected_hover.png) no-repeat 57px 50% #fff;
+}
+ */
+
+#goods{
+	padding: 20px;
+	margin: 0 -32px 0 0;
+	height: 100%;
+}
+
+.Goods_item{
+	list-style: none;
+	width: 240px;
+	height: 430px;
+	display: inline;
+	float: left;
+}
+ 
+.Goods_item_span{
+	display:block;
+	width: 200px;
+	padding: 26px 10px 0;
+	overflow: hidden;
+	height: 35px;
+	font-size: 12px;
+	line-height: 18px;
+	font-family: "宋体";
+}
+
+.Goods_item_price{
+	margin: 3px 0 0;
+}
+
+.Goods_item .Goods_item_price label {
+	font-size: 18px;
+	font-family: arial;
+	color: #f42468;
+}
+
+.Goods_item .Goods_item_price span {
+	color: #f42468;
+	font-family: arial;
+	font-size: 24px;
+}
+
+.goods_sale{
+	display: inline-block;
+    color: #787878;
+    padding-right: 5px;
+    float: left;
+}
+
+.goods_button{
+	width: 185px;
+	margin: 8px 0 0;
+	height: 30px;
+}
+.goods_button_add{
+	background-position: -101px 0;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+	height:30px;
+	width:83px;
+	height: 30px;
+	background: url(../images/cssSearchResult/selectListChange.png) no-repeat 0 0;
+}
+
+.goods_button_addcol{
+	display: inline-block;
+	margin-left: 5px;
+	width: 70px;
+	height: 30px;
+	cursor: pointer;
+	background: url(../images/cssSearchResult/selectListChange.png) no-repeat 0 -49px;
+}
+
+#page{
+	margin: 0 auto;
+	clear: both;
+	padding: 10px 0 25px;
+	text-align: right;
+	padding-right: 20px;
+	height: 25px;
+}
+
+.page-nav{
+	margin: 0 auto;
+	display: inline;
+	white-space: nowrap;
+	font-size: 12px;
+	overflow: hidden;
+}
+
+.current{
+	display: inline-block;
+	list-style: none;
+}
+
+#page .page-nav .current span{
+	display: inline-block;
+	height: 28px;
+	padding: 0 10px;
+	line-height: 28px;
+	background: #6d6d6d;
+	border: solid 1px #666;
+	color: #fff;
+}
+
+#page .page-nav .current a{
+	display: inline-block;
+	height: 28px;
+	padding: 0 10px;
+	line-height: 28px;
+	color: #333;
+	background: #fcfcfc;
+	border: solid 1px #e2e0e0;
+	text-decoration: none;
+}
+
+.next{
+	margin-right: 25px;
+}
+
+#butSearch{
+	background: #EEE;
+	height: 125px;
+	margin-top: 15px;
+	padding-left: 20px;
+	position: relative;
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.butSearch_se{
+	height: 44px;
+	margin: 0 auto;
+}
+
+.search_se_text{
+	float: left;
+	display: inline;
+	font-family: "Microsoft YaHei";
+	font-size: 16px;
+	height: 36px;
+	line-height: 36px;
+	margin-right: 10px;
+	color: #666;
+}
+
+.butSearch_se_input{
+	width: 540px;
+	height: 33px;
+	line-height: 33px;
+	border: 0 none;
+	padding: 0 5px;
+	font-size: 14px;
+	outline: 0;
+	font-weight: inherit;
+	font-family: inherit;
+}
+
+#butSearch button {
+	border: 0 none;
+	width: 40px;
+	height: 33px;
+	text-indent: -99999px;
+	position: relative;
+	right: 2px;
+	top: 1px;
+	cursor: pointer;
+	background: url(../images/cssSearchResult/mallsearchbg_v3.jpg) no-repeat;
+	background-position: -31px 0;
+}
+
+.bottom_othersearch{
+	padding: 10px 0px 0px 76px;
+	color: #666;
+}
+
+
 

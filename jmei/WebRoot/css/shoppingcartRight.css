@@ -1,0 +1,183 @@
+#right{
+	right: 0px;
+	position: fixed;
+	left: auto;
+	clear:both;
+	display:block;
+	float: right;
+	width: 37px;
+	height: 100%;
+	background: #444851;
+	z-index: 2;
+	font-family: 'microsoft yahei',arial;
+}
+
+#person{
+	position: relative;
+	display: block;
+	height: 38px;
+	z-index: 1;
+}
+#person s{
+	width: 18px;
+	height: 19px;
+	top: 10px;
+	left: 11px;
+	position: absolute;
+	cursor: pointer;
+	background-image: url(../images/common/ibar_sprites.png);
+	background-repeat: no-repeat;
+}
+
+#shopping{
+	left: 0px;
+	padding: 20px 0 10px;
+	height: 133px;
+	border-bottom: 1px solid;
+}
+
+#money{
+	padding-bottom: 6px;
+	height: 38px;
+	position: relative;
+	display: block;
+	z-index: 1;
+}
+
+#money s{
+	width: 18px;
+	height: 18px;
+	background-position: 0 -57px;
+	top: 80px;
+	left: 11px;
+	cursor:pointer;
+	position:absolute;
+	background-image: url(../images/common/ibar_sprites.png);
+	background-repeat: no-repeat;
+}
+
+#heart{
+	padding-bottom: 6px;
+	height: 38px;
+	position: relative;
+	display: block;
+	z-index: 1;
+}
+
+#heart s{
+	width: 18px;
+	height: 18px;
+	background-position: 0 -85px;
+	top: 60px;
+	left: 11px;
+	cursor:pointer;
+	position:absolute;
+	background-image: url(../images/common/ibar_sprites.png);
+	background-repeat: no-repeat;
+}
+
+#see{
+	padding-bottom: 6px;
+	height: 38px;
+	position: relative;
+	display: block;
+	z-index: 1;
+}
+
+#see s{
+	width: 11px;
+	height: 24px;
+	background-position: -4px -110px;
+	top: 50px;
+	left: 14px;
+	cursor:pointer;
+	position:absolute;
+	background-image: url(../images/common/ibar_sprites.png);
+	background-repeat: no-repeat;
+}
+
+#twocode{
+	padding-bottom: 6px;
+	height: 38px;
+	position: relative;
+	display: block;
+	z-index: 1;
+}
+
+#twocode s{
+	width: 18px;
+	height: 18px;
+	top: 91px;
+	left: 11px;
+	background-position: 0 -302px;
+	cursor:pointer;
+	position:absolute;
+	background-image: url(../images/common/ibar_sprites.png);
+	background-repeat: no-repeat;
+}
+
+#service{
+	padding-bottom: 6px;
+	height: 38px;
+	position: relative;
+	display: block;
+	z-index: 1;
+}
+
+#service s{
+	width: 15px;
+	height: 16px;
+	top: 60px;
+	left: 12px;
+	background-position: 0 -175px;
+	cursor:pointer;
+	position:absolute;
+	background-image: url(../images/common/ibar_sprites.png);
+	background-repeat: no-repeat;
+}
+
+
+#right ul{
+	margin-top:40px;
+}
+
+#right ul li{
+	display: block;
+	float: left;
+	height: 60px;
+	width: 40px;
+}
+
+#shoppingcart s{
+	display:block;
+	width: 23px;
+	height: 18px;
+	left: 9px;
+	position: absolute;
+	cursor: pointer;
+	background-image: url(../images/common/ibar_sprites.png);
+	background-repeat: no-repeat;
+	background-position: 0 -29px;
+}
+
+#shoppingcart .text{
+	width: 16px;
+	display: block;
+	height: 48px;
+	margin: 38px 0 0 14px;
+	cursor: pointer;
+	color: #fff;
+}
+
+#shoppingcart .cart_num{
+	width: 21px;
+	height: 21px;
+	display: block;
+	border-radius: 50%;
+	background: #ed145b;
+	text-align: center;
+	line-height: 21px;
+	margin: 9px 0 0 10px;
+	cursor: pointer;
+	color: #fff;
+}

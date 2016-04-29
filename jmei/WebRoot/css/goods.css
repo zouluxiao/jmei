@@ -1,0 +1,245 @@
+#goods{
+	background: #f7f7f7;
+}
+
+
+#right{
+	right: 0px;
+	position: fixed;
+	left: auto;
+	clear:both;
+	display:block;
+	float: right;
+	width: 37px;
+	height: 100%;
+	background: #444851;
+	z-index: 2;
+	font-family: 'microsoft yahei',arial;
+}
+
+.w{
+	width: 1000px;
+}
+
+#load{
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px 0 10px;
+	font-size: 14px;
+	height: 20px;
+	background-color: #fff;
+}
+
+#load a{
+	margin: 0 6px;
+	white-space: nowrap;
+	color: #6d6d6d;
+	line-height: 20px;
+	font-family: "Microsoft YaHei";
+}
+
+#introduction{
+	float:left;
+	width:490px;
+	line-height: 20px;
+	color: #262626;
+	font-size: 18px;
+	font-weight: 400;
+	height: 90px;
+	padding: 19px 25px 19px 55px;
+	overflow: hidden;
+	background: #f8f8f8;
+}
+
+#introduction .deal_title_detail{
+	line-height: 20px;
+	color: #262626;
+	font-size: 18px;
+	font-weight: 400;
+}
+
+.logo{
+	padding-top: 10px;
+	float:left;
+	height: 129px;
+	width: 330px;
+	background-color: #fff;
+	padding-left: 100px;
+	margin-right: auto;
+}
+
+#logotro{
+	margin: 0 auto;
+	height: 140px;
+}
+
+#imginfo{
+	margin: 0 auto;
+	height: 400px;
+	background-color: #fff;
+}
+
+#bigimg{
+	float:left;
+	height: 400px;
+	width: 570px;
+	
+}
+
+#info{
+	float:right;
+	height: 400px;
+	width: 330px;
+	padding: 20px 0;
+}
+
+#info .deal_ori_price{
+	height: 48px;
+	color: #232323;
+}
+
+#info .deal_ori_price .deal_accout_one{
+	margin: 6px 3px 0 0;
+	font-size: 20px;
+	position: relative;
+}
+#info .deal_ori_price .deal_accout_two{
+	font-size: 42px;
+	font-weight: 500;
+	letter-spacing: -1px;
+}
+
+#info .full_cut_dialog{
+	height: 18px;
+	line-height: 18px;
+	margin-top: 6px;
+	position: relative;
+	cursor: default;
+}
+
+#info .full_cut_dialog em{
+	display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 5px;
+    color: #fff;
+    margin-right: 10px;
+    background: #1e1e1e;
+    float: left;
+}
+
+#info .deal_buynum{
+	height: 42px;
+	margin: 15px 0 0;
+	padding-top: 20px;
+	border-top: #c9c9c9 dotted 1px;
+	border-bottom: #c9c9c9 dotted 1px;
+}
+
+#info .deal_buynum a{
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin: 4px 10px 0 0;
+	background: url(../images/goods/allicons_new.png) no-repeat;
+	background-position: -288px 0;
+}
+
+#info dl{
+	height: 20px;
+	line-height: 20px;
+	padding-top: 20px;
+}
+
+#info dl dd{
+	margin-bottom: 10px;
+}
+
+#info .button_list{
+	height: 50px;
+	margin: 30px 0 0;
+	padding-top: 40px;
+}
+
+.button_list_1{
+	float:left;
+	font-size: 16px;
+	text-align: center;
+	color: #fff;
+	height: 41px;
+	width: 170px;
+	cursor: default;
+	background: url(../images/goods/allicons_new.png) no-repeat;
+	background-position: 0 -184px;
+}
+
+.button_list_2{
+	float:right;
+	font-size: 16px;
+	text-align: center;
+	color: #fff;
+	height: 41px;
+	width: 150px;
+	cursor: default;
+	background: url(../images/goods/allicons_new.png) no-repeat;
+	background-position: 0 -479px;
+}
+
+#de{
+	margin: 0 auto;
+	background-color: #fff;
+}
+
+#deal{
+	padding: 18px 0 15px 54px;
+	height: 25px;
+	border: 1px solid #f3f2f2;
+	width: 600px;
+}
+
+#other_de{
+	margin: 0 auto;
+	background-color: #fff;
+	height: 88px;
+}
+#other{
+	width: 940px;
+	margin: 0 auto;
+	height: 88px;
+}
+
+.other1{
+	float:left;
+	padding-top: 30px;
+	width: 230px;
+}
+
+.img1{
+	float:left;
+	height:48px;
+	width:48px;
+	background: url(../images/goods/allicons2.png) no-repeat;
+	padding-right: 10px;
+}
+
+.share{
+	float: right;
+	color: #959595;
+	margin-left: 30px;
+	margin-right: 20px;
+}
+
+.collect{
+	float: right;
+	color: #959595;
+}
+
+.collectImg{
+	float:right;
+	width: 15px;
+	height: 13px;
+	background: url(../images/goods/deal_icons.png) no-repeat;
+	position: relative;
+	top:3px;
+}

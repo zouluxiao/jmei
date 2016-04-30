@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jmei.action.Action;
 import com.jmei.action.GoodsAction;
-import com.jmei.action.JuserAction;
 
 public class ActionServlet extends HttpServlet{
 
@@ -27,10 +26,8 @@ public class ActionServlet extends HttpServlet{
 		if("/search.do".equalsIgnoreCase(servletPath)){
 			Action action = new GoodsAction();
 			action.execute(req, resp);
-		}else if("/product.do".equalsIgnoreCase(servletPath)){
-		
-		}else if("/user.do".equals(servletPath)){
-			Action action = new JuserAction();
+		}else if("/goods.do".equalsIgnoreCase(servletPath)){
+			Action action = new GoodsAction();
 			action.execute(req, resp);
 		}
 		

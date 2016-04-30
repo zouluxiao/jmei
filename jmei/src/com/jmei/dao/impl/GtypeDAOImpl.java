@@ -35,14 +35,14 @@ public class GtypeDAOImpl implements GtypeDAO {
 					pstmt = conn.prepareStatement(sql);
 					rs  = pstmt.executeQuery();
 					List<Gtype> gtypes = new ArrayList<Gtype>();
-					if(rs.next()){
+					while(rs.next()){
 					   int tid = rs.getInt("tid");
 					   String tname = rs.getString("tname");
 					   Gtype gtype = new Gtype(tid,tname);
 					   gtypes.add(gtype);
-					   return gtypes;
 					}
-					
+					return gtypes;
+
 				} catch (SQLException e) {
 				   //把DAO层发生的异常 网络  数据库  全部封装成一个异常   因为这些异常用户无法处理。 
 				    //但是用户必须知晓.
@@ -54,8 +54,7 @@ public class GtypeDAOImpl implements GtypeDAO {
 						 throw new DAOException(e.getMessage());
 					}
 				}
-				return null;
-				}
+			}
 
 	
 	public Gtype queryByTid(int tid) throws DAOException {

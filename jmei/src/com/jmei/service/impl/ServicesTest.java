@@ -52,27 +52,8 @@ public class ServicesTest {
 		}*/
 		GoodsServicesImpl g = new GoodsServicesImpl();
 		try {
-			List list = g.searchGoodsByDetail("x");
-			//g.addSaleVol(10000002);
-			//g.orderBySaleVol(list);
-			//g.orderByUptime(list);
-			//g.searchByPriArea(list, low, high);
-			ArrayList<GoodsToEffect> arr = new ArrayList<GoodsToEffect>();
-			for(int i=0;i<list.size();i++){
-				Goods goods = (Goods) list.get(i);
-				System.out.println(goods.getGid());
-				List glist = g.searchGoodsToEffectByGid(goods.getGid());
-				arr.addAll(glist);
-			}
-			String[] str = new String[2];
-			str[0] = "功效1";
-			str[1] = "功效2";
-			g.searchGoodsByEffect(str, arr);
-			Iterator it = arr.iterator();
-			while(it.hasNext()){
-				GoodsToEffect go = (GoodsToEffect) it.next();
-				System.out.println(go.getEffect().getEname());
-			}
+			List<Goods> goodslist =g.searchGoodsByDetail("x");
+			System.out.println(goodslist);
 		} catch (DAOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

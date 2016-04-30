@@ -8,8 +8,9 @@
 	width: 37px;
 	height: 100%;
 	background: #444851;
-	z-index: 2;
+	z-index: 9999;
 	font-family: 'microsoft yahei',arial;
+	top: 0px;
 }
 
 #person{

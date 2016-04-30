@@ -245,8 +245,8 @@ public class PicServiceImpl implements PicService {
 		//2.查询图片
 		List<Pic> list = dao.queryAllMibPicByGid(gid);
 		//3.判断list是否为空
-		if(list.size() == 0)
-			throw new PicNotExistException("图片不存在！");
+		//if(list.size() == 0)
+		//	throw new PicNotExistException("图片不存在！");
 		//4.返回图片信息
 	    return list;
 	}

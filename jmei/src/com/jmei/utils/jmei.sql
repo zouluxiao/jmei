@@ -44,7 +44,7 @@ create table goods(
 	sale_val number,			--销量--
 	col_val number,				--收藏数量--
 	uptime varchar2(20),		--上架时间--
-	introduction varchar2(200),	--商品简介--
+	introduction varchar2(800),	--商品简介--
 	detailname varchar2(50) 	--详细名称--
 	);
 --商品库存表的id的序列-
@@ -134,9 +134,7 @@ create table juser(
 	juserisval number(2),		--是否删除--
 	jpic varchar2(20)			--用户头像--
 );
-select * from juser;
-delete from juser where jtel='15364240309';
-commit;
+
 --普通用户表的id的序列--
 drop sequence ju_seq;
 create sequence ju_seq start with 10000000 increment by 1;
@@ -229,174 +227,76 @@ create table activity(
 drop sequence activity_seq;
 create sequence activity_seq start with 10000000 increment by 1;
 
-
-SELECT bid,bname,blogo,isVal,bpwd,bintroduction,bpic,bmpic,col_val,cou.countryid,cou.country,cou.cpic 
-FROM country cou,BUSER bu where bu.countryid = cou.countryid
-
-insert into country values(country_seq.nextval,'法国','France');
-insert into country values(country_seq.nextval,'英国','England');
-insert into country values(country_seq.nextval,'美国','America');
-insert into country values(country_seq.nextval,'德国','Germany');
-
-insert into Buser values(bu_seq.nextval,'卡姿兰','kazilan',0,123456,'简介暂时为空','mu','mu',0,10000001);
-insert into Buser values(bu_seq.nextval,'欧莱雅','oulaiya',0,123456,'简介暂时为空','mu','mu',0,10000002);
-insert into Buser values(bu_seq.nextval,'兰蔻','lankou',0,123456,'简介暂时为空','mu','mu',0,10000003);
-insert into Buser values(bu_seq.nextval,'美宝莲','meibaolian',0,123456,'简介暂时为空','mu','mu',0,10000001);
-
-insert into Product values(pro_seq.nextval,'粉饼',0);
-insert into Product values(pro_seq.nextval,'唇膏',0);
-insert into Product values(pro_seq.nextval,'口红',0);
-insert into Product values(pro_seq.nextval,'香水',0);
-select * from Goods
-select *　from Buser
-insert into Goods values(goods_seq.nextval,10000001,10000001,10,100.00,0,0,'20160502','k','kkkk');
-insert into Goods values(goods_seq.nextval,10000002,10000001,10,100.00,0,0,'20160502','k','kkkk');
-insert into Goods values(goods_seq.nextval,10000002,10000002,10,100.00,0,0,'20160502','k','kkkk');
-insert into Goods values(goods_seq.nextval,10000002,10000003,10,100.00,0,0,'20160502','k','kkkk');
-
+--插入国家表--
+insert into country values(country_seq.nextval,'韩国','Korea.jpg');
+insert into country values(country_seq.nextval,'美国','America.jpg');
+insert into country values(country_seq.nextval,'日本','Japan.jpg');
+insert into country values(country_seq.nextval,'中国','China.jpg');
 commit;
-select * from product
-select * from COUNTRY
+select * from country
 
-/*
-	gid number(20) primary key,  --编号--
-	bid number(20),				--企业用户id--
-	pid number(20),				--商品id--
-	bnumber number,				--商品库存数量--
-	pri number(20),				--商品价格--
-	sale_val number,			--销量--
-	col_val number,				--收藏数量--
-	uptime varchar2(20),		--上架时间--
-	introduction varchar2(200),	--商品简介--
-	detailname varchar2(50) 	--详细名称--
-*/
-SELECT GID,bnumber,pri,sale_val,col_val,uptime,introduction,detailname, FROM Goods
-
-/*
-	gid number(20),       --商品编号--
-	eid number(20)		  --功效编号--
-*/
-SELECT * from GOODSTOEFFECT
-
-/*
-	acid number(20) primary key,  --编号--
-	acpic varchar2(20),			--精选活动图片--
-	bid number(20)				--企业id--
-*/
-
-/*
-	bid number(20) primary key,  		--编号--
-	bname varchar2(50),    				--企业用户名--
-	blogo varchar2(100),				--企业用户logo--
-	B_isVal number (2),					--是否删除--
-	bpwd varchar2(20),					--企业用户密码--
-	bintroduction varchar2(200), 		--企业简介--
-	bpic varchar2(100),					--企业图片--
-	bmpic varchar2(100),				--中等图片--
-	col_val number(10),                 --收藏量--
-	countryid number(20)				--国家id--
-*/
-insert into ACTIVITY values(activity_seq.nextval,'wu',10000001);
-insert into ACTIVITY values(activity_seq.nextval,'wu',10000002);
-insert into ACTIVITY values(activity_seq.nextval,'wu',10000001);
+--插入类型表--
+insert into Gtype values(type_seq.nextval,'面部护肤');
+insert into Gtype values(type_seq.nextval,'彩妆');
+insert into Gtype values(type_seq.nextval,'家居日用');
+insert into Gtype values(type_seq.nextval,'男士护理');
+insert into Gtype values(type_seq.nextval,'美容工具');
+insert into Gtype values(type_seq.nextval,'妈妈专区');
+insert into Gtype values(type_seq.nextval,'身体护理');
+insert into Gtype values(type_seq.nextval,'女士套装');
+insert into Gtype values(type_seq.nextval,'男士套装');
+insert into Gtype values(type_seq.nextval,'保健类');
+insert into Gtype values(type_seq.nextval,'配饰');
+insert into Gtype values(type_seq.nextval,'瘦身类');
+insert into Gtype values(type_seq.nextval,'食品类');
+insert into Gtype values(type_seq.nextval,'时尚饰品');
+insert into Gtype values(type_seq.nextval,'喂养用品');
+insert into Gtype values(type_seq.nextval,'运动');
 commit;
-SELECT a.acid,a.acpic,b.bid,b.bname,b.blogo,b.B_isVal,b.bpwd,
-b.bintroduction,b.bpic,b.bmpic,b.col_val,cou.countryid,cou.country,
-cou.cpic
-FROM ACTIVITY a,BUSER b,COUNTRY cou
-WHERE a.bid = b.bid and b.countryid = cou.countryid
-and a.acid=10000001
+select * from Gtype;
 
-
-
-/*
-	gid number(20) primary key,  --编号--
-	bid number(20),				--企业用户id--
-	pid number(20),				--商品id--
-	bnumber number,				--商品库存数量--
-	pri number(20),				--商品价格--
-	sale_val number,			--销量--
-	col_val number,				--收藏数量--
-	uptime varchar2(20),		--上架时间--
-	introduction varchar2(200),	--商品简介--
-	detailname varchar2(50) 	--详细名称--
-
-	gid number(20),       --商品编号--
-	eid number(20)		  --功效编号--
-*/
-insert into goodsToEffect values(10000001,10000001);
-insert into goodsToEffect values(10000001,10000002);
+--插入功效表--
+insert into effect values(ef_seq.nextval,'保湿');
+insert into effect values(ef_seq.nextval,'补水');
+insert into effect values(ef_seq.nextval,'滋润');
+insert into effect values(ef_seq.nextval,'清洁');
+insert into effect values(ef_seq.nextval,'嫩肤');
+insert into effect values(ef_seq.nextval,'去角质');
+insert into effect values(ef_seq.nextval,'清爽');
+insert into effect values(ef_seq.nextval,'紧致');
+insert into effect values(ef_seq.nextval,'修护');
+insert into effect values(ef_seq.nextval,'舒缓');
+insert into effect values(ef_seq.nextval,'温和');
+insert into effect values(ef_seq.nextval,'改善肤质');
+insert into effect values(ef_seq.nextval,'修护肌肤');
+insert into effect values(ef_seq.nextval,'均匀肤色');
+insert into effect values(ef_seq.nextval,'淡化黑色素');
+insert into effect values(ef_seq.nextval,'美白');
+insert into effect values(ef_seq.nextval,'控油');
+insert into effect values(ef_seq.nextval,'收敛毛孔');
+insert into effect values(ef_seq.nextval,'持久');
 commit;
+select * from effect
 
-insert into EFFECT VALUES(ef_seq.nextval,'功效1');
-insert into EFFECT VALUES(ef_seq.nextval,'功效2');
-insert into EFFECT VALUES(ef_seq.nextval,'功效3');
+-- 插入商品表（PRODUCT）--
+insert into product values(pro_seq.nextval,'面膜',0);
+insert into product values(pro_seq.nextval,'口红',0);
+insert into product values(pro_seq.nextval,'粉饼',0);
+insert into product values(pro_seq.nextval,'眼霜',0);
+insert into product values(pro_seq.nextval,'BB霜',0);
+insert into product values(pro_seq.nextval,'香水',0);
+insert into product values(pro_seq.nextval,'洗面奶',0);
+insert into product values(pro_seq.nextval,'爽肤水',0);
+insert into product values(pro_seq.nextval,'唇彩',0);
+insert into product values(pro_seq.nextval,'防晒霜',0);
+insert into product values(pro_seq.nextval,'乳液',0);
+insert into product values(pro_seq.nextval,'眉笔',0);
+insert into product values(pro_seq.nextval,'祛痘',0);
+insert into product values(pro_seq.nextval,'洗发水',0);
+insert into product values(pro_seq.nextval,'眼影',0);
+insert into product values(pro_seq.nextval,'腮红',0);
+select * from product;
 commit;
-SELECT g.gid,g.eid,good.gid,good.bid,good.pid,good.bnumber,
-good.pri,good.sale_val,good.col_val,good.uptime,good.introduction,
-good.detailname,b.bid, b.bname, b.blogo, b.b_isval, 
-b.bpwd, b.bintroduction, b.bpic, b.bmpic, b.col_val,
-p.pid, p.pname, p.p_isval,c.countryid, c.country, c.cpic,
-e.ename
-FROM goodsToEffect g,GOODS good,BUSER b,PRODUCT p, country c,
-Effect e
-WHERE g.gid = good.gid and c.countryid = b.countryid and 
-p.pid = good.pid and good.bid = b.bid and e.eid = g.eid
-and g.gid = 10000001
-commit;
-
-SELECT g.gid,g.eid,good.gid,good.bid,good.pid,good.bnumber,
-good.pri,good.sale_val,good.col_val,good.uptime,good.introduction,
-good.detailname,b.bid, b.bname, b.blogo, b.b_isval,
-b.bpwd, b.bintroduction, b.bpic, b.bmpic, b.col_val,
-p.pid, p.pname, p.p_isval,c.countryid, c.country, c.cpic,e.ename 
-FROM goodsToEffect g,GOODS good,BUSER b,PRODUCT p, country c,Effect e
-WHERE g.gid = good.gid and c.countryid = b.countryid and 
-p.pid = good.pid and good.bid = b.bid  and e.eid = g.eid
-and g.gid = 10000001
-
-SELECT　* FROM goodsToEffect
-insert into goodsToEffect VALUES(10000002,10000001);
-commit;
-select * from Goods
-SELECT * FROM GOODSTOEFFECT
-SELECT　* FROM EFFECT
-
-SELECT　* FROM GoodsToType
-insert into gtype VALUES(type_seq.nextval,'类型1');
-insert into gtype VALUES(type_seq.nextval,'类型2');
-insert into gtype VALUES(type_seq.nextval,'类型3');
-insert into gtype VALUES(type_seq.nextval,'类型4');
-insert into gtype VALUES(type_seq.nextval,'类型5');
-insert into gtype VALUES(type_seq.nextval,'类型6');
-commit;
-insert into GoodsToType VALUES(10000001,10000001);
-insert into GoodsToType VALUES(10000001,10000002);
-insert into GoodsToType VALUES(10000001,10000003);
-insert into GoodsToType VALUES(10000002,10000001);
-insert into GoodsToType VALUES(10000002,10000001);
-
-
-
-SELECT g.gid,g.tid,good.gid,good.bid,good.pid,good.bnumber,
-good.pri,good.sale_val,good.col_val,good.uptime,good.introduction,
-good.detailname,b.bid, b.bname, b.blogo, b.b_isval,
-b.bpwd, b.bintroduction, b.bpic, b.bmpic, b.col_val,
-p.pid, p.pname, p.p_isval,c.countryid, c.country, c.cpic,e.tname 
-FROM GoodsToType g,GOODS good,BUSER b,PRODUCT p, country c,gtype e
-WHERE g.gid = good.gid and c.countryid = b.countryid and 
-p.pid = good.pid and good.bid = b.bid  and e.tid = g.tid
-and g.tid = 10000001
-
-
-/*
-	orid number(20) primary key,  --编号--
-	gid number(20),				--商品编号--
-	jid number(20),				--普通用户id--
-	aid number(20),				--地址id--
-	jis_val number(2),			--订单状态--
-	onumber number				--订单数量商品数量--
-*/
 
 /*
 	bid number(20) primary key,  		--编号--
@@ -410,62 +310,148 @@ and g.tid = 10000001
 	col_val number(10),                 --收藏量--
 	countryid number(20)				--国家id--
 */
-SELECT
-j.orid,j.gid,j.jis_val,j.onumber,j.jid,j.aid,
-g.gid,g.bid,g.pid,g.bnumber,g.pri,g.sale_val,g.col_val,
-g.uptime,g.introduction,g.detailname,
-a.aid,a.jid,a.address,a.consigneename,a.consigneeid,
-a.tel,a.pnumber,a.detailaddress,
-b.bid,b.bname,b.blogo,b.B_isVal,b.bpwd,b.bintroduction,
-b.bpic,b.bmpic,b.col_val,b.countryid,
-p.pid,p.pname,p.p_isVal,
-ac.countryid,ac.country,ac.cpic,
-ju.jid,ju.jname,ju.jpwd,ju.jemail,ju.jtel,ju.jgender,
-ju.jbir,ju.juserisval,ju.jpic 
-FROM jorder j,address a,goods g,buser b,product p,country ac,
-juser ju
-WHERE b.countryid = ac.countryid and g.bid = b.bid and g.pid=p.pid
- and j.jid = ju.jid and a.aid = j.aid and j.gid = g.gid
- and j.jid = 10000001
+--插入企业表--
+insert into Buser values(bu_seq.nextval,'卡姿兰','kazilan.jpg',0,'123456','简介暂无','kazilan.jpg','kazilan.jpg',0,10000004);
+insert into Buser values(bu_seq.nextval,'韩束','hansu.jpg',0,'123456','简介暂无','hansu.jpg','hansu.jpg',0,10000004);
+commit;
+insert into Buser values(bu_seq.nextval,'佰草集','baicaoji.jpg',0,'123456','简介暂无','baicaoji.jpg','baicaoji.jpg',0,10000004);
+insert into Buser values(bu_seq.nextval,'御泥坊','yunifang.jpg',0,'123456','简介暂无','yunifang.jpg','yunifang.jpg',0,10000004);
+commit;
+select * from Buser
 
 
+--插入商品表--
 /*
-	orid number(20) primary key,  --编号--
-	gid number(20),				--商品编号--
-	jid number(20),				--普通用户id--
-	aid number(20),				--地址id--
-	jis_val number(2),			--订单状态--
-	onumber number				--订单数量商品数量--
+	gid number(20) primary key,  --编号--
+	bid number(20),				--企业用户id--
+	pid number(20),				--商品id--
+	bnumber number,				--商品库存数量--
+	pri number(20),				--商品价格--
+	sale_val number,			--销量--
+	col_val number,				--收藏数量--
+	uptime varchar2(20),		--上架时间--
+	introduction varchar2(200),	--商品简介--
+	detailname varchar2(50) 	--详细名称--
 */
-SELECT * FROM jorder
+insert into Goods values(goods_seq.nextval,10000001,10000001,100,99.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰玻尿酸面膜两件装');
+insert into Goods values(goods_seq.nextval,10000001,10000002,100,99.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰口红');
+insert into Goods values(goods_seq.nextval,10000001,10000003,100,199.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰粉饼');
+insert into Goods values(goods_seq.nextval,10000001,10000004,100,299.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','卡姿兰眼霜');
+commit;
+insert into Goods values(goods_seq.nextval,10000002,10000005,100,23.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束BB霜面膜两件装');
+insert into Goods values(goods_seq.nextval,10000002,10000006,100,44.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束香水');
+insert into Goods values(goods_seq.nextval,10000002,10000007,100,89.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束洗面奶');
+insert into Goods values(goods_seq.nextval,10000002,10000008,100,129.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','韩束爽肤水');
 
+insert into Goods values(goods_seq.nextval,10000003,10000009,100,55.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰玻尿酸面膜两件装');
+insert into Goods values(goods_seq.nextval,10000003,10000010,100,44.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰口红');
+insert into Goods values(goods_seq.nextval,10000003,10000011,100,990.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰粉饼');
+insert into Goods values(goods_seq.nextval,10000003,10000012,100,1234.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','卡姿兰眼霜');
+
+insert into Goods values(goods_seq.nextval,10000004,10000013,100,87.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰玻尿酸面膜两件装');
+insert into Goods values(goods_seq.nextval,10000004,10000014,100,987.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰口红');
+insert into Goods values(goods_seq.nextval,10000004,10000015,100,1.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰粉饼');
+insert into Goods values(goods_seq.nextval,10000004,10000016,100,9.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','卡姿兰眼霜');
+
+insert into Goods values(goods_seq.nextval,10000002,10000005,100,23.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束BB霜面膜两件装');
+insert into Goods values(goods_seq.nextval,10000002,10000006,100,44.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束香水');
+insert into Goods values(goods_seq.nextval,10000002,10000007,100,89.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束洗面奶');
+insert into Goods values(goods_seq.nextval,10000002,10000008,100,129.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','韩束爽肤水');
+
+insert into Goods values(goods_seq.nextval,10000003,10000009,100,55.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰玻尿酸面膜两件装');
+insert into Goods values(goods_seq.nextval,10000003,10000010,100,44.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰口红');
+insert into Goods values(goods_seq.nextval,10000003,10000011,100,990.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰粉饼');
+insert into Goods values(goods_seq.nextval,10000003,10000012,100,1234.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','卡姿兰眼霜');
+
+insert into Goods values(goods_seq.nextval,10000004,10000013,100,87.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰玻尿酸面膜两件装');
+insert into Goods values(goods_seq.nextval,10000004,10000014,100,987.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰口红');
+insert into Goods values(goods_seq.nextval,10000004,10000015,100,1.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰粉饼');
+insert into Goods values(goods_seq.nextval,10000004,10000016,100,9.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','卡姿兰眼霜');insert into Goods values(goods_seq.nextval,10000002,10000005,100,23.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束BB霜面膜两件装');
+insert into Goods values(goods_seq.nextval,10000002,10000006,100,44.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束香水');
+insert into Goods values(goods_seq.nextval,10000002,10000007,100,89.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束洗面奶');
+insert into Goods values(goods_seq.nextval,10000002,10000008,100,129.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','韩束爽肤水');
+
+insert into Goods values(goods_seq.nextval,10000003,10000009,100,55.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰玻尿酸面膜两件装');
+insert into Goods values(goods_seq.nextval,10000003,10000010,100,44.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰口红');
+insert into Goods values(goods_seq.nextval,10000003,10000011,100,990.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰粉饼');
+insert into Goods values(goods_seq.nextval,10000003,10000012,100,1234.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','卡姿兰眼霜');
+
+insert into Goods values(goods_seq.nextval,10000004,10000013,100,87.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰玻尿酸面膜两件装');
+insert into Goods values(goods_seq.nextval,10000004,10000014,100,987.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰口红');
+insert into Goods values(goods_seq.nextval,10000004,10000015,100,1.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰粉饼');
+insert into Goods values(goods_seq.nextval,10000004,10000016,100,9.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','卡姿兰眼霜');
+insert into Goods values(goods_seq.nextval,10000002,10000005,100,23.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束BB霜面膜两件装');
+insert into Goods values(goods_seq.nextval,10000002,10000006,100,44.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束香水');
+insert into Goods values(goods_seq.nextval,10000002,10000007,100,89.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束洗面奶');
+insert into Goods values(goods_seq.nextval,10000002,10000008,100,129.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','韩束爽肤水');
+
+insert into Goods values(goods_seq.nextval,10000003,10000009,100,55.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰玻尿酸面膜两件装');
+insert into Goods values(goods_seq.nextval,10000003,10000010,100,44.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰口红');
+insert into Goods values(goods_seq.nextval,10000003,10000011,100,990.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰粉饼');
+insert into Goods values(goods_seq.nextval,10000003,10000012,100,1234.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','卡姿兰眼霜');
+
+insert into Goods values(goods_seq.nextval,10000004,10000013,100,87.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰玻尿酸面膜两件装');
+insert into Goods values(goods_seq.nextval,10000004,10000014,100,987.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰口红');
+insert into Goods values(goods_seq.nextval,10000004,10000015,100,1.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰粉饼');
+insert into Goods values(goods_seq.nextval,10000004,10000016,100,9.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','卡姿兰眼霜');insert into Goods values(goods_seq.nextval,10000002,10000005,100,23.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束BB霜面膜两件装');
+insert into Goods values(goods_seq.nextval,10000002,10000006,100,44.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束香水');
+insert into Goods values(goods_seq.nextval,10000002,10000007,100,89.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束洗面奶');
+insert into Goods values(goods_seq.nextval,10000002,10000008,100,129.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','韩束爽肤水');
+
+insert into Goods values(goods_seq.nextval,10000003,10000009,100,55.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰玻尿酸面膜两件装');
+insert into Goods values(goods_seq.nextval,10000003,10000010,100,44.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰口红');
+insert into Goods values(goods_seq.nextval,10000003,10000011,100,990.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰粉饼');
+insert into Goods values(goods_seq.nextval,10000003,10000012,100,1234.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','卡姿兰眼霜');
+
+insert into Goods values(goods_seq.nextval,10000004,10000013,100,87.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰玻尿酸面膜两件装');
+insert into Goods values(goods_seq.nextval,10000004,10000014,100,987.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰口红');
+insert into Goods values(goods_seq.nextval,10000004,10000015,100,1.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰粉饼');
+insert into Goods values(goods_seq.nextval,10000004,10000016,100,9.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','卡姿兰眼霜');insert into Goods values(goods_seq.nextval,10000002,10000005,100,23.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束BB霜面膜两件装');
+insert into Goods values(goods_seq.nextval,10000002,10000006,100,44.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束香水');
+insert into Goods values(goods_seq.nextval,10000002,10000007,100,89.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','韩束洗面奶');
+insert into Goods values(goods_seq.nextval,10000002,10000008,100,129.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','韩束爽肤水');
+
+insert into Goods values(goods_seq.nextval,10000003,10000009,100,55.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰玻尿酸面膜两件装');
+insert into Goods values(goods_seq.nextval,10000003,10000010,100,44.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰口红');
+insert into Goods values(goods_seq.nextval,10000003,10000011,100,990.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰粉饼');
+insert into Goods values(goods_seq.nextval,10000003,10000012,100,1234.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','卡姿兰眼霜');
+
+insert into Goods values(goods_seq.nextval,10000004,10000013,100,87.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰玻尿酸面膜两件装');
+insert into Goods values(goods_seq.nextval,10000004,10000014,100,987.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰口红');
+insert into Goods values(goods_seq.nextval,10000004,10000015,100,1.00,0,0,'2016-04-30','想要肌肤能够迅速补水达到非凡保湿效果吗？韩束(KanS)玻尿酸面膜两件装(23ml*5片)*2，蕴含丰富玻尿酸，具有良好的亲肤性和保水性，快速透润角质层，深入滋润干燥肌肤，充足补水，在肌肤表面形成水分子保湿隐形网，持续锁水达到肌肤保湿平衡。','卡姿兰粉饼');
+
+insert into Goods values(goods_seq.nextval,10000004,10000016,100,9.00,0,0,'2016-04-30',' 蜗牛红参滚珠眼霜（2支装），重磅来袭！用事实告诉你，“脂肪粒”和“营养吸收”真的不冲突！无菌滚珠直接接触眼周肌肤，避免给脆弱的眼周肌肤带来伤害！紧致眼周肌肤；摆脱眼袋；防止脂肪粒；告别黑眼圈！修复保湿、淡化眼纹、紧致眼部肌肤、去黑眼圈。 ','卡姿兰眼霜');
+commit;
+select * from Goods
+
+--插入商品图片表--
 /*
-	aid number(20) primary key,  --编号--
-	jid number(20),				--普通用户名--
-	address varchar2(100),		--地址--
-	consigneename varchar2(50),	--收货人姓名--
-	consigneeid varchar2(20),	--收货人身份证号码--
-	detailaddress varchar2(100),--详细地址--
-	tel varchar2(20),			--电话号码--
-	pnumber varchar2(20)		--固定号码--
+	picid number(20) primary key,		--编号--
+	picname varchar2(20),				--商品图片名--					
+	gid number(20),						--商品库存编号--
+	flag number                         --商品图片的类型 0 代表小型图片，1代表中等图片，2代表中偏图片， 3代表大型图片--
 */
-insert into address VALUES(ad_seq.nextval,10000001,'地址1','汤亮','12322333232323','详细地址','1232213233','32323232');
-insert into address VALUES(ad_seq.nextval,10000001,'地址2','王五','12322333232323','详细地址','1232213233','32323232');
-insert into address VALUES(ad_seq.nextval,10000001,'地址3','赵六','12322333232323','详细地址','1232213233','32323232');
+select * from pic
+insert into pic values(pic_seq.nextval,'10000002.jpg',10000002,2);
+insert into pic values(pic_seq.nextval,'10000003.jpg',10000003,2);
+insert into pic values(pic_seq.nextval,'10000004.jpg',10000004,2);
+insert into pic values(pic_seq.nextval,'10000005.jpg',10000005,2);
+insert into pic values(pic_seq.nextval,'10000006.jpg',10000006,2);
+insert into pic values(pic_seq.nextval,'10000007.jpg',10000007,2);
+insert into pic values(pic_seq.nextval,'10000008.jpg',10000008,2);
+insert into pic values(pic_seq.nextval,'10000009.jpg',10000009,2);
+insert into pic values(pic_seq.nextval,'10000010.jpg',10000010,2);
+insert into pic values(pic_seq.nextval,'10000011.jpg',10000011,2);
+insert into pic values(pic_seq.nextval,'10000012.jpg',10000012,2);
+insert into pic values(pic_seq.nextval,'10000013.jpg',10000013,2);
+insert into pic values(pic_seq.nextval,'10000014.jpg',10000014,2);
+insert into pic values(pic_seq.nextval,'10000015.jpg',10000015,2);
+insert into pic values(pic_seq.nextval,'10000016.jpg',10000016,2);
+insert into pic values(pic_seq.nextval,'10000017.jpg',10000017,2);
+insert into pic values(pic_seq.nextval,'10000018.jpg',10000018,2);
+insert into pic values(pic_seq.nextval,'10000019.jpg',10000019,2);
+insert into pic values(pic_seq.nextval,'10000020.jpg',10000020,2);
+insert into pic values(pic_seq.nextval,'10000021.jpg',10000021,2);
+insert into pic values(pic_seq.nextval,'10000022.jpg',10000022,2);
 commit;
-
-insert into juser VALUES(ju_seq.nextval,'zhangsan','123456','7766555@qq.com','323232323',0,'2323',0,'sfasdfa');
-insert into juser VALUES(ju_seq.nextval,'王五','123456','7766555@qq.com','323232323',0,'2323',0,'sfasdfa');
-insert into juser VALUES(ju_seq.nextval,'zhaoliu','123456','7766555@qq.com','323232323',0,'2323',0,'sfasdfa');
-insert into juser VALUES(ju_seq.nextval,'xiaoxiaoxin8','123456','7766555@qq.com','323232323',0,'2323',0,'sfasdfa');
-commit;
-
-insert into jorder VALUES(order_seq.nextval,10000001,10000001,10000001,0,1);
-insert into jorder VALUES(order_seq.nextval,10000002,10000002,10000002,0,1);
-insert into jorder VALUES(order_seq.nextval,10000003,10000001,10000003,0,1);
-insert into jorder VALUES(order_seq.nextval,10000004,10000003,10000004,0,1);
-commit;
-
-select * from activity;
-
 

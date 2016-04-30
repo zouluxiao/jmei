@@ -1,5 +1,7 @@
 package com.jmei.bean;
 
+import java.io.Serializable;
+
 /**
  * @author Ã¿¡¡
  * @since 2016-04-24
@@ -7,7 +9,7 @@ package com.jmei.bean;
  *	tid number(20) primary key,  --±‡∫≈--
 	tname varchar2(20)		--¿‡–Õ√˚--
  */
-public class Gtype {
+public class Gtype implements Serializable{
 	private int tid;
 	private String tname;
 	

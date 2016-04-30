@@ -1,5 +1,7 @@
 package com.jmei.bean;
 
+import java.io.Serializable;
+
 /**
  * @author 汤亮
  * @since 2016-04-24
@@ -8,7 +10,7 @@ package com.jmei.bean;
 	pname varchar2(20),    			--商品名--
 	isVal number (2)				--是否删除--
  */
-public class Product {
+public class Product implements Serializable{
 	private int pid;
 	private String pname;
 	private int isval;

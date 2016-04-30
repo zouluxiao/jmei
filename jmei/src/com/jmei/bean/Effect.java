@@ -1,5 +1,7 @@
 package com.jmei.bean;
 
+import java.io.Serializable;
+
 /**
  * @author ÌÀÁÁ
  * @since 2016-04-24
@@ -7,7 +9,7 @@ package com.jmei.bean;
  *eid number(20) primary key,  --±àºÅ--
 	ename varchar2(20)			--¹¦Ğ§Ãû--
  */
-public class Effect {
+public class Effect implements Serializable{
 	private int eid;
 	private String ename;
 	

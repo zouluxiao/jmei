@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -49,15 +49,15 @@
   	<!-- 商品路径 -->
   	<div id="load" class="w">
   		<a>聚美优品首页</a>>
-  		<a>卡姿兰</a>>
-  		<a>唇部</a>>
-  		<span>植村秀无色限漆光唇釉 5.4ml</span>
+  		<a>${sessionScope.goods.buser.bname }</a>>
+  		<a>${sessionScope.goods.pro.pname }</a>>
+  		<span>${sessionScope.goods.detailname }</span>
   	</div>
   	<!-- 商品简介 -->
   	<div id="logotro" class="w">
 	  	<div id="introduction">
 	  		<span class="deal_title_detail">
-	  			唇现轻薄水润光泽。植村秀无色限漆光唇釉 5.4ml，灵感来源于日式漆器，与日本漆器品牌山田平安堂合作，无色限漆光唇釉结合了色彩的高饱和与耀眼的光泽演绎了富有表现力的唇色。保湿配方与刷头，创造出光亮的唇部妆感。
+	  			${sessionScope.goods.introduction }
 	  		</span>
 	  	</div>
 	  	<!-- 企业的logo -->
@@ -77,7 +77,7 @@
 	  		<div class="deal_ori_price">
 	  		<!-- 价格 -->
 	  			<span class="deal_accout_one">￥</span>
-	  			<span class="deal_accout_two">158</span>
+	  			<span class="deal_accout_two">${sessionScope.goods.price}</span>
 	  		</div>
 	  		<div class="full_cut_dialog">
 	  			<em>满减</em>
@@ -87,7 +87,7 @@
 	  		</div>
 	  		<div class="deal_buynum">
 	  			<a></a>
-	  			<span>已抢光</span>
+	  			<span>剩余${sessionScope.goods.number}</span>
 	  		</div>
 	  		<dl>
 	  			<dd>包邮政策：满2件或299包邮</dd>

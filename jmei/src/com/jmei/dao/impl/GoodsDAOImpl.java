@@ -624,7 +624,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 				+ " p.p_isval,c.countryid, c.country, c.cpic"
 				+ " FROM GOODS g,BUSER b,PRODUCT p, country c"
 				+ " WHERE g.bid = b.bid and p.pid = g.pid and c.countryid = b.countryid and"
-				+ " g.detailname like ?";
+				+ " GETHZPY.GETHZPYCAP(g.detailname) like ?";
 		Connection conn = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -846,5 +846,18 @@ public class GoodsDAOImpl implements GoodsDAO {
 		}
 		return null;
 	}
+	
+	/*public static void main(String[] args) {
+		GoodsDAOImpl g = new GoodsDAOImpl();
+		try {
+			List<Goods> list = g.queryGoodsByDetail("K");
+			for(Goods d:list){
+				System.out.println(d.getGid());
+			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}*/
 
 }

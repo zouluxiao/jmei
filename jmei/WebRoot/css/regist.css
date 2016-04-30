@@ -318,3 +318,46 @@ input[type="submit"] {
 .footer_copy_logo {
     border-bottom: 1px solid #d7d7d7;
 }
+.textbox_ui .invalid {
+    display: none;
+    height: 1.5em;
+    left: 20px;
+}
+
+.textbox_ui .invalid, .textbox_ui .focus_text {
+    color: #999;
+    left: 0;
+    margin-top: 4px;
+    top: 100%;
+    white-space: nowrap;
+    word-break: keep-all;
+}
+
+.textbox_ui .valid, .textbox_ui .invalid, .textbox_ui .loading, .textbox_ui .focus_text {
+    display: none;
+    line-height: 1.5;
+    position: absolute;
+}
+.loginBord .invalid {
+    white-space: normal;
+    width: 290px;
+    word-break: normal;
+}
+.textbox_ui .valid, .textbox_ui .loading, .textbox_ui .invalid i {
+    height: 20px;
+    margin-top: -10px;
+    width: 20px;
+}
+.textbox_ui .invalid i {
+    background-position: 0 -100px;
+    left: -20px;
+    position: absolute;
+    top: 50%;
+}
+.invalid i {
+    background-image: url("../images/regist/sign.png");
+    background-repeat: no-repeat;
+}
+.textbox_ui .invalid{
+	color:#999;
+}

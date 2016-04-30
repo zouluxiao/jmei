@@ -31,6 +31,12 @@ table {
     table-layout: fixed;
     width: 769px;
 }
+.channel_nav_list .current {
+   background: #000 url("") repeat-x scroll 0 0;
+}
+.header_center, .header_top_box,.channel_nav_list_wrap{
+    width: 960px;
+}
 .profile {
     font-family: Arial,"Microsoft Yahei","微软雅黑";
 }

@@ -10,6 +10,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<Link Rel="SHORTCUT ICON" href="">
 	<link rel="stylesheet" type="text/css" href="../css/common.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/login.css"/>
+	<script type="text/javascript">
+		function change(){
+			var formobj1 = document.getElementById("login-dynamic-form");
+			var formobj2 = document.getElementById("login-user-form");
+			var obj=document.getElementById("tellogin");
+			if(obj.checked){
+				
+			}
+		}
+	</script>
 </head>
 <body>
 	<div id="header">
@@ -35,15 +45,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="radio_wrapper" style="display:block;">
 						<span>
-							<input type="radio" checked="checked"></input>
+							<input type="radio" checked="" id="tellogin" onclick="change();"></input>
 							<label>手机动态密码登录</label>
 						</span>
 						<span>
-							<input type="radio"></input>
+							<input type="radio" id="commonlogin"></input>
 							<label>普通登录</label>
 						</span>
 					</div>
-					<form id="login-dynamic-form" style="display: block;" action="" method="post">
+					<form id="login-dynamic-form" style="display: block;" action="${pageContext.request.contextPath}/user.do?method=login" method="post">
 						<div class="textbox_ui user">
 							<input id="jtel" type="text" value="" placeholder="已注册的手机号码">
 							<div class="focus_text">请输入11位电话号码</div>

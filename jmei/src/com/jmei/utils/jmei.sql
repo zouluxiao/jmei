@@ -134,7 +134,9 @@ create table juser(
 	juserisval number(2),		--是否删除--
 	jpic varchar2(20)			--用户头像--
 );
-
+select * from juser;
+delete from juser where jtel='15364240309';
+commit;
 --普通用户表的id的序列--
 drop sequence ju_seq;
 create sequence ju_seq start with 10000000 increment by 1;

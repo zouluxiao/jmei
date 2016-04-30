@@ -45,16 +45,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<form id="login-dynamic-form" style="display: block;" action="" method="post">
 						<div class="textbox_ui user">
-							<input id="dynamic_mobile" type="text" value="" placeholder="已注册的手机号码">
+							<input id="jtel" type="text" value="" placeholder="已注册的手机号码">
 							<div class="focus_text">请输入11位电话号码</div>
 							<div class="invalid">
 								<i></i>
-								<div class="msg">您输入的手机号码格式有误，需为 11 位数字格式</div>
+								<div class="msg" id="Telerror">您输入的手机号码格式有误，需为 11 位数字格式</div>
 							</div>
 						</div>
 						<div class="dynamic_pass_wrap line">
 							<div class="textbox_ui dynamic_pass pass">
-								<input id="dynamic_password" type="text" placeholder="动态密码">
+								<input id="jpwd" type="text" placeholder="动态密码">
 								<a href="" id="getPhoneCode" class="phonecode">
 									<strong>获取手机动态密码</strong>
 								</a>

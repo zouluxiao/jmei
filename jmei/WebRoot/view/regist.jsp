@@ -39,13 +39,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<form id="phone" method="post" action="">
 						<div class="line">
 							<div class="textbox_ui">
-								<input id="mobile" type="text" value="" autocomplete="off" autofocus="" placeholder="手机号">
+								<input id="regtel" type="text" value="" autocomplete="off" autofocus="" placeholder="手机号">
 							</div>
 						</div>
 						<div class="line verityWrap">
-							<div class="textbox_ui sms_verify_wrapper"></div>
+							<div class="textbox_ui sms_verify_wrapper">
+								<input id="messagevf" type="text" autocomplete="off" placeholder="短信校验码">
+							</div>
+							<a href="" id="getPhoneCode" class="phonecode">
+									<strong>获取短信校验码</strong>
+							</a>
+						</div>
+						<div class="line">
+							<div class="textbox_ui">
+								<input id="password" type="password" autocomplete="off" placeholder="密码">
+							</div>
+						</div>
+						<div class="line">
+							<div class="textbox_ui">
+								<input id="password2" type="password" autocomplete="off" placeholder="重复密码">
+							</div>
+						</div>
+						<div class="act" style="margin-left: 0px;">
+							<p>
+								<input class="submit_btn" style="width: 100%;" type="submit"  name="mobileCommit" value="同意协议并注册">
+							</p>
+							<p>
+								<a style="color:#ed145b;" target="_blank" rel="nofollow" href="http://www.jumei.com/help/user_terms">《聚美优品用户协议》</a>
+							</p>
 						</div>
 					</form>
+					<div class="shadow_l"></div>
+					<div class="shadow_r"></div>
 				</div>
 			</div>
 		</div>

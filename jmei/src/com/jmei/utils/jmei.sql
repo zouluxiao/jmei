@@ -138,7 +138,7 @@ create table juser(
 --普通用户表的id的序列--
 drop sequence ju_seq;
 create sequence ju_seq start with 10000000 increment by 1;
-
+select * from juser;
 --11.收藏商品表--
 drop table collectionToGoods;
 create table collectionToGoods(

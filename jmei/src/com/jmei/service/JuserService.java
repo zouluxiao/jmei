@@ -47,6 +47,15 @@ public interface JuserService {
 	 * @exception UserNameOrPwdException 用户不存在或密码错误异常
 	 **/
 	public void loginByJtel(String jtel,String pwd)throws DAOException,NotHaveThisJuser,UserNameOrPwdException;
+	/**
+	 * 根据电话号码登录
+	 * @param jtel 电话号码
+	 * @return Juser 返回的Juser对象
+	 * @exception DAOException 数据库异常
+	 * @exception NotHaveThisJuser 用户不存在异常
+	 * @exception UserNameOrPwdException 用户不存在或密码错误异常
+	 **/
+	public void loginByJte(String jtel)throws DAOException,NotHaveThisJuser;
 	
 	/**
 	 * 根据邮箱登录

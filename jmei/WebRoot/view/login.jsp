@@ -10,6 +10,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<Link Rel="SHORTCUT ICON" href="">
 	<link rel="stylesheet" type="text/css" href="../css/common.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/login.css"/>
+	<script type="text/javascript">
+		function change(){
+			var obj1 = document.getElementById("tellogin");
+			var obj2 = document.getElementById("commonlogin");
+			var formobj1 = document.getElementById("login-dynamic-form");
+			var formobj2 = document.getElementById("login-user-form");
+			formobj1.className = "blok";
+			formobj2.className = "non";
+			obj2.checked = false;
+		}
+		function commonchange(){
+			var obj1 = document.getElementById("tellogin");
+			var formobj1 = document.getElementById("login-dynamic-form");
+			var formobj2 = document.getElementById("login-user-form");
+			formobj1.className = "non";
+			formobj2.className = "blok";
+			obj1.checked = false;
+		}
+		function ajax(){
+	      	 //1.创建xhr对象 
+	      	 var xhr;
+	      	 if(window.XMLHttpRequest){
+	      	 	xhr = new XMLHttpRequest(); //firefox
+	      	 }else if(window.ActiveXObject){
+	      	 	xhr = new ActiveXObject("Microsoft.XMLHTTP");
+	      	 }
+	      	 var url="${pageContext.request.contextPath}/user.do?method=getmessageped"; 
+	      	 xhr.open("POST",url);
+	      	 //3.设置请求的头部信息   GET不许设置头部信息
+	      	 xhr.setRequestHeader("enctype","application/x-www-form-urlencoded");
+	      	 
+	      	 //4.发送消息   GET: xhr.send(null);
+	      	 xhr.send("regtel="+document.getElementById("dynamic_mobile").value);
+		}
+	</script>
 </head>
 <body>
 	<div id="header">
@@ -35,17 +70,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="radio_wrapper" style="display:block;">
 						<span>
-							<input type="radio" checked="checked"></input>
+							<input type="radio" checked="checked" id="tellogin" onclick="change();"></input>
 							<label>手机动态密码登录</label>
 						</span>
 						<span>
-							<input type="radio"></input>
+							<input type="radio" id="commonlogin" onclick="commonchange();"></input>
 							<label>普通登录</label>
 						</span>
 					</div>
-					<form id="login-dynamic-form" style="display: block;" action="" method="post">
+					<form id="login-dynamic-form" class="blok" action="${pageContext.request.contextPath}/user.do?method=login" method="post">
 						<div class="textbox_ui user">
-							<input id="dynamic_mobile" type="text" value="" placeholder="已注册的手机号码">
+							<input id="dynamic_mobile" name="dynamic_mobile" type="text" value="" placeholder="已注册的手机号码">
 							<div class="focus_text">请输入11位电话号码</div>
 							<div class="invalid">
 								<i></i>
@@ -54,8 +89,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="dynamic_pass_wrap line">
 							<div class="textbox_ui dynamic_pass pass">
-								<input id="dynamic_password" type="text" placeholder="动态密码">
-								<a href="" id="getPhoneCode" class="phonecode">
+								<input id="dynamic_password" name="dynamic_password" type="text" placeholder="动态密码" >
+								<a id="getPhoneCode" class="phonecode" onclick="ajax();">
 									<strong>获取手机动态密码</strong>
 								</a>
 							</div>	
@@ -67,12 +102,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</p>
 						<input type="submit" style=" display: block;width: 100%;" value="登 录" class="loginbtn submit_btn">
 					</form>
-					<form id="login-user-form" method="post" action="" style="display:none;">
+					<form id="login-user-form" method="post" action="${pageContext.request.contextPath}/user.do?method=logincommon" class="non">
 						<div class="textbox_ui user">
-							<input id="username" type="text" placeholder="已验证手机/邮箱/用户名">
+							<input id="username" name="username" type="text" placeholder="已验证手机/邮箱">
 						</div>
 						<div class="textbox_ui pass">
-							<input id="login_password" type="password" autocomplete="off" placeholder="密码">
+							<input id="login_password" name="login_password" type="password" autocomplete="off" placeholder="密码">
 						</div>
 						<div class="ver_text">
 							<div style="line-height:30px;">验证码：点击与验证码相应的文字到验证码输入框内</div>

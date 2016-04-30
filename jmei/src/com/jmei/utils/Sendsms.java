@@ -6,16 +6,19 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.methods.PostMethod;
-import org.dom4j.Document;
+
+import org.dom4j.Document;   
 import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
+import org.dom4j.DocumentHelper;   
 import org.dom4j.Element;
 
 public class Sendsms {
 	
 	private static String Url = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
 	
-	public static int getTelVirefy(String tel) {
+	
+	
+	public static int getMessage(String tel) {
 		
 		HttpClient client = new HttpClient(); 
 		PostMethod method = new PostMethod(Url); 
@@ -26,7 +29,7 @@ public class Sendsms {
 
 		
 		int mobile_code = (int)((Math.random()*9+1)*100000);
-		//System.out.println("刚发送的验证码是："+mobile_code);
+
 		//System.out.println(mobile);
 		
 	    String content = new String("您的验证码是：" + mobile_code + "。请不要把验证码泄露给其他人。"); 

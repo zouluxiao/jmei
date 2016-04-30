@@ -218,4 +218,15 @@ public class JuserServiceImpl implements JuserService {
 		userDAO.addJuser(jname, jpwd, jtel, isVal);
 	}
 
+	@Override
+	public void loginByJte(String jtel) throws DAOException, NotHaveThisJuser {
+		//1.创建对象JuserDAOImpl对象
+		JuserDAO userDAO = (JuserDAO)DAOFactory.newInstance(JUSER_DAO_KEY);
+		//调用通过电话号码查询用户方法
+		Juser jusers = userDAO.queryJuserByJtel(jtel);
+		//判断电话号码是否已存在
+		if(jusers == null)
+			throw new NotHaveThisJuser("用户不存在!");
+	}
+
 }

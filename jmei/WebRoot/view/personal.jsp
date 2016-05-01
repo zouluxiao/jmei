@@ -10,6 +10,128 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="../css/common.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/jmeihead.css">
 	<link rel="stylesheet" type="text/css" href="../css/personal.css"/>
+	<script type="text/javascript" src="../js/personal.js"></script>
+	<script type="text/javascript">
+		function getid(id){
+			return document.getElementById(id);
+		}
+		
+		function onclick1(){
+			var obj6 = getid("myorder");
+			var obj7 = getid("mycollection");
+			var obj8 = getid("personal");
+			var obj9 = getid("mypwd");
+			var obj10 = getid("myaddress");
+			var obj1 = getid("order");
+			var obj2 = getid("collection");
+			var obj3 = getid("personalinfo");
+			var obj4 = getid("updatepwd");
+			var obj5 = getid("address");
+			obj1.className ="list selected";
+			obj2.className ="list";
+			obj3.className ="list";
+			obj4.className ="list";
+			obj5.className ="list";
+			obj6.className ="blok";
+			obj7.className ="non";
+			obj8.className ="non";
+			obj9.className ="non";
+			obj10.className ="non";
+			
+		}
+		function onclick2(){
+			var obj6 = getid("myorder");
+			var obj7 = getid("mycollection");
+			var obj8 = getid("personal");
+			var obj9 = getid("mypwd");
+			var obj10 = getid("myaddress");
+			var obj1 = getid("order");
+			var obj2 = getid("collection");
+			var obj3 = getid("personalinfo");
+			var obj4 = getid("updatepwd");
+			var obj5 = getid("address");
+			obj1.className ="list";
+			obj2.className ="list selected";
+			obj3.className ="list";
+			obj4.className ="list";
+			obj5.className ="list";
+			obj6.className ="non";
+			obj7.className ="blok";
+			obj8.className ="non";
+			obj9.className ="non";
+			obj10.className ="non";
+			
+		}
+		function onclick3(){
+			var obj6 = getid("myorder");
+			var obj7 = getid("mycollection");
+			var obj8 = getid("personal");
+			var obj9 = getid("mypwd");
+			var obj10 = getid("myaddress");
+			var obj1 = getid("order");
+			var obj2 = getid("collection");
+			var obj3 = getid("personalinfo");
+			var obj4 = getid("updatepwd");
+			var obj5 = getid("address");
+			obj1.className ="list";
+			obj2.className ="list";
+			obj3.className ="list selected";
+			obj4.className ="list";
+			obj5.className ="list";
+			obj6.className ="non";
+			obj7.className ="non";
+			obj8.className ="blok";
+			obj9.className ="non";
+			obj10.className ="non";
+			
+		}
+		function onclick4(){
+			var obj6 = getid("myorder");
+			var obj7 = getid("mycollection");
+			var obj8 = getid("personal");
+			var obj9 = getid("mypwd");
+			var obj10 = getid("myaddress");
+			var obj1 = getid("order");
+			var obj2 = getid("collection");
+			var obj3 = getid("personalinfo");
+			var obj4 = getid("updatepwd");
+			var obj5 = getid("address");
+			obj1.className ="list";
+			obj2.className ="list";
+			obj3.className ="list";
+			obj4.className ="list selected";
+			obj5.className ="list";
+			obj6.className ="non";
+			obj7.className ="non";
+			obj8.className ="non";
+			obj9.className ="blok";
+			obj10.className ="non";
+			
+		}
+		function onclick5(){
+			var obj6 = getid("myorder");
+			var obj7 = getid("mycollection");
+			var obj8 = getid("personal");
+			var obj9 = getid("mypwd");
+			var obj10 = getid("myaddress");
+			var obj1 = getid("order");
+			var obj2 = getid("collection");
+			var obj3 = getid("personalinfo");
+			var obj4 = getid("updatepwd");
+			var obj5 = getid("address");
+			obj1.className ="list";
+			obj2.className ="list";
+			obj3.className ="list";
+			obj4.className ="list";
+			obj5.className ="list selected";
+			obj6.className ="non";
+			obj7.className ="non";
+			obj8.className ="non";
+			obj9.className ="non";
+			obj10.className ="blok";
+			
+		}
+	</script>
 </head>
 <body class="OnSale">
 	<div class="header header_wide_lv2" style="width:1349px;height: 100%;">
@@ -128,15 +250,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<b></b>
 				我的聚美优品
 			</h2>
-			<a href="" class="list selected">
+			<a  class="list selected" id="order" onclick="onclick1();">
 				<b></b>
 				我的订单
 			</a>
-			<a href="" class="wish">
+			<a  class="wish">
 				<b></b>
 				我的心愿单
 			</a>
-			<a href="" class="fav">
+			<a class="fav" id="collection" onclick="onclick2();">
 				<b></b>
 				我的收藏
 			</a>
@@ -188,11 +310,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<b></b>
 				我的礼品卡
 			</a>
-			<a href="" class="settings">
+			<a  class="settings" id="personalinfo" onclick="onclick3();">
 				<b></b>
 				设置账户信息
 			</a>
-			<a href="" class="password">
+			<a class="password" id="updatepwd" onclick="onclick4();">
 				<b></b>
 				修改密码
 			</a>
@@ -200,7 +322,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<b></b>
 				绑定手机
 			</a>
-			<a href="" class="addr">
+			<a  class="addr" id="address" onclick="onclick5();">
 				<b></b>
 				管理收货地址
 			</a>
@@ -233,18 +355,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				兑换VIP卡
 			</a>
 		</div>
-		<div id="myorder" style="display:none;">
+		<div id="myorder" class="blok">
 			<h1>
 			<a target="_blank" href="http://www.jumei.com/i/activity/download_app">手机客户端，随时随地查看物流详情</a>
 			我的订单
 			</h1>
 			<div class="content">
 				<div class="filter">
-					<a class="curr" href="" id="orderalllist">全部订单</a>
-					<a href="">等待付款</a>
-					<a href="">已付款</a>
-					<a href="">交易完成</a>
-					<a href="">预售订单</a>
+					<a class="curr"  id="orderalllist" onclick="ajax();">全部订单</a>
+					<a class="" id="waitlist">等待付款</a>
+					<a class="" id="buylist">已付款</a>
+					<a class="" id="endlist">交易完成</a>
+					<a class="">预售订单</a>
 				</div>
 				<table id="order-list" class="order_table">
 				<tbody>
@@ -257,7 +379,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th style="width: 120px">订单状态</th>
 						<th style="width: 90px">订单操作</th>
 					</tr>
-					<td class="order_info_td"></td>
+					<td class="order_info_td">${sessionScope.orderalllist.}</td>
 					<td class="item_title"></td>
 					<td></td>
 					<td></td>
@@ -269,6 +391,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
 				</tbody>
 				</table>
+				<div class="null_info non" id="null_info">
+					<h2>${sessionScope.error}</h2>
+				</div>
 				<a href="#" class="backtotop">
 					<b></b>
 					回到顶部
@@ -403,7 +528,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 		</div>
-		<div id="mycollection" style="display:none;">
+		<div id="mycollection" class="non" onclick="ajaxcollection();">
 			<h1>我的收藏</h1>
 			<div class="content myfav">
 				<div class="notice_content">收藏心仪的产品或品牌，方便你随时找到它们，也有助于根据你的收藏给你更加贴心的推荐</div>
@@ -450,7 +575,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 		</div>
-		<div id="personal" style="display:none;">
+		<div id="personal" class="non">
 			<h1>设置账户信息</h1>
 			<div class="content">
 				<form id="settings-form" action="" method="post">
@@ -730,7 +855,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</form>
 			</div>
 		</div>
-		<div id="updatepwd" style="display:none;" >
+		<div id="mypwd" class="non" >
 			<h1>修改密码</h1>
 			<div class="content">
 				<div class="container">
@@ -831,7 +956,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 		</div>
-		<div id="address">
+		<div id="myaddress" class="non">
 			<h1>管理收货地址</h1>
 			<div class="content sector">
 				<h2>

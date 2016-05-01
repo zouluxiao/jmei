@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jmei.bean.Juser;
+import com.jmei.dao.JuserDAO;
 import com.jmei.exception.DAOException;
 import com.jmei.exception.NotHaveThisJuser;
 import com.jmei.exception.TelHasExist;
 import com.jmei.exception.UserNameOrPwdException;
+import com.jmei.factory.DAOFactory;
 import com.jmei.factory.ServiceFactory;
 import com.jmei.service.JuserService;
 import com.jmei.utils.GetJname;
@@ -27,6 +30,7 @@ import com.jmei.utils.Sendsms;
 
 public class JuserAction implements Action {
 	private final static String JUSER_SERVICE_KEY = "JuserServiceImpl";
+	private final static String JUSER_DAO_KEY = "JuserDAOImpl";
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
@@ -57,7 +61,7 @@ public class JuserAction implements Action {
 		String password =req.getParameter("login_password");
 		
 		//获取Session 将异常的消息保存到Session中最终显示到jsp页面上 提供给用户
-				HttpSession session = req.getSession();
+		HttpSession session = req.getSession();
 				
 		//清空session
 		session.removeAttribute("errortel");
@@ -75,6 +79,14 @@ public class JuserAction implements Action {
 			if(isTel(username)){
 				try {
 					service.loginByJtel(username, password);
+					JuserDAO dao =(JuserDAO)DAOFactory.newInstance("JUSER_DAO_KEY");
+					try {
+						Juser user = dao.queryJuserByJtel(username);
+						session.setAttribute("juser", user);
+					} catch (DAOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					resp.sendRedirect(req.getContextPath()+"/view/jmei.jsp");
 				} catch (DAOException e) {
 					e.printStackTrace();
@@ -91,6 +103,14 @@ public class JuserAction implements Action {
 			if(isemail(username)){
 				try {
 					service.loginByJemail(username, password);
+					JuserDAO dao =(JuserDAO)DAOFactory.newInstance("JUSER_DAO_KEY");
+					try {
+						Juser user = dao.queryJuserByJemail(username);
+						session.setAttribute("juser", user);
+					} catch (DAOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					resp.sendRedirect(req.getContextPath()+"/view/jmei.jsp");
 				} catch (DAOException e) {
 					e.printStackTrace();
@@ -222,6 +242,7 @@ public class JuserAction implements Action {
 		} catch (TelHasExist e) {
 			session.setAttribute("error",e.getMessage());
 			e.printStackTrace();
+			resp.sendRedirect(req.getContextPath()+"/view/regist.jsp");
 		}
 		}
 		

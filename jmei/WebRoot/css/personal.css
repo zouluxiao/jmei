@@ -951,3 +951,41 @@ input.radiobox {
 .profile .order-tablev2 .phone {
     width: 100px;
 }
+.blok{
+	display: block;
+}
+.non{
+	display: none;
+}
+.filter + .null_info {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color #dbd6d0 #dbd6d0;
+    border-image: none;
+    border-style: none solid solid;
+    border-width: 0 1px 1px;
+}
+.profile .null_info {
+    line-height: 1.5;
+    margin: auto;
+    padding: 200px 0;
+    text-align: center;
+}
+.profile .null_info h2 {
+    color: #797979;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 48px;
+    margin: 0;
+    padding: 0 80px;
+    text-align: left;
+}
+.profile .null_info h2, .profile .null_info div {
+    background-image: url("../images/personal/null_icon.png");
+    background-size: contain;
+}
+.profile .null_info h2, .profile .null_info div {
+    display: inline-block;
+}

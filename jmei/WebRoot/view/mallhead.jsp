@@ -13,6 +13,7 @@
 <meta http-equiv="description" content="This is my page">
 <link rel="stylesheet" type="text/css" href="../css/common.css"></link>
 <link rel="stylesheet" type="text/css" href="../css/mallhead.css"></link>
+
 </head>
 <body style="width:1349px;height: 100%;">
 	<!-- 头部开始 -->
@@ -411,5 +412,6 @@
 		</div>
 	</div>
 	<!-- 美妆商城品牌商品展示部分结束 -->
+	
 </body>
 </html>

@@ -83,17 +83,17 @@ public interface GoodsServices {
 	 * @throws DAOException 数据库异常
 	 * @throws NoSuchGoodsException 没有找到商品
 	 */
-	public List<GoodsToType> searchGoodsByType(String[] type,List list)
+	public List<Goods> searchGoodsByType(String type,List list)
 			throws DAOException,NoSuchGoodsException;
 	/**
 	 * 通过商品的功效查询商品
 	 * @param effect 商品的功效数组（存放多个商品的功效）
 	 * @param list 带筛选的集合
-	 * @return 商品的功效对象集合
+	 * @return 商品对象集合
 	 * @throws DAOException 数据库异常
 	 * @throws NoSuchGoodsException 没有找到商品
 	 */
-	public List<GoodsToEffect> searchGoodsByEffect(String[] effect,List list)
+	public List<Goods> searchGoodsByEffect(String effect,List list)
 			throws DAOException,NoSuchGoodsException;
 	
 	/**

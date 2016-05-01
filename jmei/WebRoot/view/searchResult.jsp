@@ -17,6 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/jmeihead.css">
   </head>
   
+  
   <body id="searchResult">
   	<!-- 头部搜索框、导航条 -->
    	<div class="header header_wide_lv2">
@@ -70,7 +71,7 @@
 			<div class="header_searchbox header_out_searchbox">
 				<form action="${pageContext.request.contextPath }/search.do?method=searchGoods" method="post">
 					<input name="searchKey" id="search" type="text" class="header_search_input">
-					<button type="submit" class="header_search_btn">搜索</button>
+					<button type="submit" class="header_search_btn" onclick="changeVal();">搜索</button>
 				</form>
 				<ul class="hot_word">
 					<li><a href="">保湿</a> <s class="line"></s></li>
@@ -197,7 +198,7 @@
 	    	<div class="buser_all">
 	    		<ul class="buser_all_ul">
 	    			<c:forEach var="u" varStatus="s1" items="${sessionScope.buserlist }">
-	    				<li><a href="#">${u.bname }</a></li>
+	    				<li><a href="${pageContext.request.contextPath }/search.do?method=buser&buser=${u.bname}">${u.bname }</a></li>
 	    			</c:forEach>
 	    		</ul>
 	    	</div>
@@ -213,7 +214,7 @@
 	    	<div class="buser_all">
 	    		<ul class="buser_all_ul">
 	    			<c:forEach var="u" varStatus="s1" items="${sessionScope.typelist }">
-	    				<li><a href="#">${u.tname }</a></li>
+	    				<li><a href="${pageContext.request.contextPath }/search.do?method=type&type=${u.tname}">${u.tname }</a></li>
 	    			</c:forEach>
 	    		</ul>
 	    	</div>
@@ -229,7 +230,7 @@
 	    	<div class="buser_all">
 	    		<ul class="buser_all_ul">
 	    			<c:forEach var="u" varStatus="s1" items="${sessionScope.effectlist }">
-	    				<li><a href="#">${u.ename }</a></li>
+	    				<li><a href="${pageContext.request.contextPath }/search.do?method=effect&effect=${u.ename}">${u.ename }</a></li>
 	    			</c:forEach>
 	    		</ul>
 	    	</div>
@@ -244,13 +245,13 @@
 	    	</div>
 	    	<div class="buser_all">
 	    		<ul class="buser_all_ul">
-	    			<li><a>0-100</a></li>
-	    			<li><a>100-200</a></li>
-	    			<li><a>200-300</a></li>
-	    			<li><a>300-400</a></li>
-	    			<li><a>400-500</a></li>
-	    			<li><a>500-600</a></li>
-	    			<li><a>600-100</a></li>
+	    			<li><a href="${pageContext.request.contextPath }/search.do?method=price&low=0&high=100">0-100</a></li>
+	    			<li><a href="${pageContext.request.contextPath }/search.do?method=price&low=100&high=200">100-200</a></li>
+	    			<li><a href="${pageContext.request.contextPath }/search.do?method=price&low=200&high=300">200-300</a></li>
+	    			<li><a href="${pageContext.request.contextPath }/search.do?method=price&low=300&high=400">300-400</a></li>
+	    			<li><a href="${pageContext.request.contextPath }/search.do?method=price&low=400&high=500">400-500</a></li>
+	    			<li><a href="${pageContext.request.contextPath }/search.do?method=price&low=500&high=600">500-600</a></li>
+	    			<li><a href="${pageContext.request.contextPath }/search.do?method=price&low=600&high=1000">600-1000</a></li>
 	    		</ul>
 	    	</div>
 	    	<div class="buser_right">
@@ -265,16 +266,29 @@
 	    	<div class="search_list_head_fiex">
 	    		<div class="sort_s">排序:</div>
 	    	</div>
-	    	<!-- <ul class="sort_u">
+	    	<ul class="sort_u">
 	    		<li class="selected">
-	    			<a class="down">默认</a>
+	    			<div class="down"><a href="#">默认</a></div>
 	    		</li>
-	    	</ul> -->
+	    		<li class="select">
+	    			<div class="down"><a href="${pageContext.request.contextPath }/search.do?method=priceDesc">价格</a></div>
+	    		</li>
+	    		<li class="select">
+	    			<div class="down"><a href="${pageContext.request.contextPath }/search.do?method=saleDesc">销量</a></div>
+	    		</li>
+	    		<li class="select">
+	    			<div class="down"><a href="${pageContext.request.contextPath }/search.do?method=colDesc">人气</a></div>
+	    		</li>
+	    	</ul>
+	    	<div class="oth"><a href="">下一页</a></div>
+	    	<div class="oth"><a href="">上一页</a></div>
+	    	<div class="oth"><font style="color:red;">2</font>/11页</div>
+	    	<div class="oth">共<font style="color:red;">363</font>个商品</div>
 	    </div>
 	    <!-- 商品展示 -->
 	    <div id="goods" class="w" style="padding: 20px;margin: 0 -32px 0 0;">
 	    	<ul>
-	    		<c:forEach var="u" varStatus="s1" items="${sessionScope.goodslist }">
+	    		<c:forEach var="u" varStatus="s1" items="${sessionScope.goodslist }" begin="${sessionScope.curPage*12 }" end="${sessionScope.curPage*12+11 }">
 	    			<li class="Goods_item"><a href="${pageContext.request.contextPath }/goods.do?method=goods&gid=${u.gid}">
 	    			<img src="../images/goodspic/2/${sessionScope.piclist[s1.index].picpname }" height="216px;" width="216px;"/>
 	    			<br>
@@ -299,20 +313,14 @@
 	    		<li class="current">
 	    			<span>1</span>
 	    		</li>
+	    		<c:forEach var="i" begin="2" end="${sessionScope.pageCount }" step="1">
+	    			<li class="current">
+	    				<a href="${pageContext.request.contextPath }/search.do?method=searchGoods&curPage=${i -1}&searchKey=K">
+	    				${i }</a>
+	    			</li>
+	    		</c:forEach>
 	    		<li class="current">
-	    			<a>2</a>
-	    		</li>
-	    		<li class="current">
-	    			<a>3</a>
-	    		</li>
-	    		<li class="current">
-	    			<a>...</a>
-	    		</li>
-	    		<li class="current">
-	    			<a>10</a>
-	    		</li>
-	    		<li class="current">
-	    			<a class="next">下一页</a>
+	    			<a class="next" href="${pageContext.request.contextPath }/search.do?method=searchGoods&curPage=${curPage }&searchKey=K">下一页</a>
 	    		</li>
 	    	</ul>
 	    </div>

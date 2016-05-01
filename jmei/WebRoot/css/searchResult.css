@@ -358,11 +358,12 @@ ul li a:HOVER{
 	margin: 0 auto;
 	position: relative;
 	height: 34px;
+	background-image: url(../images/cssSearchResult/search_paixu_bg.jpg);
 }
 
 .search_list_head_fiex{
 	float:left;
-	width: 100%;
+	/* width: 100%; */
 	height: 33px;
 	margin: 0 auto;
 	overflow: hidden;
@@ -382,7 +383,18 @@ ul li a:HOVER{
 	border-right: 1px solid #e7e3e3;
 }
 
+.select{
+	width:80px;
+	height:34px;
+	float: left;
+	display: inline;
+	border-right: 1px solid #e7e3e3;
+	background-image: url(../images/cssSearchResult/search_paixu_bg.jpg);
+}
+
 .selected{
+	width:80px;
+	height:34px;
 	float: left;
 	display: inline;
 	border-right: 1px solid #e7e3e3;
@@ -395,6 +407,7 @@ ul li a:HOVER{
 .sort_u{
 	float: left;
 	display: inline;
+	text-align: center;
 }
 
 #search_list_wrap #sort .sort_u .selected a{
@@ -403,11 +416,22 @@ ul li a:HOVER{
 	border: 0;
 	line-height: 34px;
 }
-
-/* .down{
-	background: url(../images/cssSearchResult/desc_selected_hover.png) no-repeat 57px 50% #fff;
+#search_list_wrap #sort .sort_u .select a{
+	height: 34px;
+	border: 0;
+	line-height: 34px;
 }
- */
+
+.down{
+	/* background: url(../images/cssSearchResult/desc_selected_hover.png) no-repeat 57px 50% #fff; */
+}
+
+#sort .oth{
+	float: right;
+	line-height: 35px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
 
 #goods{
 	padding: 20px;

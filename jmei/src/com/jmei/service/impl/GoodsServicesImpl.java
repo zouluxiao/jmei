@@ -16,6 +16,7 @@ import com.jmei.dao.impl.GoodsDAOImpl;
 import com.jmei.exception.DAOException;
 import com.jmei.exception.NoSuchGoodsException;
 import com.jmei.factory.DAOFactory;
+import com.jmei.factory.ServiceFactory;
 import com.jmei.service.GoodsServices;
 
 public class GoodsServicesImpl implements GoodsServices {
@@ -139,58 +140,64 @@ public class GoodsServicesImpl implements GoodsServices {
 	 * @throws DAOException 数据库异常
 	 * @throws NoSuchGoodsException 没有找到商品
 	 */
-	public List<GoodsToType> searchGoodsByType(String[] type,List list)
+	public List<Goods> searchGoodsByType(String type,List list)
 			throws DAOException, NoSuchGoodsException {
-		if(type == null || type.length == 0){
+		if(type == null ){
 			return list;
 		}
 		if(list == null){
 			throw new NoSuchGoodsException("商品列表已空");
 		}
-		ArrayList<GoodsToType> alist = new ArrayList<GoodsToType>(list);
-		Iterator<GoodsToType> it = alist.iterator();
-		for(String st:type){
-			while(it.hasNext()){
-				GoodsToType g = it.next();
-				if(!st.equals(g.getType())){
-					it.remove();
+		//定义集合保存筛选出来的Goods类
+		ArrayList<Goods> alist = new ArrayList<Goods>();
+		//定义service
+		GoodsToTypeDAO gtype =  (GoodsToTypeDAO) DAOFactory.newInstance(GoodsToType_KEY);
+		//通过Goods集合找出对应的GoodsToType类
+		for(int i = 0 ; i < list.size(); i++){
+			Goods g = (Goods) list.get(i);
+			ArrayList<GoodsToType> tlist = (ArrayList<GoodsToType>) gtype.queryGoodsToTypeBygid(g.getGid());
+			for(GoodsToType t: tlist){
+				if(type.equals(t.getType().getTname())){
+					alist.add(g);
+					break;
 				}
 			}
-		}
-		if(alist == null || alist.size() == 0){
-			throw new NoSuchGoodsException("商品列表已空");
+			
 		}
 		return alist;
 	}
 
 	/**
 	 * 通过商品的功效查询商品
-	 * @param effect 商品的功效数组（存放多个商品的功效）
+	 * @param effect 商品的功效数组（
 	 * @param list 带筛选的集合
-	 * @return 商品的功效对象集合
+	 * @return 商品对象集合
 	 * @throws DAOException 数据库异常
 	 * @throws NoSuchGoodsException 没有找到商品
 	 */
-	public List<GoodsToEffect> searchGoodsByEffect(String[] effect,List list)
+	public List<Goods> searchGoodsByEffect(String effect,List list)
 			throws DAOException, NoSuchGoodsException {
-		if(effect == null || effect.length == 0){
+		if(effect == null){
 			return list;
 		}
 		if(list == null){
 			throw new NoSuchGoodsException("商品列表已空");
 		}
-		ArrayList<GoodsToEffect> alist = new ArrayList<GoodsToEffect>(list);
-		Iterator<GoodsToEffect> it = alist.iterator();
-		for(String st:effect){
-			while(it.hasNext()){
-				GoodsToEffect g = it.next();
-				if(!st.equals(g.getEffect())){
-					it.remove();
+		//存放筛选后的商品的对象
+		ArrayList<Goods> alist = new ArrayList<Goods>();
+		//获得与数据库交互的dao对象
+		GoodsToEffectDAO dao = (GoodsToEffectDAO) DAOFactory.newInstance(GoodsToEffect_KEY);
+		//查找待筛选集合的功效对象
+		for(int i=0;i<list.size();i++){
+			Goods g = (Goods) list.get(i);
+			List<GoodsToEffect> glist = dao.queryGoodsToEffectBygid(g.getGid());
+			if(glist != null && glist.size() > 0){
+				for(GoodsToEffect ef:glist){
+					if(effect.equals(ef.getEffect().getEname())){
+						alist.add(g);
+					}
 				}
 			}
-		}
-		if(alist == null || alist.size() == 0){
-			throw new NoSuchGoodsException("商品列表已空");
 		}
 		return alist;
 	}

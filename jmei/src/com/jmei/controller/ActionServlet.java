@@ -12,6 +12,7 @@ import com.jmei.action.AddressAction;
 import com.jmei.action.GoodsAction;
 import com.jmei.action.JorderAction;
 import com.jmei.action.JuserAction;
+import com.jmei.action.ShoppingCartAction;
 
 public class ActionServlet extends HttpServlet{
 
@@ -38,8 +39,13 @@ public class ActionServlet extends HttpServlet{
 		}else if("/order.do".equalsIgnoreCase(servletPath)){
 			Action action = new JorderAction();
 			action.execute(req, resp);
+<<<<<<< HEAD
 		}else if("/address.do".equals(servletPath)){
 			Action action = new AddressAction();
+=======
+		}else if("/ShoppingCart.do".equalsIgnoreCase(servletPath)){
+			Action action = new ShoppingCartAction();
+>>>>>>> a4f4b4205bbd0df97e4ec52bab0a5f08fe832188
 			action.execute(req, resp);
 		}
 		

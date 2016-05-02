@@ -5,7 +5,7 @@
 <html>
   <head>
     
-    <title>My JSP 'cart.jsp' starting page</title>
+    <title>购物车</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -213,10 +213,224 @@
                                </div>
                              </div>----------------------->
         </div>
-        <div class="htt">
-            <a href = "">
-            <img src = "../images/cart/zj.png"></img>
-            </a>
+        <div id="JS_recommend_box" class="recommend_box">
+            <div class="nav_tips">
+              <a class="JS_recommend_nav" href="javascript:;">
+                                       购买的还买了
+              <i class="right_border"></i>                           
+              </a>
+              <a class="JS_recommend_nav active" href="javascript:;">今日备受欢迎</a>
+            </div>
+        </div>
+        <div style="margin-left: auto; margin-right: auto; width: 51%;margin-top: -20px">
+          <ul class="clearfix JS_recommend_cont" style="display: block;">
+             <li class="list">
+                <div>
+                    <div>
+                      <a href="">
+                        <img src="../images/cart/1.jpg"></img>
+                      </a>
+                    </div>
+                    <div class="tips_info_box">
+                      <a class="tips_info" href = "">
+                         五官好，身材好，不如皮肤好!终结无聊沐浴乳！吸出毛孔
+                      </a>
+                    </div>
+                    <div class="price_grey">
+                       <span class="price">¥39.9</span>
+                    </div>
+                    <div>
+                       <a class="cart_btn">加入购物车</a>
+                    </div>
+                </div> 
+             </li>
+  <!-- ------------------ --> 
+             <li class="list">
+                <div>
+                    <div>
+                      <a href="">
+                        <img src="../images/cart/2.jpg"></img>
+                      </a>
+                    </div>
+                    <div class="tips_info_box">
+                      <a class="tips_info" href = "">
+                         Hippo Family 原生矿物火山泥膜  240g
+                      </a>
+                    </div>
+                    <div class="price_grey">
+                       <span class="price">¥89.9</span>
+                    </div>
+                    <div>
+                       <a class="cart_btn">加入购物车</a>
+                    </div>
+                </div> 
+             </li>
+  <!--  -->  
+             <li class="list">
+                <div>
+                    <div>
+                      <a href="">
+                        <img src="../images/cart/3.jpg"></img>
+                      </a>
+                    </div>
+                    <div class="tips_info_box">
+                      <a class="tips_info" href = "">
+                       BEELY彼丽玫瑰滋养身体乳250ml
+                      </a>
+                    </div>
+                    <div class="price_grey">
+                       <span class="price">¥39.0</span>
+                    </div>
+                    <div>
+                       <a class="cart_btn">加入购物车</a>
+                    </div>
+                </div> 
+             </li>
+             <!--  -->
+             <li class="list">
+                <div>
+                    <div>
+                      <a href="">
+                        <img src="../images/cart/4.jpg"></img>
+                      </a>
+                    </div>
+                    <div class="tips_info_box">
+                      <a class="tips_info" href = "">
+                       雅漾舒护活泉喷雾300ml，增强肌肤耐受性，降低敏感度。
+                      </a>
+                    </div>
+                    <div class="price_grey">
+                       <span class="price">¥90.0</span>
+                    </div>
+                    <div>
+                       <a class="cart_btn">加入购物车</a>
+                    </div>
+                </div> 
+             </li>
+             <!--  -->
+             <li class="list">
+                <div>
+                    <div>
+                      <a href="">
+                        <img src="../images/cart/5.jpg"></img>
+                      </a>
+                    </div>
+                    <div class="tips_info_box">
+                      <a class="tips_info" href = "">
+                         好评如潮的护肤品！Suee绵羊油深层滋养，保湿不黏腻，开启你的逆龄美肌
+                      </a>
+                    </div>
+                    <div class="price_grey">
+                       <span class="price">¥69.9</span>
+                    </div>
+                    <div>
+                       <a class="cart_btn">加入购物车</a>
+                    </div>
+                </div> 
+             </li>
+             <!--  -->
+             <li class="list">
+                <div>
+                    <div>
+                      <a href="">
+                        <img src="../images/cart/6.jpg"></img>
+                      </a>
+                    </div>
+                    <div class="tips_info_box">
+                      <a class="tips_info" href = "">
+                         Hippo Family 清润矿物绿竹泥膜 240g
+                      </a>
+                    </div>
+                    <div class="price_grey">
+                       <span class="price">¥39.9</span>
+                    </div>
+                    <div>
+                       <a class="cart_btn">加入购物车</a>
+                    </div>
+                </div> 
+             </li>
+             <!--  -->
+             <li class="list">
+                <div>
+                    <div>
+                      <a href="">
+                        <img src="../images/cart/7.jpg"></img>
+                      </a>
+                    </div>
+                    <div class="tips_info_box">
+                      <a class="tips_info" href = "">
+                         河马家第二代【小灯泡】白泥强势回归，皮肤亮到素颜也能上直播~
+                      </a>
+                    </div>
+                    <div class="price_grey">
+                       <span class="price">¥39.9</span>
+                    </div>
+                    <div>
+                       <a class="cart_btn">加入购物车</a>
+                    </div>
+                </div> 
+             </li>
+             <!--  -->
+             <li class="list">
+                <div>
+                    <div>
+                      <a href="">
+                        <img src="../images/cart/8.jpg"></img>
+                      </a>
+                    </div>
+                    <div class="tips_info_box">
+                      <a class="tips_info" href = "">
+                         宣琪桃花幼嫩(幼白）搓泥浴宝沐浴露200ml*2（两款随机发货）
+                      </a>
+                    </div>
+                    <div class="price_grey">
+                       <span class="price">¥39.9</span>
+                    </div>
+                    <div>
+                       <a class="cart_btn">加入购物车</a>
+                    </div>
+                </div> 
+             </li>
+             <!--  -->
+             <li class="list">
+                <div>
+                    <div>
+                      <a href="">
+                        <img src="../images/cart/9.jpg"></img>
+                      </a>
+                    </div>
+                    <div class="tips_info_box">
+                      <a class="tips_info" href = "">
+                        去你的讨厌不已的鸡皮！满足身体的所有欲望，让他的手一滑到底！
+                      </a>
+                    </div>
+                    <div class="price_grey">
+                       <span class="price">¥79.9</span>
+                    </div>
+                    <div>
+                       <a class="cart_btn">加入购物车</a>
+                    </div>
+                </div> 
+             </li>
+ <!-----------------------------  -->
+          </ul>
+        </div>
+        <div id="footer_copyright" class="footer_con">
+              <p class="footer_copy_con">
+              © 2013 北京创锐文化传媒有限公司 Jumei.com 保留一切权利。客服热线：400-123-8888
+              <br></br> 
+              京公网安备 11010102001226 | 
+              <a href="">京ICP证111033号</a>
+               | 食品流通许可证 SP1101051110165515（1-1）| 
+               <a href="">营业执照</a>
+              </p>
+              <p>
+                <a class="footer_copy_logo logo01" href="" style="background-position: 0px -168px;"></a>
+                <a class="footer_copy_logo logo02" href="" style="background-position: 0px -219px;"></a>
+                <a class="footer_copy_logo logo03" href="" style="background-position: 0px -270px;"></a>
+                <a class="footer_copy_logo logo04" href="" style="background-position: 0px -321px;"></a>
+                <a class="footer_copy_logo logo05" href="" style="background-position: 0px -372px;"></a>
+              </p>
         </div>
   </body>
 </html>

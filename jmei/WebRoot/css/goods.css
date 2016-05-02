@@ -58,7 +58,7 @@
 	font-weight: 400;
 }
 
-.logo{
+#logo .logo{
 	padding-top: 10px;
 	float:left;
 	height: 129px;
@@ -243,3 +243,4 @@
 	position: relative;
 	top:3px;
 }
+

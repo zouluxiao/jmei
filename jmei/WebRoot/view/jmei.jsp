@@ -45,7 +45,7 @@
 					<li><a href="">订单查询</a></li>
 					<li><a href=""> <s class="icon_favorite"></s>收藏的商品
 					</a></li>
-					<li class="item_ijumei"><a href="">我的聚美 <s
+					<li class="item_ijumei"><a href="personal.jsp">我的聚美 <s
 							class="icon_arrow_back"></s>
 					</a> <i class="icon_arrow_back"></i></li>
 					<li class="item_mobile"><a href=""> <span class="line"></span>

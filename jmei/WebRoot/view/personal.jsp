@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -13,6 +14,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="../css/foot.css"/>
 	<script type="text/javascript" src="../js/personal.js"></script>
 	<script type="text/javascript">
+		function getmesaage(){
+			 //1.创建xhr对象 
+	      	 var xhr;
+	      	 if(window.XMLHttpRequest){
+	      	 	xhr = new XMLHttpRequest(); //firefox
+	      	 }else if(window.ActiveXObject){
+	      	 	xhr = new ActiveXObject("Microsoft.XMLHTTP");
+	      	 }
+	      	 var url="${pageContext.request.contextPath}/user.do?method=getaddemail"; 
+	      	 xhr.open("GET",url);
+	      	 //3.设置请求的头部信息   GET不许设置头部信息
+	      	 //xhr.setRequestHeader("enctype","application/x-www-form-urlencoded");
+	      	 
+	      	 //4.发送消息   GET:
+	      	 xhr.send(null);
+	      	 //xhr.send("regtel="+document.getElementById("regtel").value);
+		}
+		
+		function change(){
+    		var imageObj =document.getElementById("change_code");
+    		var date=new Date();
+    		imageObj.src="/jmei/verifyServlet?rand="+date.getTime();
+    	}
 		function getid(id){
 			return document.getElementById(id);
 		}
@@ -28,6 +52,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var obj3 = getid("personalinfo");
 			var obj4 = getid("updatepwd");
 			var obj5 = getid("address");
+			var obj11= getid("updateemail");
+			obj11.className="non";
 			obj1.className ="list selected";
 			obj2.className ="list";
 			obj3.className ="list";
@@ -51,6 +77,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var obj3 = getid("personalinfo");
 			var obj4 = getid("updatepwd");
 			var obj5 = getid("address");
+			var obj11= getid("updateemail");
+			obj11.className="non";
 			obj1.className ="list";
 			obj2.className ="list selected";
 			obj3.className ="list";
@@ -74,6 +102,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var obj3 = getid("personalinfo");
 			var obj4 = getid("updatepwd");
 			var obj5 = getid("address");
+			var obj11= getid("updateemail");
+			obj11.className="non";
 			obj1.className ="list";
 			obj2.className ="list";
 			obj3.className ="list selected";
@@ -84,7 +114,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			obj8.className ="blok";
 			obj9.className ="non";
 			obj10.className ="non";
-			
 		}
 		function onclick4(){
 			var obj6 = getid("myorder");
@@ -97,6 +126,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var obj3 = getid("personalinfo");
 			var obj4 = getid("updatepwd");
 			var obj5 = getid("address");
+			var obj11= getid("updateemail");
+			obj11.className="non";
 			obj1.className ="list";
 			obj2.className ="list";
 			obj3.className ="list";
@@ -120,6 +151,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var obj3 = getid("personalinfo");
 			var obj4 = getid("updatepwd");
 			var obj5 = getid("address");
+			var obj11= getid("updateemail");
+			obj11.className="non";
 			obj1.className ="list";
 			obj2.className ="list";
 			obj3.className ="list";
@@ -130,7 +163,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			obj8.className ="non";
 			obj9.className ="non";
 			obj10.className ="blok";
-			
+			getaddress();
+		}
+		function getaddress(){
+			alert("到这里了");
+			 //1.创建xhr对象 
+	      	 var xhr;
+	      	 if(window.XMLHttpRequest){
+	      	 	xhr = new XMLHttpRequest(); //firefox
+	      	 }else if(window.ActiveXObject){
+	      	 	xhr = new ActiveXObject("Microsoft.XMLHTTP");
+	      	 }
+	      	 var url="${pageContext.request.contextPath}/address.do?method=getaddress"; 
+	      	 xhr.open("GET",url);
+	      	 //3.设置请求的头部信息   GET不许设置头部信息
+	      	 //xhr.setRequestHeader("enctype","application/x-www-form-urlencoded");
+	      	 
+	      	 //4.发送消息   GET:
+	      	 xhr.send(null);
+	      	 //xhr.send("regtel="+document.getElementById("regtel").value);
+		}
+		function email(){
+			var obj6 = getid("myorder");
+			var obj7 = getid("mycollection");
+			var obj8 = getid("personal");
+			var obj9 = getid("mypwd");
+			var obj10 = getid("myaddress");
+			var obj1 = getid("order");
+			var obj2 = getid("collection");
+			var obj3 = getid("personalinfo");
+			var obj4 = getid("updatepwd");
+			var obj5 = getid("address");
+			var obj11= getid("updateemail");
+			obj11.className="blok";
+			obj1.className ="list";
+			obj2.className ="list";
+			obj3.className ="list selected";
+			obj4.className ="list";
+			obj5.className ="list";
+			obj6.className ="non";
+			obj7.className ="non";
+			obj8.className ="non";
+			obj9.className ="non";
+			obj10.className ="non";
 		}
 	</script>
 </head>
@@ -240,12 +315,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<img src="..//images/personal/64_64.png">
 				</a>
 				<p class="nickname">
-					<a target="_blank" href="" style="padding-left:0;line-height: 1.8;color:#ed145b" id="username">JM153AWHW0309</a>
+					<a target="_blank" href="" style="padding-left:0;line-height: 1.8;color:#ed145b" id="username">${sessionScope.juser.jname}</a>
 				</p>
 				<p>
 					<a href="" target="_blank" style="padding-left:0;line-height: normal;">普通会员</a>
 				</p>
-				<p id="juserid" class="uid">用户ID: 106073332</p>
+				<p id="juserid" class="uid">用户ID:${sessionScope.juser.jid}</p>
 			</div>
 			<h2>
 				<b></b>
@@ -392,9 +467,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
 				</tbody>
 				</table>
-				<div class="null_info non" id="null_info">
-					<h2>${sessionScope.error}</h2>
-				</div>
+
 				<a href="#" class="backtotop">
 					<b></b>
 					回到顶部
@@ -591,19 +664,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</span>
 							用户名
 						</label>
-						<input type="text" id="personname" class="t_input" value="JM153AWHW0309" name="username" size="30" required="">
+						<input type="text" id="personname" class="t_input" value="${sessionScope.juser.jname}" name="username" size="30" required="">
 					</div>
 					<dl class="formlist">
 						<dt>Email</dt>
 						<dd>
 							<span class="data">您还未绑定邮箱</span>
-							<a href="" class="btn_mid_pink">立即绑定</a>
+							<a class="btn_mid_pink" onclick="email();">立即绑定</a>
 						</dd>
 					</dl>
 					<dl class="formlist" style="margin-top:16px;">
 						<dt>手机号</dt>
 						<dd>
-							<span class="data" id="ptel">153****0309
+							<span class="data" id="ptel">${sessionScope.juser.jtel}
 							</span>
 							<a href="" target="_blank">修改</a>
 							<span class="hint">已验证</span>
@@ -856,6 +929,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</form>
 			</div>
 		</div>
+		<div id="updateemail" class="non">
+			<h1>修改邮箱</h1>
+			<div class="content change_email">
+				<div class="notice_content">正确的邮箱，可帮助您进行安全验证等操作，有效保护您的账户安全；也有助于您收到来自聚美的最新特惠通知</div>
+				<div class="change_email_cont">
+					<p style="padding-left: 2em;">为确保信息安全，重新绑定邮箱需要输入手机校验码</p>
+					<form action="${pageContext.request.contextPath}/user.do?method=addemail" id="subscribe_form" class="mobile_subscribe" method="post">
+						<dl class="datalist">
+							<dt>已绑定手机号：</dt>
+							<dd>
+								${sessionScope.juser.jtel}
+								<input id="get_confirm_code" class="get_confirm_code" type="button" value="获取手机校验码" name="get_confirm_code" onclick="getmesaage();">
+							</dd>
+						</dl>
+						<div class="input_container">
+							<label for="confirm_code">校验码：</label>
+							<input id="confirm_code" name="confirm_code" class="default_value" type="text" maxlength="6" name="confirm_code">
+						</div>
+						<div class="input_container">
+							<label for="verify_code">验证码：</label>
+							<input id="verify_code" name="verify_code" type="text" autocomplete="off" maxlength="4" name="hash_code">
+						</div>
+						<div class="input_container">
+							<label for="email">验证邮箱：</label>
+							<input id="email" type="text" name="email" size="20">
+						</div>
+						<div class="act">
+							<img id="code" src="/jmei/verifyServlet">
+							<a id="change_code" href="javascript:void(0);" onclick="change();">换一张</a>
+						</div>
+						<div class="act">
+							<input id="change_email" type="button" name="change_email" value="提交验证">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 		<div id="mypwd" class="non" >
 			<h1>修改密码</h1>
 			<div class="content">
@@ -1065,26 +1175,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<a class="view_id_cert_info" target="_blank" href="/i/account/nameauth">查看您的身份验证信息</a>
 				</div>
 				<div id="shipping_address_list">
-					<table id="order-list" class="order-tablev2">
-						<colgroup>
-							<col class="name">
-							<col class="address">
-							<col class="code">
-							<col class="hp">
-							<col class="phone">
-							<col class="action">
-						</colgroup>
-						<tbody>
-							<tr class="order_list_title">
-							<th>收货人</th>
-							<th>收货地址</th>
-							<th>手机</th>
-							<th>固定电话</th>
-							<th width="105px">身份证号码</th>
-							<th width="80">操作</th>
-							</tr>
-						</tbody>
-					</table>
+					<c:if test="${empty error}">
+						<table id="order-list" class="order-tablev2">
+							<colgroup>
+								<col class="name">
+								<col class="address">
+								<col class="code">
+								<col class="hp">
+								<col class="phone">
+								<col class="action">
+							</colgroup>
+							<tbody>
+								<tr class="order_list_title">
+								<th>收货人</th>
+								<th>收货地址</th>
+								<th>手机</th>
+								<th>固定电话</th>
+								<th width="105px">身份证号码</th>
+								<th width="80">操作</th>
+								</tr>
+								<c:forEach var="myaddress" items="${sessionScope.address}">
+									<tr>
+										<td class="real_name_td">${myaddress.consigneename}</td>
+										<td class="order_info_td">${myaddress.detailaddress}</td>
+										<td  style="padding:0;">${myaddress.tel}</td>
+										<td>${myaddress.pnumber}</td>
+										<td>${myaddress.consigneeid}</td>
+										<td>
+											<a class="sp_address_edit" href="javascript:void(0)" style="display:inline-block;" address_id="108238843">修改</a>
+											<a class="sp_address_delete" href="javascript:void(0)" style="display:inline-block;" address_id="108238843">删除</a>
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>	
+					</c:if>
 				</div>
 			</div>
 		</div>

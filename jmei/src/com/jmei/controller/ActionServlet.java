@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jmei.action.Action;
+import com.jmei.action.AddressAction;
 import com.jmei.action.GoodsAction;
 import com.jmei.action.JorderAction;
 import com.jmei.action.JuserAction;
@@ -36,6 +37,9 @@ public class ActionServlet extends HttpServlet{
 			action.execute(req, resp);
 		}else if("/order.do".equalsIgnoreCase(servletPath)){
 			Action action = new JorderAction();
+			action.execute(req, resp);
+		}else if("/address.do".equals(servletPath)){
+			Action action = new AddressAction();
 			action.execute(req, resp);
 		}
 		

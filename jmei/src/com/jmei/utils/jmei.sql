@@ -103,7 +103,7 @@ create table jorder(
 --订单表的id的序列-
 drop sequence order_seq;
 create sequence order_seq start with 10000000 increment by 1;
-
+select * from jorder;
 --9.地址表--
 drop table address;
 create table address(
@@ -120,7 +120,9 @@ create table address(
 --地址表的id的序列-
 drop sequence ad_seq;
 create sequence ad_seq start with 10000000 increment by 1;
-
+select * from address;
+select * from juser;
+insert into address values(ad_seq.nextVal,10000060,'湖南中医药大学含浦校区','邹璐','43042119960309','长沙市岳麓区','15364240309',null); 
 --10.普通用户表--
 drop table juser;
 create table juser(
@@ -134,7 +136,8 @@ create table juser(
 	juserisval number(2),		--是否删除--
 	jpic varchar2(20)			--用户头像--
 );
-
+--10000041
+select * from jorder;
 --普通用户表的id的序列--
 drop sequence ju_seq;
 create sequence ju_seq start with 10000000 increment by 1;

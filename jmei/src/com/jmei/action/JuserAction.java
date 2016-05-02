@@ -11,12 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jmei.bean.Juser;
-import com.jmei.dao.JuserDAO;
 import com.jmei.exception.DAOException;
+import com.jmei.exception.EmailHasExist;
 import com.jmei.exception.NotHaveThisJuser;
 import com.jmei.exception.TelHasExist;
 import com.jmei.exception.UserNameOrPwdException;
-import com.jmei.factory.DAOFactory;
 import com.jmei.factory.ServiceFactory;
 import com.jmei.service.JuserService;
 import com.jmei.utils.GetJname;
@@ -30,18 +29,15 @@ import com.jmei.utils.Sendsms;
 
 public class JuserAction implements Action {
 	private final static String JUSER_SERVICE_KEY = "JuserServiceImpl";
-	private final static String JUSER_DAO_KEY = "JuserDAOImpl";
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
 		String method = req.getParameter("method");
-		//System.out.println("到这里了");
 		if("regist".equals(method)){
 			registByTel(req,resp);
 		}
 		if("getmessage".equals(method)){
 			getMessage(req,resp);
-			//System.out.println("到这里了！");
 		}
 		if("login".equals(method)){
 			login(req,resp);
@@ -52,6 +48,63 @@ public class JuserAction implements Action {
 		if("logincommon".equals(method)){
 			logincommon(req,resp);
 		}
+		if("getaddemail".equals(method)){
+			getaddemail(req,resp);
+		}
+		if("addemail".equals(method)){
+			updateemail(req,resp);
+		}
+		
+	}
+
+	private void updateemail(HttpServletRequest req, HttpServletResponse resp) {
+		//获取页面信息
+		String verfyCode = req.getParameter("confirm_code");
+		String verify =req.getParameter("verify_code");
+		String email =req.getParameter("email");
+		//获取Session 将异常的消息保存到Session中最终显示到jsp页面上 提供给用户
+		HttpSession session = req.getSession();
+				
+		Juser user = (Juser)session.getAttribute("juser");
+		int jid =user.getJid();
+		
+		if(verfyCode == null || !verfyCode.equals(session.getAttribute("verfyCode2"))){
+			session.setAttribute("errorverfy", "请输入正确的手机验证码!");
+		}else if(verify == null || !verify.equals(session.getAttribute("check"))){
+			session.setAttribute("errorverify", "请输入正确的验证码!");
+		}else if(email == null || !isemail(email)){
+			session.setAttribute("erroremail", "请输入正确的邮箱!");
+		}else{
+			JuserService service =(JuserService)ServiceFactory.newInstance(JUSER_SERVICE_KEY);
+			try {
+				service.updateJemailByJid(jid, email);
+				try {
+					resp.sendRedirect(req.getContextPath()+"/view/personal.jsp");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (DAOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NotHaveThisJuser e) {
+				session.setAttribute("error",e.getMessage());
+				e.printStackTrace();
+			} catch (EmailHasExist e) {
+				session.setAttribute("error",e.getMessage());
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private void getaddemail(HttpServletRequest req, HttpServletResponse resp) {
+		//获取Session 将异常的消息保存到Session中最终显示到jsp页面上 提供给用户
+		HttpSession session = req.getSession();
+		Juser user = (Juser)session.getAttribute("juser");
+		String jtel = user.getJtel();
+		int verfyCode = Sendsms.getMessage(jtel);
+		session.setAttribute("verfyCode2", String.valueOf(verfyCode));
+		
 	}
 
 	//通过手机号码或邮箱登录
@@ -79,14 +132,8 @@ public class JuserAction implements Action {
 			if(isTel(username)){
 				try {
 					service.loginByJtel(username, password);
-					JuserDAO dao =(JuserDAO)DAOFactory.newInstance("JUSER_DAO_KEY");
-					try {
-						Juser user = dao.queryJuserByJtel(username);
-						session.setAttribute("juser", user);
-					} catch (DAOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					Juser user = service.searchjUserByJtel(username);
+					session.setAttribute("juser", user);
 					resp.sendRedirect(req.getContextPath()+"/view/jmei.jsp");
 				} catch (DAOException e) {
 					e.printStackTrace();
@@ -103,14 +150,8 @@ public class JuserAction implements Action {
 			if(isemail(username)){
 				try {
 					service.loginByJemail(username, password);
-					JuserDAO dao =(JuserDAO)DAOFactory.newInstance("JUSER_DAO_KEY");
-					try {
-						Juser user = dao.queryJuserByJemail(username);
-						session.setAttribute("juser", user);
-					} catch (DAOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					Juser user =service.searchjUserByJemail(username);
+					session.setAttribute("juser", user);
 					resp.sendRedirect(req.getContextPath()+"/view/jmei.jsp");
 				} catch (DAOException e) {
 					e.printStackTrace();
@@ -169,7 +210,6 @@ public class JuserAction implements Action {
 					service.loginByJte(ltel);
 					resp.sendRedirect(req.getContextPath()+"/view/jmei.jsp");
 				} catch (DAOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (NotHaveThisJuser e) {
 					session.setAttribute("error",e.getMessage());
@@ -233,7 +273,6 @@ public class JuserAction implements Action {
 			try {
 				resp.sendRedirect(req.getContextPath()+"/view/jmei.jsp");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} catch (DAOException e) {

@@ -22,9 +22,6 @@ body {
     width: 1090px;
     margin: 0 auto;
 }
-.header_top_box, .header_top_box a {
-    color: #6c6c6c;
-}
 .header_top_box {
     height: 28px;
     background: #f2f2f2;
@@ -566,4 +563,10 @@ input[Attributes Style] {
 }
 .site_switch .sc_index .current {
     background-color: #ed145b;
+}
+.header_top_left .signin {
+    color: #333;
+}
+.header_top_box, .header_top_box a {
+    color: #6c6c6c;
 }

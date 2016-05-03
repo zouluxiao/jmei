@@ -1032,3 +1032,32 @@ input.radiobox {
     font: 12px "ËÎÌו";
     margin: 12px auto;
 }
+.p_like {
+    overflow: hidden;
+    padding-top: 10px;
+}
+.liked {
+    background-position: 0 -24px;
+    color: #ed145b;
+}
+.btnlike {
+    background: rgba(0, 0, 0, 0) url("../images/personal/ilike.jpg") no-repeat scroll 0 0;
+    color: #000;
+    display: inline;
+    float: left;
+    height: 24px;
+    line-height: 22px;
+    margin-left: 14px;
+    position: relative;
+    text-decoration: none;
+    text-indent: 30px;
+    width: 120px;
+}
+.fav_product_list .btnunlike {
+    color: #999;
+    display: inline;
+    float: right;
+    margin-right: 5px;
+    margin-top: 3px;
+}
+

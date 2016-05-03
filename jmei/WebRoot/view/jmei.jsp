@@ -22,9 +22,9 @@
 			<div class="header_top_box">
 				<!--login-->
 				<ul class="header_top_left" id="headerTopLeft">
-					<li>欢迎来到聚美！</li>
-					<li><a href="">请登录</a></li>
-					<li><a href="">快速注册</a></li>
+						<li>欢迎来到聚美！</li>
+						<li><a href="login.jsp">请登录</a></li>
+						<li><a href="regist.jsp">快速注册</a></li>
 				</ul>
 				<!--login end-->
 				<!--city choose-->

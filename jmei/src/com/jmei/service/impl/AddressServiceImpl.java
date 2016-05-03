@@ -33,9 +33,7 @@ public class AddressServiceImpl implements AddressService {
 		//调用查找所有用户方法
 		List<Address> addresses=addressDAO.queryAllAdressByJid(jid);
 		//判断用户是否为空
-		if(addresses.size()==0){
-			throw new AddressIsNotExistException("没有用户！");
-		}
+		
 		return addresses;
 	}
 

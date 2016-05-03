@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.jmei.bean.Juser;
 import com.jmei.exception.DAOException;
 import com.jmei.exception.EmailHasExist;
+import com.jmei.exception.JuserIsNull;
 import com.jmei.exception.NotHaveThisJuser;
 import com.jmei.exception.TelHasExist;
 import com.jmei.exception.UserNameOrPwdException;
@@ -53,6 +54,64 @@ public class JuserAction implements Action {
 		}
 		if("addemail".equals(method)){
 			updateemail(req,resp);
+		}
+		if("updatepwd".equals(method)){
+			updatepwd(req,resp);
+		}
+		if("getmessage".equals(method)){
+			getmessage(req,resp);
+		}
+		
+	}
+	
+	//获取修改密码验证码
+	private void getmessage(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		//获取Session 将异常的消息保存到Session中最终显示到jsp页面上 提供给用户
+		HttpSession session = req.getSession();
+		Juser user = (Juser)session.getAttribute("juser");
+		String jtel = user.getJtel();
+		int verfyCode = Sendsms.getMessage(jtel);
+		session.setAttribute("verfyCodeupdatepwd", String.valueOf(verfyCode));
+		
+	}
+
+	//修改密码
+	private void updatepwd(HttpServletRequest req, HttpServletResponse resp) {
+		//获取页面信息
+		String telverify = req.getParameter("verify_code");
+		String pwd =req.getParameter("password");
+		String verify =req.getParameter("hash_code");
+		//获取Session 将异常的消息保存到Session中最终显示到jsp页面上 提供给用户
+		HttpSession session = req.getSession();
+				
+		if(telverify == null || !telverify.equals(session.getAttribute("verfyCodeupdatepwd"))){
+			session.setAttribute("error", "短信验证码错误!");
+		}else if(pwd ==null || !ispwd(pwd)){
+			session.setAttribute("error", "密码错误!");
+		}else if(verify == null || verify.equals(session.getAttribute("check"))){
+			session.setAttribute("error", "验证码错误!");
+		}else{
+			JuserService service =(JuserService)ServiceFactory.newInstance(JUSER_SERVICE_KEY);
+			Juser juser = (Juser)session.getAttribute("juser");
+			juser.setJpwd(pwd);
+			try {
+				service.updateOtherByJid(juser);
+				
+			} catch (DAOException e) {
+				e.printStackTrace();
+			} catch (JuserIsNull e) {
+				session.setAttribute("error",e.getMessage());
+				e.printStackTrace();
+			} catch (NotHaveThisJuser e) {
+				session.setAttribute("error",e.getMessage());
+				e.printStackTrace();
+			} catch (TelHasExist e) {
+				session.setAttribute("error",e.getMessage());
+				e.printStackTrace();
+			} catch (EmailHasExist e) {
+				session.setAttribute("error",e.getMessage());
+				e.printStackTrace();
+			}
 		}
 		
 	}

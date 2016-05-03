@@ -50,7 +50,7 @@ create table goods(
 --商品库存表的id的序列-
 drop sequence goods_seq;
 create sequence goods_seq start with 10000000 increment by 1;
-
+select * from goods;
 --4.商品的功效表--
 drop table goodsToEffect;
 create table goodsToEffect(
@@ -88,7 +88,7 @@ create table pic(
 --商品图片表的id的序列-
 drop sequence pic_seq;
 create sequence pic_seq start with 10000000 increment by 1;
-
+select * from pic;
 --8.订单表--
 drop table jorder;
 create table jorder(
@@ -153,6 +153,14 @@ create table collectionToGoods(
 --收藏商品表的id的序列--
 drop sequence cog_seq;
 create sequence cog_seq start with 10000000 increment by 1;
+
+
+insert into collectionToGoods values(cog_seq.nextval,10000060,10000026);
+insert into collectionToGoods values(cog_seq.nextval,10000060,10000027);
+insert into country values(country_seq.nextval,'韩国','Korea.jpg');
+select * from juser;
+select * from goods;
+select * from collectionToGoods 
 
 --12.收藏企业表--
 drop table collectionToBuser;
@@ -230,11 +238,13 @@ create table activity(
 drop sequence activity_seq;
 create sequence activity_seq start with 10000000 increment by 1;
 
+select * from address;
 --插入国家表--
 insert into country values(country_seq.nextval,'韩国','Korea.jpg');
 insert into country values(country_seq.nextval,'美国','America.jpg');
 insert into country values(country_seq.nextval,'日本','Japan.jpg');
 insert into country values(country_seq.nextval,'中国','China.jpg');
+insert into country values(country_seq.nextval,'法国','France.jpg');
 commit;
 select * from country
 
@@ -320,7 +330,9 @@ commit;
 insert into Buser values(bu_seq.nextval,'佰草集','baicaoji.jpg',0,'123456','简介暂无','baicaoji.jpg','baicaoji.jpg',0,10000004);
 insert into Buser values(bu_seq.nextval,'御泥坊','yunifang.jpg',0,'123456','简介暂无','yunifang.jpg','yunifang.jpg',0,10000004);
 commit;
+insert into Buser values(bu_seq.nextval,'欧莱雅','oulaiya.jpg',0,'123456','简介暂无','oulaiya.jpg','oulaiya.jpg',0,10000004);
 select * from Buser
+DELETE FROM Buser
 
 
 --插入商品表--
@@ -457,4 +469,20 @@ insert into pic values(pic_seq.nextval,'10000020.jpg',10000020,2);
 insert into pic values(pic_seq.nextval,'10000021.jpg',10000021,2);
 insert into pic values(pic_seq.nextval,'10000022.jpg',10000022,2);
 commit;
+select * from BUSER BU,GOODS GO
+where GO.BID=BU.BID and GO.GID = 10000026
 
+SELECT *　From COUNTRY
+
+select * from GOODS GO
+where GO.GID = 10000026
+
+SELECT CBID,JU.JID,JU.JNAME,JU.JPWD,JU.JEMAIL,
+JU.JTEL,JU.JGENDER,JU.JBIR,JU.JUSERISVAL,JU.JPIC,GO.GID,
+BU.BID,BU.BNAME,BU.BLOGO,BU.B_ISVAL,BU.BPWD,BU.BINTRODUCTION,BU.BPIC,BU.BMPIC,
+BU.COL_VAL,COU.COUNTRYID,COU.COUNTRY,COU.CPIC,
+PR.PID,PR.PNAME,PR.P_ISVAL,
+GO.BNUMBER,GO.PRI,GO.SALE_VAL,GO.COL_VAL,GO.UPTIME,GO.INTRODUCTION,
+GO.DETAILNAME 
+FROM COLLECTIONTOGOODS COL,JUSER JU,GOODS GO,BUSER BU,PRODUCT PR,COUNTRY COU
+WHERE COL.JID=JU.JID AND COL.GID=GO.GID AND GO.BID=BU.BID AND GO.PID=PR.PID AND COU.COUNTRYID=BU.COUNTRYID and JU.JID = 10000060

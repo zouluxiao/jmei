@@ -49,6 +49,7 @@ public class CollectionToGoodsServiceImpl implements CollectionToGoodsService {
 		//调用取消收藏方法
 		coGDAO.deleteCollectionGoodsByJid(jidt, cbid);
 	}
+	
 
 	@Override
 	public void addCollectionGoodsByJid(CollectionToGoods collectionGoods)

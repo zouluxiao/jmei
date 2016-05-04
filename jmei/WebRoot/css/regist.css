@@ -361,12 +361,3 @@ input[type="submit"] {
 .textbox_ui .invalid{
 	color:#999;
 }
-.textbox_ui input:focus{
-	border-color:#a5d4ed;
-	box-shadow:0 0 4px 1px rgba(32,157,230,0.4);
-}
-.blok1{ 
-	line-height: 1.5;
-    position: absolute;
-}
-

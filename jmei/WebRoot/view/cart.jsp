@@ -1,11 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     
-    <title>购物车</title>
+    <title>结算</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -14,10 +14,65 @@
 	<meta http-equiv="description" content="This is my page">
 
 	<link rel="stylesheet" type="text/css" href="../css/cart.css">
-	
-
-
   </head>
+  <script type="text/javascript">
+  	function dele(num){
+  		var obj = document.getElementById("tbody");
+  		
+  		//更新总价
+  		var objtxt = document.getElementById("txt_"+num);
+  		var total = document.getElementById("total_id");
+  	  	total.innerText = parseInt(total.innerText) - objtxt.value;
+  		//更新总数
+  		var it = document.getElementById("item_"+num);
+  		var sum = document.getElementById("total_pri");
+  		sum.innerText = parseInt(sum.innerText) - parseInt(it.innerText);
+  		//同步
+  		var group_price = document.getElementById("group_price");
+  		group_price.innerText = sum.innerText;
+  		//移除
+  	  	obj.removeChild(document.getElementById("tr_"+num));
+  	}
+  	//减少
+  	function sub(num){
+  		var obj = document.getElementById("txt_"+num);
+  		if(obj.value <= 0){
+  			obj.value = 0;
+  		}else{
+			obj.value = parseInt(obj.value) - 1;   
+			var total = document.getElementById("total_id");
+  	  		total.innerText = parseInt(total.innerText) - 1;
+  	  		//计算小记
+  	  		var it = document.getElementById("item_"+num);
+  	  		it.innerText = parseInt(document.getElementById("price_"+num).innerText)*parseInt(obj.value);
+  	  		//更新总价
+  	  		var sum = document.getElementById("total_pri");
+  	  		sum.innerText = parseInt(sum.innerText)-parseInt(document.getElementById("price_"+num).innerText);
+  	  		var group_price = document.getElementById("group_price");
+  	  		group_price.innerText = sum.innerText;
+  		}
+  	}
+  	//增加
+  	function add(num){
+  		var obj = document.getElementById("txt_"+num);
+  		if(obj.value > 10){
+  			obj.value = obj.value;
+  		}else{
+			obj.value = parseInt(obj.value) + 1;  
+			//计算小记
+	  		var it = document.getElementById("item_"+num);
+	  		it.innerText = parseInt(document.getElementById("price_"+num).innerText)*parseInt(obj.value);
+	  		//更新总数
+			var total = document.getElementById("total_id");
+		  	total.innerText = parseInt(total.innerText) + 1;
+		  	//更新总价
+	  		var sum = document.getElementById("total_pri");
+	  		sum.innerText = parseInt(sum.innerText)+parseInt(document.getElementById("price_"+num).innerText);
+	  		var group_price = document.getElementById("group_price");
+	  		group_price.innerText = sum.innerText;
+  		}
+  	}
+  </script>
   
   <body>
      <div class = "cart">
@@ -56,7 +111,7 @@
                   </span>--------------->
                   <span class = "cart_timer_out">已超过购物车商品保留时间，请尽快结算。</span>
                   [
-                   <a class = "cart_timer_tip float_box" href = "">
+                   <a class = "cart_timer_tip float_box">
                      ?
                      <!-------<div class = pop_box>
                         <span class = arrow_t_1>
@@ -116,18 +171,20 @@
                            <th class = "cart_option">操作</th>
                          </tr>
                      </thead>
-                   <tbody>
-                    <tr>
+                   <tbody id="tbody">
+                   <%-- ${sessionScope.ShoppingCart.goodsCart } --%>
+                   <c:forEach var="u" varStatus="s1" items="${sessionScope.ShoppingCart.goodsCart }">
+                    <tr id="tr_${s1.index }">
                       <td valign = "top">
                        <div class = "cart_item_desc clearfix">
    <!-----选择框不对-------------<input class = "js_item_selector" data-item-key="1057067_d160428p905688zc" data-app = "all" checked = "'checked'/" type="checkbox">
                          </input>------------->
                          <div class = "cart_item_desc_wrapper">
                          <a class = "cart_item_pic href="" target="_blank">
-                           <img src = "../images/cart/905688_60_60.jpg" alt = "美宝莲眼部及唇部卸妆液70ml"></img>
+                           <img src = "../images/goodspic/2/${sessionScope.pl[s1.index].picpname }" alt = "美宝莲眼部及唇部卸妆液70ml"></img>
                            <span class = "sold_out_pic png"></span>
                          </a>
-                          <a class = "cart_item_link" title="美宝莲眼部及唇部卸妆液70ml" href="" target="_blank">美宝莲眼部及唇部卸妆液70ml</a>
+                          <a class = "cart_item_link" title="美宝莲眼部及唇部卸妆液70ml" href="" target="_blank">${u.detailname }</a>
                          <p class="sku_info">
                            型号：
                            <span class="cart_item_attribute">70ml</span>
@@ -152,36 +209,37 @@
                          </td>
                          <td>
                             <div class = "cart_itim_price">
-                               <p class="jumei_price">25.00</p>
+                               <span id="price_${s1.index }" class="jumei_price" style="position: relative;top: -20px;text-align: center;">${u.price }</span>
                             </div>
                     
                          </td>
                          <td>
                              <div class="cart_item_num">
-                                <div class="item_quantity_editer clearfix" data-item-key="1057067_d160428p905688zc">
-                                   <span class = "decrease_one disabled">-</span>
-                                   <input class="item_quantity" value = "1" type="text"></input>
-                                   <span class="increase_one">+</span>
+                                <div class="item_quantity_editer clearfix"  style="width: 70px;margin: 0px auto;">
+                                   <span class = "decrease_one disabled" style="display: block;float: left;width: 15px;" onclick="sub(${s1.index});">-</span>
+                                   <input style="display: block;text-align: center;float: left;" class="item_quantity" value = "1" type="text" id="txt_${s1.index }"></input>
+                                   <span class="increase_one" style="float: left;width: 15px;" onclick="add(${s1.index});">+</span>
                                 </div>
                                   <div class = "item_shortage_tip"></div>
                              </div>
                          </td>
                          <td>
                             <div class = "cart_item_total">
-                               <p class="item_total_price">25.00</p>
+                               <span class="item_total_price" id="item_${s1.index }">${u.price }</span>
                             </div>
                          </td>
                          <td>
                              <div class="cart_item_option">
-                                <a class="icon_small delete_item png" data-item-key="1057067_d160428p905688zc" href="javascript:void(0)" title="删除">   
+                                <a onclick="dele(${s1.index});" class="icon_small delete_item png" data-item-key="1057067_d160428p905688zc" href="javascript:void(0)" title="删除">   
                                 </a>
                              </div>
                          </td>
                       </tr>
+                      </c:forEach>
                    </tbody>
                       <tfoot>
                          <tr>
-                            <td colspan="5">商品金额:<span class="group_total_price">￥25.00</span></td>   
+                            <td colspan="5">商品金额:￥<span class="group_total_price" id="group_price">${sessionScope.ShoppingCart.sum }</span></td>   
                          </tr>
                       </tfoot>
                   </table>        
@@ -199,10 +257,10 @@
  
                      
                       共 
-                    <span class="total_amount">1</span>
+                    <span class="total_amount" id="total_id">${sessionScope.ShoppingCart.goodsCart.size() }</span>
                       件商品    商品应付总额：
-                    <span class="total_price">￥25.00</span>
-                    <a id="go_to_order" class="btn" href="javascript:;">去结算</a>
+                   	 ￥<span class="total_price" id="total_pri">${sessionScope.ShoppingCart.sum }</span>
+                    <a id="go_to_order" class="btn" href="selectAddress.jsp">去结算</a>
                       
                  </div>
 <!---------------------------<div class = "content_footer clearfix">
@@ -216,13 +274,13 @@
         <div id="JS_recommend_box" class="recommend_box">
             <div class="nav_tips">
               <a class="JS_recommend_nav" href="javascript:;">
-                                       购买的还买了
+                                       <!-- 购买的还买了 -->
               <i class="right_border"></i>                           
               </a>
-              <a class="JS_recommend_nav active" href="javascript:;">今日备受欢迎</a>
+              <a class="JS_recommend_nav active" href="javascript:;"><!-- 今日备受欢迎 --></a>
             </div>
         </div>
-        <div style="margin-left: auto; margin-right: auto; width: 51%;margin-top: -20px">
+        <div style="display:none;margin-left: auto; margin-right: auto; width: 51%;margin-top: -20px">
           <ul class="clearfix JS_recommend_cont" style="display: block;">
              <li class="list">
                 <div>

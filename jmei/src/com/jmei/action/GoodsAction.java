@@ -1,5 +1,6 @@
 package com.jmei.action;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -39,6 +40,8 @@ import com.jmei.service.PicService;
  * method=priceDesc 通过商品的价格降序查询
  * method=saleDesc 通过商品的销量降序查询
  * method=colDesc 通过商品的人气（收藏量）查询
+ * method=account 结账
+ * method = setKey 保存搜索的关键字
  * @author 汤亮
  *	2016-04-29
  */
@@ -70,7 +73,51 @@ public class GoodsAction implements Action {
 			saleDesc(req,resp);
 		}else if("colDesc".equals(method)){
 			colDesc(req,resp);
+		}else if("account".equals(method)){
+			account(req,resp);
+		}else if("setKey".equals(method)){
+			setKey(req,resp);
 		}
+	}
+
+	/**
+	 * 保存搜索的关键字
+	 * @param req
+	 * @param resp
+	 */
+	private void setKey(HttpServletRequest req, HttpServletResponse resp) {
+		BufferedReader buf = null;
+		try {
+			buf = req.getReader();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String key = null;
+		try {
+			key = buf.readLine();
+			//key = new String(key.getBytes("ISO-8859-1")."utf-8");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String[] keys = key.split("=");
+		key = keys[1];
+		//获得session
+		HttpSession session = req.getSession();
+		if(key != null && !"".equals(key)){
+			session.setAttribute("skey", key);
+		}
+		System.out.println("key:"+key);
+	}
+
+	/**
+	 * 对商品进行结账
+	 * @param req 用户的请求
+ 	 * @param resp 服务端做出的响应
+	 */
+	private void account(HttpServletRequest req, HttpServletResponse resp) {
+		
 	}
 
 	/**
@@ -476,7 +523,7 @@ public class GoodsAction implements Action {
 		req.setCharacterEncoding("utf-8");
 		//获取的数据
 		String key = req.getParameter("searchKey");
-		
+		key = new String(key.getBytes("ISO-8859-1"),"utf-8");
 		String curPage = req.getParameter("curPage");
 		if(curPage == null){
 			curPage = "0";

@@ -259,7 +259,7 @@
 											</span>
 										</div>
 										<div class="fl" style="position:relative;top:10px;">
-											<span class="submit_btn" style="cursor:pointer;font-weight:normal;font-size:18px;">确认交易</span>
+											<a href="xiaojingling.imwork.net:32948/java-demo/mall.jsp" class="submit_btn" style="cursor:pointer;font-weight:normal;font-size:18px;">确认交易</a>
 										</div>
 									</div>
 								</div>

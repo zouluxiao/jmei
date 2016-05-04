@@ -229,30 +229,4 @@ public class JuserServiceImpl implements JuserService {
 			throw new NotHaveThisJuser("用户不存在!");
 	}
 
-	@Override
-	public Juser searchjUserByJtel(String jtel) throws DAOException,
-			NotHaveThisJuser {
-		//1.创建对象JuserDAOImpl对象
-		JuserDAO userDAO = (JuserDAO)DAOFactory.newInstance(JUSER_DAO_KEY);
-		//调用通过电话号码查询用户方法
-		Juser jusers = userDAO.queryJuserByJtel(jtel);
-		if(jusers == null)
-			throw new NotHaveThisJuser("该用户不存在!");
-		return jusers;
-	}
-
-	@Override
-	public Juser searchjUserByJemail(String jemail) throws DAOException,
-			NotHaveThisJuser {
-		//1.创建对象JuserDAOImpl对象
-		JuserDAO userDAO = (JuserDAO)DAOFactory.newInstance(JUSER_DAO_KEY);
-		//调用通过电话号码查询用户方法
-		Juser jusers = userDAO.queryJuserByJemail(jemail);
-		
-		if(jusers == null)
-			throw new NotHaveThisJuser("该用户不存在!");
-		
-		return jusers;
-	}
-
 }

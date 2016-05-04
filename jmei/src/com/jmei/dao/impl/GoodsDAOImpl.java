@@ -625,6 +625,15 @@ public class GoodsDAOImpl implements GoodsDAO {
 				+ " FROM GOODS g,BUSER b,PRODUCT p, country c"
 				+ " WHERE g.bid = b.bid and p.pid = g.pid and c.countryid = b.countryid and"
 				+ " GETHZPY.GETHZPYCAP(g.detailname) like ?";
+		String sql2 = "SELECT g.GID,g.BNUMBER,g.PRI,g.SALE_VAL,"
+				+ "g.COL_VAL,g.UPTIME,g.INTRODUCTION,"
+				+ "g.DETAILNAME,b.bid, b.bname, b.blogo,"
+				+ " b.b_isval, b.bpwd, b.bintroduction, "
+				+ "b.bpic, b.bmpic, b.col_val,p.pid, p.pname,"
+				+ " p.p_isval,c.countryid, c.country, c.cpic"
+				+ " FROM GOODS g,BUSER b,PRODUCT p, country c"
+				+ " WHERE g.bid = b.bid and p.pid = g.pid and c.countryid = b.countryid and"
+				+ " g.detailname like ?";
 		Connection conn = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -663,6 +672,43 @@ public class GoodsDAOImpl implements GoodsDAO {
 				Product product = new Product(pid, pname, p_isval);
 				Goods goods = new Goods(GID, buser, product, BNUMBER, PRI, SALE_VAL, bcol_val, UPTIME, INTRODUCTION, DETAILNAME);
 				list.add(goods);
+			}
+			//如果简拼没有搜索出来
+			if(list.size() == 0){
+				pstm = conn.prepareStatement(sql2);
+				pstm.setString(1, "%"+detail+"%");
+				rs = pstm.executeQuery();
+				list = new ArrayList<Goods>();
+				while(rs.next()){
+					int GID = rs.getInt("GID");
+					int BNUMBER = rs.getInt("BNUMBER");
+					double PRI = rs.getDouble("PRI");
+					int SALE_VAL = rs.getInt("SALE_VAL");
+					int COL_VAL = rs.getInt("COL_VAL");
+					String UPTIME = rs.getString("UPTIME");
+					String INTRODUCTION = rs.getString("INTRODUCTION");
+					String DETAILNAME = rs.getString("DETAILNAME");
+					int bid = rs.getInt("bid");
+					String bname = rs.getString("bname");
+					String blogo = rs.getString("blogo");
+					int b_isval = rs.getInt("b_isval");
+					String bpwd = rs.getString("bpwd");
+					String bintroduction = rs.getString("bintroduction");
+					String bpic = rs.getString("bpic");
+					String bmpic = rs.getString("bmpic");
+					int bcol_val = rs.getInt(17); 
+					int pid = rs.getInt("pid");
+					String pname = rs.getString("pname");
+					int p_isval = rs.getInt("p_isval");
+					int countryid = rs.getInt("countryid");
+					String country = rs.getString("country");
+					String cpic = rs.getString("cpic");
+					Country cou = new Country(countryid, country, cpic);
+					Buser buser = new Buser(bid, bname, blogo, b_isval, bpwd, bintroduction, bpic, bmpic, COL_VAL, cou);
+					Product product = new Product(pid, pname, p_isval);
+					Goods goods = new Goods(GID, buser, product, BNUMBER, PRI, SALE_VAL, bcol_val, UPTIME, INTRODUCTION, DETAILNAME);
+					list.add(goods);
+				}
 			}
 			return list;
 		}catch(SQLException e){

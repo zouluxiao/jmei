@@ -8,12 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jmei.action.Action;
-import com.jmei.action.AddressAction;
-import com.jmei.action.CollectionToBuserAction;
-import com.jmei.action.CollectionToGoodsAction;
 import com.jmei.action.GoodsAction;
 import com.jmei.action.JorderAction;
 import com.jmei.action.JuserAction;
+import com.jmei.action.PicAction;
 import com.jmei.action.ShoppingCartAction;
 
 public class ActionServlet extends HttpServlet{
@@ -41,19 +39,11 @@ public class ActionServlet extends HttpServlet{
 		}else if("/order.do".equalsIgnoreCase(servletPath)){
 			Action action = new JorderAction();
 			action.execute(req, resp);
-
-		}else if("/address.do".equals(servletPath)){
-			Action action = new AddressAction();
-			action.execute(req, resp);
-
 		}else if("/ShoppingCart.do".equalsIgnoreCase(servletPath)){
 			Action action = new ShoppingCartAction();
 			action.execute(req, resp);
-		}else if("/collectiongoods.do".equals(servletPath)){
-			Action action = new CollectionToGoodsAction();
-			action.execute(req, resp);
-		}else if("/collectionbuser.do".equals(servletPath)){
-			Action action = new CollectionToBuserAction();
+		}else if("/ajaxcart.do".equalsIgnoreCase(servletPath)){
+			Action action = new PicAction();
 			action.execute(req, resp);
 		}
 		

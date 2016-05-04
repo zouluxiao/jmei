@@ -30,26 +30,6 @@ public interface JuserService {
 	public Juser searchjUserByJid(int jid)throws DAOException,NotHaveThisJuser;
 	
 	/**
-	 * 根据普通用户电话号码查询用户基本信息
-	 * @param jtel 普通用户电话号码
-	 * @return Juser 返回的Juser对象
-	 * @exception DAOException 数据库异常
-	 * @exception NotHaveThisJuser 没有该用户异常
-	 * 
-	 **/
-	public Juser searchjUserByJtel(String jtel)throws DAOException,NotHaveThisJuser;
-	
-	/**
-	 * 根据普通用户邮箱查询用户基本信息
-	 * @param jemail 普通用户邮箱
-	 * @return Juser 返回的Juser对象
-	 * @exception DAOException 数据库异常
-	 * @exception NotHaveThisJuser 没有该用户异常
-	 * 
-	 **/
-	public Juser searchjUserByJemail(String jemail)throws DAOException,NotHaveThisJuser;
-	
-	/**
 	 * 根据普通用户名查询用户基本信息
 	 * @param jname 普通用户名
 	 * @return Juser 返回的Juser对象

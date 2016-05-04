@@ -18,14 +18,4 @@
   	<servlet-name>actionServlet</servlet-name>
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
-  
-  <!-- 显示验证码的Servlet -->
-	<servlet>
-		<servlet-name>verify</servlet-name>
-		<servlet-class>com.jmei.utils.verifyServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>verify</servlet-name>
-		<url-pattern>/verifyServlet</url-pattern>
-	</servlet-mapping>
 </web-app>

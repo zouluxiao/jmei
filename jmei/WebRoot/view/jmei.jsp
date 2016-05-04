@@ -15,34 +15,17 @@
 <link rel="stylesheet" type="text/css" href="../css/jmeihead.css"></link>
 <link rel="stylesheet" type="text/css" href="../css/foreshow.css"></link>
 <link rel="stylesheet" type="text/css" href="../css/foot.css"></link>
-<script type="text/javascript">
-	function getorderlist(){
-		alert("daozhel");
-		 var xhr;
-      	 if(window.XMLHttpRequest){
-      	 	xhr = new XMLHttpRequest(); //firefox
-      	 }else if(window.ActiveXObject){
-      	 	xhr = new ActiveXObject("Microsoft.XMLHTTP");
-      	 }
-      	 var url="${pageContext.request.contextPath}/order.do?method=alllist"; 
-      	 xhr.open("GET",url);
-      	 //3.设置请求的头部信息   GET不许设置头部信息
-      	 //xhr.setRequestHeader("enctype","application/x-www-form-urlencoded");
-      	 
-      	//4.发送消息   GET: 
-      	xhr.send(null);
-	}
-</script>
 </head>
 <body style="width:1349px;height: 100%;">
+	<a href="//m.kuaidi100.com" target="_blank">快递查询</a>
 	<div class="header header_wide_lv2">
 		<div class="header_top">
 			<div class="header_top_box">
 				<!--login-->
 				<ul class="header_top_left" id="headerTopLeft">
-						<li>欢迎来到聚美！</li>
-						<li><a href="login.jsp">请登录</a></li>
-						<li><a href="regist.jsp">快速注册</a></li>
+					<li>欢迎来到聚美！</li>
+					<li><a href="">请登录</a></li>
+					<li><a href="">快速注册</a></li>
 				</ul>
 				<!--login end-->
 				<!--city choose-->
@@ -63,7 +46,7 @@
 					<li><a href="">订单查询</a></li>
 					<li><a href=""> <s class="icon_favorite"></s>收藏的商品
 					</a></li>
-					<li class="item_ijumei"><a href="personal.jsp" onclick="getorderlist();">我的聚美 <s
+					<li class="item_ijumei"><a href="">我的聚美 <s
 							class="icon_arrow_back"></s>
 					</a> <i class="icon_arrow_back"></i></li>
 					<li class="item_mobile"><a href=""> <span class="line"></span>

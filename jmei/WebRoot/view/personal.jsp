@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -12,33 +11,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="../css/jmeihead.css">
 	<link rel="stylesheet" type="text/css" href="../css/personal.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/foot.css"/>
-	<link rel="shortcut icon" href="../images/login/logo.ico" type="image/x-icon">
-    <link rel="icon" href="../images/login/logo.ico" type="image/x-icon">
 	<script type="text/javascript" src="../js/personal.js"></script>
 	<script type="text/javascript">
-		function getmesaage(){
-			 //1.创建xhr对象 
-	      	 var xhr;
-	      	 if(window.XMLHttpRequest){
-	      	 	xhr = new XMLHttpRequest(); //firefox
-	      	 }else if(window.ActiveXObject){
-	      	 	xhr = new ActiveXObject("Microsoft.XMLHTTP");
-	      	 }
-	      	 var url="${pageContext.request.contextPath}/user.do?method=getaddemail"; 
-	      	 xhr.open("GET",url);
-	      	 //3.设置请求的头部信息   GET不许设置头部信息
-	      	 //xhr.setRequestHeader("enctype","application/x-www-form-urlencoded");
-	      	 
-	      	 //4.发送消息   GET:
-	      	 xhr.send(null);
-	      	 //xhr.send("regtel="+document.getElementById("regtel").value);
-		}
-		
-		function change(){
-    		var imageObj =document.getElementById("change_code");
-    		var date=new Date();
-    		imageObj.src="/jmei/verifyServlet?rand="+date.getTime();
-    	}
 		function getid(id){
 			return document.getElementById(id);
 		}
@@ -54,8 +28,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var obj3 = getid("personalinfo");
 			var obj4 = getid("updatepwd");
 			var obj5 = getid("address");
-			var obj11= getid("updateemail");
-			obj11.className="non";
 			obj1.className ="list selected";
 			obj2.className ="list";
 			obj3.className ="list";
@@ -79,8 +51,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var obj3 = getid("personalinfo");
 			var obj4 = getid("updatepwd");
 			var obj5 = getid("address");
-			var obj11= getid("updateemail");
-			obj11.className="non";
 			obj1.className ="list";
 			obj2.className ="list selected";
 			obj3.className ="list";
@@ -91,7 +61,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			obj8.className ="non";
 			obj9.className ="non";
 			obj10.className ="non";
-			getgood();
 			
 		}
 		function onclick3(){
@@ -105,8 +74,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var obj3 = getid("personalinfo");
 			var obj4 = getid("updatepwd");
 			var obj5 = getid("address");
-			var obj11= getid("updateemail");
-			obj11.className="non";
 			obj1.className ="list";
 			obj2.className ="list";
 			obj3.className ="list selected";
@@ -117,6 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			obj8.className ="blok";
 			obj9.className ="non";
 			obj10.className ="non";
+			
 		}
 		function onclick4(){
 			var obj6 = getid("myorder");
@@ -129,8 +97,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var obj3 = getid("personalinfo");
 			var obj4 = getid("updatepwd");
 			var obj5 = getid("address");
-			var obj11= getid("updateemail");
-			obj11.className="non";
 			obj1.className ="list";
 			obj2.className ="list";
 			obj3.className ="list";
@@ -154,8 +120,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var obj3 = getid("personalinfo");
 			var obj4 = getid("updatepwd");
 			var obj5 = getid("address");
-			var obj11= getid("updateemail");
-			obj11.className="non";
 			obj1.className ="list";
 			obj2.className ="list";
 			obj3.className ="list";
@@ -166,133 +130,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			obj8.className ="non";
 			obj9.className ="non";
 			obj10.className ="blok";
-			getaddress();
-		}
-		function getgood(){
-			//alert("到这里了");
-			 //1.创建xhr对象 
-	      	 var xhr;
-	      	 if(window.XMLHttpRequest){
-	      	 	xhr = new XMLHttpRequest(); //firefox
-	      	 }else if(window.ActiveXObject){
-	      	 	xhr = new ActiveXObject("Microsoft.XMLHTTP");
-	      	 }
-	      	 var url="${pageContext.request.contextPath}/collectiongoods.do?method=getgoods"; 
-	      	 xhr.open("GET",url);
-	      	 //3.设置请求的头部信息   GET不许设置头部信息
-	      	 //xhr.setRequestHeader("enctype","application/x-www-form-urlencoded");
-	      	// alert("到这里了");
-	      	 //4.发送消息   GET:
-	      	 xhr.send(null);
-	      	 //xhr.send("regtel="+document.getElementById("regtel").value);
-	      	 //5.监听状态值和状态码
-	       	 xhr.onreadystatechange = function(){
-	       	 	 if(xhr.readyState == 4){ //浏览器的接收到了内容
-	       	 	 	 if(xhr.status == 200) { //浏览器获取了正确响应信息
-	       	 	 	 	  //6.获取响应的内容 (文本:responseText Xml:responseXML)
-	       	 	 	 	  var text = xhr.responseText;
-	       	 	 	 }	
-	       	 	 }
-	       	 }
-		}
-		function getaddress(){
-			//alert("到这里了");
-			 //1.创建xhr对象 
-	      	 var xhr;
-	      	 if(window.XMLHttpRequest){
-	      	 	xhr = new XMLHttpRequest(); //firefox
-	      	 }else if(window.ActiveXObject){
-	      	 	xhr = new ActiveXObject("Microsoft.XMLHTTP");
-	      	 }
-	      	 var url="${pageContext.request.contextPath}/address.do?method=getaddress"; 
-	      	 xhr.open("GET",url);
-	      	 //3.设置请求的头部信息   GET不许设置头部信息
-	      	 //xhr.setRequestHeader("enctype","application/x-www-form-urlencoded");
-	      	 
-	      	 //4.发送消息   GET:
-	      	 xhr.send(null);
-	      	 //xhr.send("regtel="+document.getElementById("regtel").value);
-		}
-		function getmessage(){
-			 var xhr;
-	      	 if(window.XMLHttpRequest){
-	      	 	xhr = new XMLHttpRequest(); //firefox
-	      	 }else if(window.ActiveXObject){
-	      	 	xhr = new ActiveXObject("Microsoft.XMLHTTP");
-	      	 }
-	      	 var url="${pageContext.request.contextPath}/user.do?method=getmessage"; 
-	      	 xhr.open("GET",url);
-	      	 //3.设置请求的头部信息   GET不许设置头部信息
-	      	 //xhr.setRequestHeader("enctype","application/x-www-form-urlencoded");
-	      	 
-	      	//4.发送消息   GET: 
-	      	xhr.send(null);
-	      	 //xhr.send("tel="+document.getElementById("regtel").value);
-		}
-		function email(){
-			var obj6 = getid("myorder");
-			var obj7 = getid("mycollection");
-			var obj8 = getid("personal");
-			var obj9 = getid("mypwd");
-			var obj10 = getid("myaddress");
-			var obj1 = getid("order");
-			var obj2 = getid("collection");
-			var obj3 = getid("personalinfo");
-			var obj4 = getid("updatepwd");
-			var obj5 = getid("address");
-			var obj11= getid("updateemail");
-			obj11.className="blok";
-			obj1.className ="list";
-			obj2.className ="list";
-			obj3.className ="list selected";
-			obj4.className ="list";
-			obj5.className ="list";
-			obj6.className ="non";
-			obj7.className ="non";
-			obj8.className ="non";
-			obj9.className ="non";
-			obj10.className ="non";
-		}
-		function deleteaddress(){
-			 //1.创建xhr对象 
-	      	 var xhr;
-	      	 if(window.XMLHttpRequest){
-	      	 	xhr = new XMLHttpRequest(); //firefox
-	      	 }else if(window.ActiveXObject){
-	      	 	xhr = new ActiveXObject("Microsoft.XMLHTTP");
-	      	 }
-	      	 var url="${pageContext.request.contextPath}/address.do?method=deleteaddress"; 
-	      	 xhr.open("POST",url);
-	      	 //3.设置请求的头部信息   GET不许设置头部信息
-	      	 xhr.setRequestHeader("enctype","application/x-www-form-urlencoded");
-	      	 
-	      	 //4.发送消息   GET: xhr.send(null);
-	      	 xhr.send("aid="+document.getElementById("myaid").value);
-	      	 
-	      	 //alert("删除成功!");
-	      	 
-	      	 
-		}
-		function collectionbuser(){
-			var obj1 = getid("goods1");
-			var obj2 = getid("buser1");
-			var obj3 = getid("collectiongoods");
-			var obj4 = getid("buser");
-			obj1.className = " ";
-			obj2.className ="curr";
-			obj3.className="non";
-			obj4.className="blok";
-			
-		}
-		function collectiongoods(){
-			var obj1 = getid("goods1");
-			var obj2 = getid("buser1");
-			var obj3 = getid("collectiongoods");
-			var obj4 = getid("buser");
-			obj1.className = "curr";
-			obj2.className =" ";
-			obj3.className="blok";
-			obj4.className="non";
 			
 		}
 	</script>
@@ -303,23 +140,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="header_top_box" style="width:960px;">
 				<!--login-->
 				<ul class="header_top_left" id="headerTopLeft">
-					<c:if test="${not empty juser}">
-						<li class="signin">
-						欢迎您，
-						<span class="col_jumei">
-						<a target="_blank">${juser.jname}</a>
-						</span>
-						[
-						<a class="signout">退出</a>
-						]
-						</li>
-						
-					</c:if>
-					<c:if test="${empty juser}">
-						<li>欢迎来到聚美！</li>
-						<li><a href="login.jsp">请登录</a></li>
-						<li><a href="regist.jsp">快速注册</a></li>
-					</c:if>
+					<li>欢迎来到聚美！</li>
+					<li><a href="">请登录</a></li>
+					<li><a href="">快速注册</a></li>
 				</ul>
 				<!--login end-->
 				<!--city choose-->
@@ -373,12 +196,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="channel_nav_box" >
 				<div class="channel_nav_list_wrap" style="width:960px;">
 					<ul class="channel_nav_list">
-						<li class="current"><a href="jmei.jsp" class="home">首页</a></li>
+						<li class="current"><a href="" class="home">首页</a></li>
 						<li class=""><a href="">极速免税店</a></li>
 						<li class="gif_301_wrap"><a href="" class="gif_301"> <img
 								src="../images/jmeihead/muy1.gif"></img>
 						</a></li>
-						<li class=""><a href="mail.jsp">美妆商城<b></b></a></li>
+						<li class=""><a href="">美妆商城<b></b></a></li>
 						<li class="gif_301_wrap"><a href="" class="gif_301"> <img
 								src="../images/jmeihead/lux2.jpg"></img>
 						</a></li>
@@ -417,12 +240,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<img src="..//images/personal/64_64.png">
 				</a>
 				<p class="nickname">
-					<a target="_blank" href="" style="padding-left:0;line-height: 1.8;color:#ed145b" id="username">${sessionScope.juser.jname}</a>
+					<a target="_blank" href="" style="padding-left:0;line-height: 1.8;color:#ed145b" id="username">JM153AWHW0309</a>
 				</p>
 				<p>
 					<a href="" target="_blank" style="padding-left:0;line-height: normal;">普通会员</a>
 				</p>
-				<p id="juserid" class="uid">用户ID:${sessionScope.juser.jid}</p>
+				<p id="juserid" class="uid">用户ID: 106073332</p>
 			</div>
 			<h2>
 				<b></b>
@@ -541,73 +364,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="content">
 				<div class="filter">
 					<a class="curr"  id="orderalllist" onclick="ajax();">全部订单</a>
-					<a class="" id="waitlist" >等待付款</a>
+					<a class="" id="waitlist">等待付款</a>
 					<a class="" id="buylist">已付款</a>
 					<a class="" id="endlist">交易完成</a>
 					<a class="">预售订单</a>
 				</div>
-				<c:if test="${not empty orderalllist}">
-					<table id="order-list" class="order_table">
-					<tbody>
-							<tr class="order_list_title">
-								<th style="width: 191px">订单信息</th>
-								<th style="width: 80px">订购商品</th>
-								<th style="width: 40px">件数</th>
-								<th style="width: 80px">单价</th>
-								<th style="width: 70px">商品操作</th>
-								<th style="width: 120px">订单状态</th>
-								<th style="width: 90px">订单操作</th>
-							</tr>
-							<c:forEach var="orderlist" items="${sessionScope.orderalllist}">
-							<c:forEach var="pics" items="${sessionScope.pics}">
-								<tr>
-									<td class="order_info_td">
-										<p class="orderList_global"></p>
-										<p>交易订单号750657684</p>
-										<p>商品金额:${orderlist.goods.price}*${orderlist.goods.price.onumber}(免运费)</p>
-										<p>由 聚美极速免税店 发货</p>
-									</td>
-									<td class="item_title">
-										<a title="贝德玛润妍保湿喷雾300ml" target="_blank" href="http://item.jumeiglobal.com/ht160420p1596595t2.html">
-											<img alt="${orderlist.goods.introduction}" src="../images/goodspic/2/${pics.picpname}">
-										</a>
-									</td>
-									<td>${orderlist.goods.price.onumber}</td>
-									<td>￥${orderlist.goods.price}</td>
-									<td></td>
-									<td>
-										<c:if test="${orderlist.is_Val}==0">
-											已取消
-										</c:if>
-										<c:if test="${orderlist.is_Val}==1">
-											等待付款
-										</c:if>
-										<c:if test="${orderlist.is_Val}==2">
-											已付款
-										</c:if>
-										<c:if test="${orderlist.is_Val}==3">
-											交易完成
-										</c:if>
-									</td>
-									<td>
-										<p>
-											<a>查看详情</a>
-										</p>
-									</td>
-								</tr>
-								<tr class="separator">
-									<td colspan="7"></td>
-								</tr>
-							</c:forEach>
-							</c:forEach>	
-					</tbody>
-					</table>
-				</c:if>
-				<c:if test="${empty orderalllist}">
-					<div class="null_info">
-						<h2>您当前没有订单</h2>
-					</div>		
-				</c:if>
+				<table id="order-list" class="order_table">
+				<tbody>
+					<tr class="order_list_title">
+						<th style="width: 191px">订单信息</th>
+						<th style="width: 80px">订购商品</th>
+						<th style="width: 40px">件数</th>
+						<th style="width: 80px">单价</th>
+						<th style="width: 70px">商品操作</th>
+						<th style="width: 120px">订单状态</th>
+						<th style="width: 90px">订单操作</th>
+					</tr>
+					<td class="order_info_td"></td>
+					<td class="item_title"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<tr class="separator">
+						<td colspan="7"></td>
+					</tr>
+				</tbody>
+				</table>
+				<div class="null_info non" id="null_info">
+					<h2>${sessionScope.error}</h2>
+				</div>
 				<a href="#" class="backtotop">
 					<b></b>
 					回到顶部
@@ -747,15 +534,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="content myfav">
 				<div class="notice_content">收藏心仪的产品或品牌，方便你随时找到它们，也有助于根据你的收藏给你更加贴心的推荐</div>
 				<div class="filter">
-					<a class="curr" id="goods1" onclick="collectiongoods();" herf="${pageContext.request.contextPath}/collectiongoods.do?method=getgoods">我收藏的产品</a>
-					<a href="${pageContext.request.contextPath}/collectionbuser.do?method=getcollectionbuser" onclick="collectionbuser();" id="buser1">我收藏的品牌</a>
+					<a class="curr" href="http://i.jumei.com/i/product/fav_products">我收藏的产品</a>
+					<a href="http://i.jumei.com/i/product/fav_brands">我收藏的品牌</a>
 				</div>
-				<div id="collectiongoods" class="blok" >
+				<div id="fav_product_list">
 					<div class="fav_product_container faved">
 						<div class="fav_product_head">
 							<span class="fph_tit">
 								您共收藏了
-								<label class="pink">${sessionScope.collectiontogoods.size()}</label>
+								<label class="pink">1</label>
 								个产品 
 							</span>
 							<div class="head_page">
@@ -767,105 +554,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<a href="" class="hp_next"></a>
 							</div>
 						</div>
-						<c:if test="${not empty collectiontogoods}">
-							<div class="fav_product_list">
-								<ul>
-									<c:forEach var="cg" items="${sessionScope.collectiontogoods}">
-									<c:forEach var="pic" items="${sessiobScope.pic}">
-										<li class="fav_deal" style="border: 3px solid rgb(255, 255, 255);">
-											 
-												<a href="" class="img_wrap">
-													<img src="../images/goodspic/3/${pic}"/>
-												</a>
-											
-											<p class="pro_tit">
-												<a href="">${cg.goods.introduction}</a>
-											</p>
-											<a href="" class="pro_price  soldout ">
-												<strong>
-													<span>￥</span>
-														${cg.goods.price}
-												</strong>
-											</a>
-											<p class="p_like" style="display: none;">
-												<a class="btnlike liked" href="javascript:;">
-												<span class="ilike_text">已收藏</span>
-												<span style="color: #999;">
-												(
-												<span class="ilike_num">1238</span>
-												)
-												</span>
-												</a>
-												<a class="btnunlike" pid="2543097" href="javascript:;">取消收藏</a>
-											</p>
-										</li>
-									</c:forEach> 
-									</c:forEach>
-								</ul>
-							</div>
-						</c:if>
-					</div>
-				</div>
-				<div id="buser" class="non">
-				<c:if test="${not empty buserlist}">
-					<div class="fav_product_head">
-						<span class="fph_tit">
-							您共收藏了
-							<span class="status_red">2</span>
-							个品牌
-						</span>
-						<div class="head_page">
-							<div style="float:left; display:inline;margin-right:5px;">
-							<span class="pink">1</span>
-							/1页
-							</div>
-							<a class="hp_prev" href="javascript:;"></a>
-							<a class="hp_next" href="javascript:;"></a>
-						</div>
-					</div>
-					<div class="fav_brands_list" id="">
-						<div class="fav_brands_item">
-						 	<c:forEach var="bus" items="${buserlist}">
-							<div class="fav_brand">
-								<a class="img_wrap">
-								   <img width="140" height="70" alt="" src="../images/Buser/logo/${bus.buser.bname}/${bus.buser.blogo}">
-								</a>
-								<p class="brand_tit">
-									<a target="_blank">${bus.buser.bname}</a>
-								</p>
-								<p class="sale_count" style="padding-top:20px;">
-									今日特卖:
-									<span class="pink">0</span>
-									件
-								</p>
-								<p class="sale_count">
-									美妆商城:
-									<span>0</span>
-									件
-								</p>
-								<p class="p_like">
-									<a class="btnlike liked" href="javascript:;">
-									<span class="ilike_text">已收藏</span>
-									<span style="color: #999;">
-									(
-									<span class="ilike_num">230</span>
-									)
-									</span>
+						<div class="fav_product_list">
+							<ul>
+								<li class="fav_deal" style="border: 3px solid rgb(255, 255, 255);">
+									<a href="" class="img_wrap">
+										<img src="">
 									</a>
-								</p>
-								<p class="p_unlike">
-									<a class="btnunlike grey" bid="10883" href="javascript:;">取消收藏</a>
-								</p>
-							</div>
-							</c:forEach>
+									<p class="pro_tit">
+										<a href=""></a>
+									</p>
+									<a href="" class="pro_price  soldout ">
+										<strong>
+											<span>￥</span>
+
+										</strong>
+									</a>
+								</li>
+							</ul>
 						</div>
 					</div>
-				</c:if>
-				<c:if test="${empty buserlist}">
-					<div class="null_info">
-						<h2>您没有收藏任何企业喔!</h2>
-					</div>
-				</c:if>
 				</div>
 			</div>
 		</div>
@@ -884,19 +591,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</span>
 							用户名
 						</label>
-						<input type="text" id="personname" class="t_input" value="${sessionScope.juser.jname}" name="username" size="30" required="">
+						<input type="text" id="personname" class="t_input" value="JM153AWHW0309" name="username" size="30" required="">
 					</div>
 					<dl class="formlist">
 						<dt>Email</dt>
 						<dd>
 							<span class="data">您还未绑定邮箱</span>
-							<a class="btn_mid_pink" onclick="email();">立即绑定</a>
+							<a href="" class="btn_mid_pink">立即绑定</a>
 						</dd>
 					</dl>
 					<dl class="formlist" style="margin-top:16px;">
 						<dt>手机号</dt>
 						<dd>
-							<span class="data" id="ptel">${sessionScope.juser.jtel}
+							<span class="data" id="ptel">153****0309
 							</span>
 							<a href="" target="_blank">修改</a>
 							<span class="hint">已验证</span>
@@ -1149,50 +856,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</form>
 			</div>
 		</div>
-		<div id="updateemail" class="non">
-			<h1>修改邮箱</h1>
-			<div class="content change_email">
-				<div class="notice_content">正确的邮箱，可帮助您进行安全验证等操作，有效保护您的账户安全；也有助于您收到来自聚美的最新特惠通知</div>
-				<div class="change_email_cont">
-					<p style="padding-left: 2em;">为确保信息安全，重新绑定邮箱需要输入手机校验码</p>
-					<form action="${pageContext.request.contextPath}/user.do?method=addemail" id="subscribe_form" class="mobile_subscribe" method="post">
-						<dl class="datalist">
-							<dt>已绑定手机号：</dt>
-							<dd>
-								${sessionScope.juser.jtel}
-								<input id="get_confirm_code" class="get_confirm_code" type="button" value="获取手机校验码" name="get_confirm_code" onclick="getmesaage();">
-							</dd>
-						</dl>
-						<div class="input_container">
-							<label for="confirm_code">校验码：</label>
-							<input id="confirm_code" name="confirm_code" class="default_value" type="text" maxlength="6" name="confirm_code">
-						</div>
-						<div class="input_container">
-							<label for="verify_code">验证码：</label>
-							<input id="verify_code" name="verify_code" type="text" autocomplete="off" maxlength="4" name="hash_code">
-						</div>
-						<div class="input_container">
-							<label for="email">验证邮箱：</label>
-							<input id="email" type="text" name="email" size="20">
-						</div>
-						<div class="act">
-							<img id="code" src="/jmei/verifyServlet">
-							<a id="change_code" href="javascript:void(0);" onclick="change();">换一张</a>
-						</div>
-						<div class="act">
-							<input id="change_email" type="button" name="change_email" value="提交验证">
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
 		<div id="mypwd" class="non" >
 			<h1>修改密码</h1>
 			<div class="content">
 				<div class="container">
 					<div class="content" data-reactid=".0"></div>
-					<form id="settings-form" data-reactid=".0.0" name="settings_form" action="${pageContext.request.contextPath}/user.do?method=updatepwd" method="post">
+					<form id="settings-form" data-reactid=".0.0" name="settings_form" action="" method="post">
 						<div data-reactid=".0.0.0">
+							<div data-reactid=".0.0.0.0">
+								<div class="input_container shorter" data-reactid=".0.0.0.0.0">
+									<label data-reactid=".0.0.0.0.0.0">
+										<span class="spark" data-reactid=".0.0.0.0.0.0.0"> *</span>
+										<span data-reactid=".0.0.0.0.0.0.1">选择验证身份方式</span>
+									</label>
+									<label class="radio" data-reactid=".0.0.0.0.0.1">
+										<input class="radiobox" type="radio" data-reactid=".0.0.0.0.0.1.0" checked="" name="method" value="0">
+										<span data-reactid=".0.0.0.0.0.1.1"> 手机验证</span>
+									</label>
+									<label class="radio" data-reactid=".0.0.0.0.0.2">
+									<input class="radiobox" type="radio" data-reactid=".0.0.0.0.0.2.0" name="method" value="1">
+									<span data-reactid=".0.0.0.0.0.2.1"> 密码验证</span>
+									</label>
+								</div>
+							</div>
 							<div data-reactid=".0.0.0.1">
 								<div class="input_container shorter" data-reactid=".0.0.0.1.0">
 									<label data-reactid=".0.0.0.1.0.0" for="mobile">
@@ -1200,8 +886,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<span data-reactid=".0.0.0.1.0.0.1">手机号</span>
 									</label>
 									<span class="mobile_masked" data-reactid=".0.0.0.1.0.1">
-										<span data-reactid=".0.0.0.1.0.1.0">${sessionScope.juser.jtel}</span>
+										<span data-reactid=".0.0.0.1.0.1.0">153****0309</span>
 										<span data-reactid=".0.0.0.1.0.1.1"> </span>
+										<a class="change_mobile" data-reactid=".0.0.0.1.0.1.2" target="_blank" href="/i/account/mobile_bind">修改</a>	
 									</span>
 								</div>
 								<div class="input_container" data-reactid=".0.0.0.1.1">
@@ -1210,7 +897,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<span data-reactid=".0.0.0.1.1.0.1">短信校验码</span>
 									</label>
 									<input id="verify_code" class="" type="text" data-reactid=".0.0.0.1.1.1" autocomplete="off" name="verify_code" placeholder="">
-									<a class="btn_send_sms disabled" data-reactid=".0.0.0.1.1.2" onclick="getmessage()">获取短信校验码</a>
+									<a class="btn_send_sms disabled" data-reactid=".0.0.0.1.1.2">获取短信校验码</a>
 									<div class="invalid validWrapper" data-reactid=".0.0.0.1.1.3" style="display:block;">
 										<span class="hint valid" data-reactid=".0.0.0.1.1.3.0">
 											<span data-reactid=".0.0.0.1.1.3.0.0">请输入6位短信校验码</span>
@@ -1253,8 +940,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</label>
 							<input id="hash_code" class="" type="text" data-reactid=".0.0.3.1" autocomplete="off" name="hash_code" placeholder="">
 							<a class="pic_verify_code" data-reactid=".0.0.3.2">
-								<img data-reactid=".0.0.3.2.0" src="/jmei/verifyServlet">
-								<span data-reactid=".0.0.3.2.1" onclick="change();">换一张</span>
+								<img data-reactid=".0.0.3.2.0" src="..//images/personal/hash_code.gif">
+								<span data-reactid=".0.0.3.2.1">换一张</span>
 							</a>
 							<div class="invalid validWrapper" data-reactid=".0.0.3.3" style="display:block;">
 								<span class="hint valid" data-reactid=".0.0.3.3.0">
@@ -1274,11 +961,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<h1>管理收货地址</h1>
 			<div class="content sector">
 				<h2>
-					<span class="addAddress" id="add">新增</span>
-					<span class="modifyAddress non" id="update">修改</span>
+					<span class="addAddress">新增</span>
+					<span class="modifyAddress" style="display: none;">修改</span>
 					收货地址
 				</h2>
-				<form class="shipping_address" method="post" action="${pageContext.request.contextPath}/address.do?method=addaddress">
+				<form class="shipping_address" method="post" action="">
 					<div class="input_container">
 						<label for="recipient_name">
 							<span class="spark">*</span>
@@ -1378,42 +1065,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<a class="view_id_cert_info" target="_blank" href="/i/account/nameauth">查看您的身份验证信息</a>
 				</div>
 				<div id="shipping_address_list">
-					<c:if test="${empty error}">
-						<table id="order-list" class="order-tablev2">
-							<colgroup>
-								<col class="name">
-								<col class="address">
-								<col class="code">
-								<col class="hp">
-								<col class="phone">
-								<col class="action">
-							</colgroup>
-							<tbody>
-								<tr class="order_list_title">
-								<th>收货人</th>
-								<th>收货地址</th>
-								<th>手机</th>
-								<th>固定电话</th>
-								<th width="105px">身份证号码</th>
-								<th width="80">操作</th>
-								</tr>
-								<c:forEach var="myaddress" items="${sessionScope.address}">
-									<tr>
-										<td class="real_name_td">${myaddress.consigneename}</td>
-										<td class="order_info_td">${myaddress.detailaddress}</td>
-										<td  style="padding:0;">${myaddress.tel}</td>
-										<td>${myaddress.pnumber}</td>
-										<td>${myaddress.consigneeid}</td>
-										<td>
-											<input class="non" id="myaid" value="${myaddress.aid}" type="hidden"/>
-											<a class="sp_address_edit"  style="display:inline-block;" address_id="108238843" onclick="updateaddress();">修改</a>
-											<a class="sp_address_delete" style="display:inline-block;" address_id="108238843" onclick="deleteaddress()">删除</a>
-										</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>	
-					</c:if>
+					<table id="order-list" class="order-tablev2">
+						<colgroup>
+							<col class="name">
+							<col class="address">
+							<col class="code">
+							<col class="hp">
+							<col class="phone">
+							<col class="action">
+						</colgroup>
+						<tbody>
+							<tr class="order_list_title">
+							<th>收货人</th>
+							<th>收货地址</th>
+							<th>手机</th>
+							<th>固定电话</th>
+							<th width="105px">身份证号码</th>
+							<th width="80">操作</th>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

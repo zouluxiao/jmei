@@ -4,7 +4,7 @@
 <html>
   <head>
     
-    <title>SearchResult</title>
+    <title>搜索结果页面</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -13,39 +13,89 @@
 	
 	<link rel="stylesheet" type="text/css" href="../css/common.css">
 	<link rel="stylesheet" type="text/css" href="../css/searchResult.css">
-	<link rel="stylesheet" type="text/css" href="../css/shoppingcartRight.css">
 	<link rel="stylesheet" type="text/css" href="../css/jmeihead.css">
 	<link rel="stylesheet" type="text/css" href="../css/foot.css">
 	<link rel="stylesheet" type="text/css" href="../css/base.css">
   </head>
+  <script type="text/javascript" src="../js/ajax.js"></script>
   <script type="text/javascript">
-  	function addCart(gid){
-		alert("进入函数");
-		//创建XMLHttp对象
-		var xmlHttp;
-		if(window.XMLHttpRequest){//分浏览器创建XMLHttp对象
-			xmlHttp = new XMLHttpRequest();
-		}else if(window.ActiveXObject){
-			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+  	function imgChange(obj){
+  		obj.style.boxShadow="0 0 5px rgba(0,0,0,.4)";
+  	}
+  	
+  	function imgChange2(obj){
+  		obj.style.boxShadow="";
+  	}
+  
+  	function changeVal(){
+  		var url = "http://localhost:8080/jmei/search.do?method=setKey";
+		jsonText = "key="+document.getElementById("search").value;
+		AjaxUtils.request("POST",url,jsonText,callback);
+		function callback(val){
+			document.getElementById("button_submit").submit();
 		}
-		alert("xmlHttp对象创建："+xmlHttp);
-		
-		//function getCustomerInfo(){
-		alert("请求方式已确定,传入的id为："+document.getElementById("hid_"+gid).value);
-		//设置请求方式
+  	}
+  
+  
+  	function addCart(gid){
+  	
+  		 //alert(gid);
 		var url = "${pageContext.request.contextPath }/ShoppingCart.do?method=add";
-		xmlHttp.open("POST", url);
-			
-		//}
-		//注册回调方法
+		var jsonText = "gid=" + document.getElementById("hid_"+gid).value;
+		AjaxUtils.request("POST",url,jsonText,callback);
 		
-		//发送请求
-		 var params = "gid=" + document.getElementById("hid_"+gid).value;  
+		function callback(obj){ 
+		//obj 就是响应的对象
+     		var val = obj.text;
+     	//-------------将JSON文本转换成js对象------------------
+       	 	var goodsObj = JSON.parse(val);
+       	 	
+       	 	var ulobj = document.getElementById("imp");
+       	 	var li = document.createElement("li");
+       	 	li.className="cart_product";
+       	 	
+       	 	
+       	 	//创建img标签
+       	 	var img = document.createElement("img");
+       	 	img.src = document.getElementById("img_"+gid).src;
+       	 	img.style.height="87px";
+       	 	img.style.width="87px";
+       	 	
+       	 	//创建span2
+       	 	var span2 = document.createElement("span");
+       	 	span2.className="detail";
+       	 	span2.innerText=goodsObj["detailname"];
+       	 	//创建span3
+       	 	var span3 = document.createElement("span");
+       	 	span3.className="cart_price";
+       	 	span3.innerText="￥"+goodsObj["price"];
+       	 	
+       	 	li.appendChild(img);
+       	 	li.appendChild(span2);
+       	 	li.appendChild(span3);
+       	 	ulobj.appendChild(li);
+       	 	
+       	 	//更新购物车的价格和数量
+       	 	//var t =document.getElementById("ibar_pri_id").value;
+       	 	if(document.getElementById("ibar_pri_id").innerText == ""){
+       	 		document.getElementById("ibar_pri_id").innerText = parseInt(document.getElementById("s_price_"+gid).innerText);
+       	 	}else{
+       	 		document.getElementById("ibar_pri_id").innerText = parseInt(document.getElementById("ibar_pri_id").innerText) + parseInt(document.getElementById("s_price_"+gid).innerText);
+       	 	}
+       	 	//更新数量
+       	 	if(document.getElementById("font_id").innerText == ""){
+       	 		document.getElementById("font_id").innerText = 1;
+       	 	}else{
+       	 		document.getElementById("font_id").innerText =parseInt(document.getElementById("font_id").innerText)+1;
+       	 	}
+		} 
+	}
 	
-		alert("发送的数据:"+params);
-		//这行代码很关键，用来把字符串类型的参数序列化成Form Data  
-		xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlHttp.send(params);
+	function flu(){
+		document.getElementById("imp").onfocus();
+	}
+	function text(){
+		alert("dsdfs");
 	}
   </script>
   
@@ -100,9 +150,9 @@
 				<a></a>
 			</h1>
 			<div class="header_searchbox header_out_searchbox">
-				<form action="${pageContext.request.contextPath }/search.do?method=searchGoods" method="post">
+				<form id="button_submit" action="${pageContext.request.contextPath }/search.do?method=searchGoods" method="post">
 					<input name="searchKey" id="search" type="text" class="header_search_input">
-					<button type="submit" class="header_search_btn" onclick="changeVal();">搜索</button>
+					<button type="button" class="header_search_btn" onclick="changeVal();">搜索</button>
 				</form>
 				<ul class="hot_word">
 					<li><a href="">保湿</a> <s class="line"></s></li>
@@ -168,7 +218,7 @@
 	</div>
     <!-- 右部个人条 -->
    	<!--右侧贴边导航quick_links.js控制-->
-        <div class="mui-mbar-tabs">
+        <div class="mui-mbar-tabs" style="width:40px;">
             <div class="quick_link_mian">
                 <div class="quick_links_panel">
                     <div id="quick_links" class="quick_links">
@@ -191,7 +241,10 @@
                         <li id="shopCart" onclick="Test();"><a class="message_list"><i class="message"></i>
                                 <div class="span">
                                     购物车</div>
-                                <span class="cart_num">0</span></a> </li>
+                                <span class="cart_num" id="cart_num_id">
+                                	<c:if test="${empty sessionScope.ShoppingCart.goodsCart }">0</c:if>
+                                	<c:if test="${not empty sessionScope.ShoppingCart.goodsCart }">${sessionScope.ShoppingCart.goodsCart.size() }</c:if>
+                                </span></a> </li>
                         <li><a href="#" class="history_list"><i class="view"></i></a>
                             <div class="mp_tooltip" style="visibility: hidden;">
                                 我的资产<i class="icon_arrow_right_black"></i></div>
@@ -221,24 +274,22 @@
                         <li><a href="#top" class="return_top"><i class="top"></i></a></li>
                     </div>
                 </div>
-                <div id="quick_links_pop" class="quick_links_pop hide"></div>
+                <!-- <div id="quick_links_pop" class="quick_links_pop hide"></div> -->
             </div>
         </div>
     <!-- 隐含的框 -->
-    <div id="shoppingcartdisplay">
+    <div id="shoppingcartdisplay" onmousemove="flu();">
     	<div class="cart_title">购物车</div>
     	<div class="cart_group">
     		<div class="cart_head">
     			<div class="ibar_cart_group_title">聚美优品</div>
     			<div class=""></div>
     		</div>
-    		<ul>
+    		<ul id="imp" style="overflow-x: hidden;height: 400px;">
     			<!-- 商品展示栏 -->
-    			<c:forEach var="u" varStatus="s1" items="${sessionScope.ShoppingCart.GoodsCart }">
+    			<c:forEach var="u" varStatus="s1" items="${sessionScope.ShoppingCart.goodsCart }"> 
     			<li class="cart_product">
-	   				<span style="height: 100px;width: 100px;padding-left:13px;padding-left:13px;">
-	   					<img alt="" src="../images/goodspic/2/${sessionScope.pl[s1.index].picpname }" height="87px" width="87px">
-	   				</span>
+	   				<img alt="" src="../images/goodspic/2/${sessionScope.pl[s1.index].picpname }" height="87px" width="87px">
 	   				<span class="detail">${u.detailname }</span>
 	   				<span class="cart_price">￥${u.price }</span>
    				</li>
@@ -247,10 +298,12 @@
     	</div>
     	<!-- 结算栏 -->
 		<div class="ibar">
-			<div class="ibar_num">共&nbsp;&nbsp;<font color="red">1</font>&nbsp;&nbsp;件商品</div>
-			<div class="ibar_pri">￥98.00</div>
-			<a class="ibar_cart_go_btn" href="www.baidu.com">结算</a>
+			<div class="ibar_num"><div>共&nbsp;&nbsp;<span style="color:red;" id="font_id">${sessionScope.ShoppingCart.goodsCart.size() }</span>&nbsp;&nbsp;件商品</div></div>
+			<div class="ibar_pri" >￥<span id="ibar_pri_id">${sessionScope.ShoppingCart.sum }</span></div>
+			<a href="${pageContext.request.contextPath }/view/cart.jsp" class="ibar_cart_go_btn">
+			<span style="position: absolute;right: 55px;">去购物车结算</span></a>
 		</div>
+		
     </div>
     <!-- 化妆品首页 -->
     <div id="frist" class="w">
@@ -272,7 +325,7 @@
     <div id="searchOther" class="w">
     	<div class="inline">
     		<span class="span">在</span>
-    		<span id="searchOther_span"></span>
+    		<span id="searchOther_span">${sessionScope.skey }</span>
     		<span class="span">中筛选</span>
     	</div>
     </div>
@@ -368,22 +421,34 @@
 	    			<div class="down"><a href="${pageContext.request.contextPath }/search.do?method=colDesc">人气</a></div>
 	    		</li>
 	    	</ul>
-	    	<div class="oth"><a href="">下一页</a></div>
-	    	<div class="oth"><a href="">上一页</a></div>
-	    	<div class="oth"><font style="color:red;">2</font>/11页</div>
-	    	<div class="oth">共<font style="color:red;">363</font>个商品</div>
+	    	<div class="oth">
+	    	<c:if test="${curPage+1 < pageCount }">
+	    		<a href="${pageContext.request.contextPath }/search.do?method=searchGoods&curPage=${curPage+1 }&searchKey=${sessionScope.skey}">下一页</a>
+	    	</c:if>
+	    	</div>
+	    	<div class="oth">
+	    	<c:if test="${curPage > 0}">
+	    		<a href="${pageContext.request.contextPath }/search.do?method=searchGoods&curPage=${curPage-1 }&searchKey=${sessionScope.skey}">上一页</a>
+	    	</c:if>
+	    	<%-- <c:if test="${curPage-2 <= 0}">
+	    		<a href="${pageContext.request.contextPath }/search.do?method=searchGoods&curPage=${curPage-2 }&searchKey=${sessionScope.skey}">上一页</a>
+	    	</c:if> --%>
+	    	
+	    	</div>
+	    	<div class="oth"><font style="color:red;">${sessionScope.curPage+1 }</font>/${sessionScope.pageCount }页</div>
+	    	<div class="oth">共<font style="color:red;">${sessionScope.goodslist.size() }</font>个商品</div>
 	    </div>
 	    <!-- 商品展示 -->
 	    <div id="goods" class="w" style="padding: 20px;margin: 0 -32px 0 0;">
 	    	<ul>
 	    		<c:forEach var="u" varStatus="s1" items="${sessionScope.goodslist }" begin="${sessionScope.curPage*12 }" end="${sessionScope.curPage*12+11 }">
 	    			<li class="Goods_item"><a href="${pageContext.request.contextPath }/goods.do?method=goods&gid=${u.gid}">
-	    			<img src="../images/goodspic/2/${sessionScope.piclist[s1.index].picpname }" height="216px;" width="216px;"/>
+	    			<img onmouseover="imgChange(this);" onmouseout="imgChange2(this);" id="img_${s1.index }"  src="../images/goodspic/2/${sessionScope.piclist[s1.index].picpname }" height="216px;" width="216px;"/>
 	    			<br>
 	    			<div id="goods_item_span" class="Goods_item_span">${u.detailname }</div>
 	    			<div id="goods_item_price" class="Goods_item_price">
 	    				<label>￥</label>	
-	    				<span>${u.price }</span>
+	    				<span id="s_price_${s1.index }">${u.price }</span>
 	    			</div></a>
 	    			<div id="salevol" class="goods_sale">${u.sale_val }人已经购买|</div>
 	    			<span id="" class="">时间</span>
@@ -402,18 +467,31 @@
 	    <!-- 分页 -->
 	    <div id="page" class="w">
 	    	<ul class="page-nav">
-	    		<li class="current">
-	    			<span>1</span>
-	    		</li>
-	    		<c:forEach var="i" begin="2" end="${sessionScope.pageCount }" step="1">
+	    		<c:if test="${curPage > 0}">
+		    		<li class="current">
+		    			<a href="${pageContext.request.contextPath }/search.do?method=searchGoods&curPage=${curPage-1 }&searchKey=${sessionScope.skey}">上一页</a>
+		    		</li>
+	    		</c:if>
+	    		<c:forEach var="i" begin="1" end="${sessionScope.pageCount }" step="1">
+	    			<c:choose>
+	    			<c:when test="${curPage == i-1 }">
+	    				<li class="current">
+	    					<span class="spanss">${i }</span>
+	    				</li>
+	    			</c:when>
+	    			<c:otherwise> 
 	    			<li class="current">
-	    				<a href="${pageContext.request.contextPath }/search.do?method=searchGoods&curPage=${i -1}&searchKey=K">
+	    				<a href="${pageContext.request.contextPath }/search.do?method=searchGoods&curPage=${i -1}&searchKey=${sessionScope.skey}">
 	    				${i }</a>
 	    			</li>
+	    			</c:otherwise>
+	    			</c:choose>
 	    		</c:forEach>
-	    		<li class="current">
-	    			<a class="next" href="${pageContext.request.contextPath }/search.do?method=searchGoods&curPage=${curPage }&searchKey=K">下一页</a>
-	    		</li>
+	    		<c:if test="${curPage+1 < pageCount }">
+		    		<li class="current">
+		    			<a class="next" href="${pageContext.request.contextPath }/search.do?method=searchGoods&curPage=${curPage+1 }&searchKey=${sessionScope.skey}">下一页</a>
+		    		</li>
+	    		</c:if>
 	    	</ul>
 	    </div>
     </div>
@@ -600,7 +678,6 @@
                 curvature: 0.0008, //控制抛物线弧度
                 complete: function() {
                     eleFlyElement.style.visibility = "hidden";
-                    eleShopCart.querySelector("span").innerHTML = ++numberItem;
                 }
             });
             // 绑定点击事件
@@ -616,7 +693,7 @@
                         eleFlyElement.style.left = event.clientX + scrollLeft + "px";
                         eleFlyElement.style.top = event.clientY + scrollTop + "px";
                         eleFlyElement.style.visibility = "visible";
-
+						eleShopCart.querySelector("span").innerText = parseInt(eleShopCart.querySelector("span").innerText)+1;
                         // 需要重定位
                         myParabola.position().move();
                     });

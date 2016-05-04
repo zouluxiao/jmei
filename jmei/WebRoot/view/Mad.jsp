@@ -5,7 +5,7 @@
 <html>
   <head>
     
-    <title>今日疯抢</title>
+    <title>My JSP 'cart.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">

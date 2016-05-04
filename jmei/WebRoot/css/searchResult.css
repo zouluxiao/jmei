@@ -526,9 +526,10 @@ ul li a:HOVER{
 .current{
 	display: inline-block;
 	list-style: none;
+	cursor: pointer;
 }
 
-#page .page-nav .current span{
+#page .page-nav .current .spanss{
 	display: inline-block;
 	height: 28px;
 	padding: 0 10px;
@@ -616,11 +617,12 @@ ul li a:HOVER{
 	position: fixed;
 	right: 0;
 	bottom: 0;
-	z-index: 5;
+	z-index: 9;
 	width: 287px;
 	height: 100%;
 	background: #fff;
 	box-shadow: 0 0 5px rgba(0,0,0,.4);
+	right: 40px;
 }
 
 #shoppingcartdisplay .cart_title{
@@ -656,16 +658,17 @@ ul li a:HOVER{
 	padding: 15px 0;
 	border-bottom: 1px dotted #ddd;
 	list-style: none;
+	height: 85px;
 }
 
 #shoppingcartdisplay .cart_product .detail{
-	display: inline;
-	height: 36px;
 	overflow: hidden;
 	line-height: 18px;
 	position: relative;
 	top: -60px;
 	left: 10px;
+	display: block;
+	margin-left: 100px;
 }
 
 #shoppingcartdisplay .cart_product .cart_price{
@@ -673,7 +676,8 @@ ul li a:HOVER{
 	font-weight: 700;
 	font-family: Arial,Helvetica;
 	position: relative;
-	left: -77px;
+	top: -50px;
+	left: 110px;
 }
 #shoppingcartdisplay .ibar{
 	display: block;
@@ -689,14 +693,18 @@ ul li a:HOVER{
 	font-size: 12px;
 	float: left;
 	font-family: Tahoma,Geneva,sans-serif;
+	position: relative;
+	left: 30px;	
 }
 #shoppingcartdisplay .ibar .ibar_pri{
 	color: #ed145b;
-	margin-right: 55px;
 	float: right;
 	font-weight: 700;
 	font-size: 16px;
 	font-family: "Microsoft YaHei","Microsoft JhengHei",STHeiti,MingLiu;
+	position: relative;
+	right: 30px;
+	top: -3px;
 }
 
 #shoppingcartdisplay .ibar .ibar_cart_go_btn{
@@ -712,8 +720,9 @@ ul li a:HOVER{
 	text-decoration: none;
 	background: #ed145b;
 	width: 80%;
-	margin-left: 10px;
+	margin-left: auto;
 	cursor: pointer;
+	margin-right: auto;
 }
 
 

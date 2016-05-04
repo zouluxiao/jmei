@@ -507,6 +507,7 @@ table {
     margin: 0 0 0 10px;
     font-size: 18px;
     font-family: "Microsoft YaHei","Microsoft JhengHei",STHeiti,MingLiu;
+    float: right;
 }
 .btn {
     display: inline-block;
@@ -554,7 +555,7 @@ input, textarea, select {
     color: #333;
 }
 .clear_cart_all {
-  margin-right: 397px;
+  margin-right: 350px;
 }
 .cart_out_of_time .cart_timer_out {
     display: inline;

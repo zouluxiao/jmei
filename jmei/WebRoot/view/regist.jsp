@@ -43,6 +43,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	obj.InnerHTML =showTime()+"秒后点击重新发送";
       }
 	</script>
+	<script type="text/javascript">
+		function tel(){
+			var obj = document.getElementById("input1");
+			//var jqueryObj = $(obj);
+			obj.innerHTML = "请输入11位手机号码";
+			//obj.className ="blok1";
+			//jqueryObj.text("请输入11位手机号码");
+			//jqueryObj.css({"display":"block"});
+		}
+	</script>
 </head>
 <body>
 	<div id="header">
@@ -72,7 +82,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<form name="phone" id="phone" method="post" action="${pageContext.request.contextPath}/user.do?method=regist">
 						<div class="line">
 							<div class="textbox_ui">
-								<input name="regtel" id="regtel" type="text" value="" autocomplete="off" autofocus="" placeholder="手机号">
+								<input name="regtel" id="regtel" type="text" value="" autocomplete="off" autofocus="" placeholder="手机号" onfocus="tel();">
+								<div class="focus_text" id="input1"></div>
 							</div>
 							<div class="invalid" style="display: block;">
 								<i></i>

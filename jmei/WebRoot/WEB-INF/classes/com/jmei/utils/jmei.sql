@@ -89,6 +89,15 @@ create table pic(
 drop sequence pic_seq;
 create sequence pic_seq start with 10000000 increment by 1;
 select * from pic;
+select * from pic;10000001 10000002
+select * from goods;10000001 10000001
+select * from buser;10000001
+select * from country;10000004
+select * from product;10000001
+select * from address;10000060
+insert into jorder values(order_seq.nextval,10000001,10000060,10000060,1,2);
+insert into jorder values(order_seq.nextval,10000002,10000060,10000060,3,1);
+commit;
 --8.订单表--
 drop table jorder;
 create table jorder(
@@ -239,6 +248,15 @@ drop sequence activity_seq;
 create sequence activity_seq start with 10000000 increment by 1;
 
 select * from address;
+
+--插入订单表--
+insert into jorder values(order_seq.nextval,10000026,10000060,10000060,1,2);
+insert into jorder values(order_seq.nextval,10000027,10000060,10000060,0,3);
+commit;
+select * from jorder;
+select * from goods;
+select * from address;
+select * from juser;
 --插入国家表--
 insert into country values(country_seq.nextval,'韩国','Korea.jpg');
 insert into country values(country_seq.nextval,'美国','America.jpg');

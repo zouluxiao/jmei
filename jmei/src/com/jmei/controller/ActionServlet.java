@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jmei.action.Action;
 import com.jmei.action.AddressAction;
+import com.jmei.action.CollectionToBuserAction;
 import com.jmei.action.CollectionToGoodsAction;
 import com.jmei.action.GoodsAction;
 import com.jmei.action.JorderAction;
@@ -50,6 +51,9 @@ public class ActionServlet extends HttpServlet{
 			action.execute(req, resp);
 		}else if("/collectiongoods.do".equals(servletPath)){
 			Action action = new CollectionToGoodsAction();
+			action.execute(req, resp);
+		}else if("/collectionbuser.do".equals(servletPath)){
+			Action action = new CollectionToBuserAction();
 			action.execute(req, resp);
 		}
 		

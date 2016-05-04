@@ -181,10 +181,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      	 xhr.open("GET",url);
 	      	 //3.设置请求的头部信息   GET不许设置头部信息
 	      	 //xhr.setRequestHeader("enctype","application/x-www-form-urlencoded");
-	      	 alert("到这里了");
+	      	// alert("到这里了");
 	      	 //4.发送消息   GET:
 	      	 xhr.send(null);
 	      	 //xhr.send("regtel="+document.getElementById("regtel").value);
+	      	 //5.监听状态值和状态码
+	       	 xhr.onreadystatechange = function(){
+	       	 	 if(xhr.readyState == 4){ //浏览器的接收到了内容
+	       	 	 	 if(xhr.status == 200) { //浏览器获取了正确响应信息
+	       	 	 	 	  //6.获取响应的内容 (文本:responseText Xml:responseXML)
+	       	 	 	 	  var text = xhr.responseText;
+	       	 	 	 }	
+	       	 	 }
+	       	 }
 		}
 		function getaddress(){
 			//alert("到这里了");
@@ -260,9 +269,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      	 //4.发送消息   GET: xhr.send(null);
 	      	 xhr.send("aid="+document.getElementById("myaid").value);
 	      	 
-	      	 alert("删除成功!");
+	      	 //alert("删除成功!");
 	      	 
 	      	 
+		}
+		function collectionbuser(){
+			var obj1 = getid("goods1");
+			var obj2 = getid("buser1");
+			var obj3 = getid("collectiongoods");
+			var obj4 = getid("buser");
+			obj1.className = " ";
+			obj2.className ="curr";
+			obj3.className="non";
+			obj4.className="blok";
+			
+		}
+		function collectiongoods(){
+			var obj1 = getid("goods1");
+			var obj2 = getid("buser1");
+			var obj3 = getid("collectiongoods");
+			var obj4 = getid("buser");
+			obj1.className = "curr";
+			obj2.className =" ";
+			obj3.className="blok";
+			obj4.className="non";
+			
 		}
 	</script>
 </head>
@@ -510,35 +541,73 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="content">
 				<div class="filter">
 					<a class="curr"  id="orderalllist" onclick="ajax();">全部订单</a>
-					<a class="" id="waitlist">等待付款</a>
+					<a class="" id="waitlist" >等待付款</a>
 					<a class="" id="buylist">已付款</a>
 					<a class="" id="endlist">交易完成</a>
 					<a class="">预售订单</a>
 				</div>
-				<table id="order-list" class="order_table">
-				<tbody>
-					<tr class="order_list_title">
-						<th style="width: 191px">订单信息</th>
-						<th style="width: 80px">订购商品</th>
-						<th style="width: 40px">件数</th>
-						<th style="width: 80px">单价</th>
-						<th style="width: 70px">商品操作</th>
-						<th style="width: 120px">订单状态</th>
-						<th style="width: 90px">订单操作</th>
-					</tr>
-					<td class="order_info_td"></td>
-					<td class="item_title"></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<tr class="separator">
-						<td colspan="7"></td>
-					</tr>
-				</tbody>
-				</table>
-
+				<c:if test="${not empty orderalllist}">
+					<table id="order-list" class="order_table">
+					<tbody>
+							<tr class="order_list_title">
+								<th style="width: 191px">订单信息</th>
+								<th style="width: 80px">订购商品</th>
+								<th style="width: 40px">件数</th>
+								<th style="width: 80px">单价</th>
+								<th style="width: 70px">商品操作</th>
+								<th style="width: 120px">订单状态</th>
+								<th style="width: 90px">订单操作</th>
+							</tr>
+							<c:forEach var="orderlist" items="${sessionScope.orderalllist}">
+							<c:forEach var="pics" items="${sessionScope.pics}">
+								<tr>
+									<td class="order_info_td">
+										<p class="orderList_global"></p>
+										<p>交易订单号750657684</p>
+										<p>商品金额:${orderlist.goods.price}*${orderlist.goods.price.onumber}(免运费)</p>
+										<p>由 聚美极速免税店 发货</p>
+									</td>
+									<td class="item_title">
+										<a title="贝德玛润妍保湿喷雾300ml" target="_blank" href="http://item.jumeiglobal.com/ht160420p1596595t2.html">
+											<img alt="${orderlist.goods.introduction}" src="../images/goodspic/2/${pics.picpname}">
+										</a>
+									</td>
+									<td>${orderlist.goods.price.onumber}</td>
+									<td>￥${orderlist.goods.price}</td>
+									<td></td>
+									<td>
+										<c:if test="${orderlist.is_Val}==0">
+											已取消
+										</c:if>
+										<c:if test="${orderlist.is_Val}==1">
+											等待付款
+										</c:if>
+										<c:if test="${orderlist.is_Val}==2">
+											已付款
+										</c:if>
+										<c:if test="${orderlist.is_Val}==3">
+											交易完成
+										</c:if>
+									</td>
+									<td>
+										<p>
+											<a>查看详情</a>
+										</p>
+									</td>
+								</tr>
+								<tr class="separator">
+									<td colspan="7"></td>
+								</tr>
+							</c:forEach>
+							</c:forEach>	
+					</tbody>
+					</table>
+				</c:if>
+				<c:if test="${empty orderalllist}">
+					<div class="null_info">
+						<h2>您当前没有订单</h2>
+					</div>		
+				</c:if>
 				<a href="#" class="backtotop">
 					<b></b>
 					回到顶部
@@ -678,15 +747,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="content myfav">
 				<div class="notice_content">收藏心仪的产品或品牌，方便你随时找到它们，也有助于根据你的收藏给你更加贴心的推荐</div>
 				<div class="filter">
-					<a class="curr">我收藏的产品</a>
-					<a>我收藏的品牌</a>
+					<a class="curr" id="goods1" onclick="collectiongoods();" herf="${pageContext.request.contextPath}/collectiongoods.do?method=getgoods">我收藏的产品</a>
+					<a href="${pageContext.request.contextPath}/collectionbuser.do?method=getcollectionbuser" onclick="collectionbuser();" id="buser1">我收藏的品牌</a>
 				</div>
-				<div id="fav_product_list">
+				<div id="collectiongoods" class="blok" >
 					<div class="fav_product_container faved">
 						<div class="fav_product_head">
 							<span class="fph_tit">
 								您共收藏了
-								<label class="pink">${sessionScope.goods}</label>
+								<label class="pink">${sessionScope.collectiontogoods.size()}</label>
 								个产品 
 							</span>
 							<div class="head_page">
@@ -702,12 +771,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="fav_product_list">
 								<ul>
 									<c:forEach var="cg" items="${sessionScope.collectiontogoods}">
+									<c:forEach var="pic" items="${sessiobScope.pic}">
 										<li class="fav_deal" style="border: 3px solid rgb(255, 255, 255);">
-											<%-- <c:forEach var="pic" items="${sessiobScope.pic}">
+											 
 												<a href="" class="img_wrap">
 													<img src="../images/goodspic/3/${pic}"/>
 												</a>
-											</c:forEach> --%>
+											
 											<p class="pro_tit">
 												<a href="">${cg.goods.introduction}</a>
 											</p>
@@ -729,11 +799,73 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a class="btnunlike" pid="2543097" href="javascript:;">取消收藏</a>
 											</p>
 										</li>
+									</c:forEach> 
 									</c:forEach>
 								</ul>
 							</div>
 						</c:if>
 					</div>
+				</div>
+				<div id="buser" class="non">
+				<c:if test="${not empty buserlist}">
+					<div class="fav_product_head">
+						<span class="fph_tit">
+							您共收藏了
+							<span class="status_red">2</span>
+							个品牌
+						</span>
+						<div class="head_page">
+							<div style="float:left; display:inline;margin-right:5px;">
+							<span class="pink">1</span>
+							/1页
+							</div>
+							<a class="hp_prev" href="javascript:;"></a>
+							<a class="hp_next" href="javascript:;"></a>
+						</div>
+					</div>
+					<div class="fav_brands_list" id="">
+						<div class="fav_brands_item">
+						 	<c:forEach var="bus" items="${buserlist}">
+							<div class="fav_brand">
+								<a class="img_wrap">
+								   <img width="140" height="70" alt="" src="../images/Buser/logo/${bus.buser.bname}/${bus.buser.blogo}">
+								</a>
+								<p class="brand_tit">
+									<a target="_blank">${bus.buser.bname}</a>
+								</p>
+								<p class="sale_count" style="padding-top:20px;">
+									今日特卖:
+									<span class="pink">0</span>
+									件
+								</p>
+								<p class="sale_count">
+									美妆商城:
+									<span>0</span>
+									件
+								</p>
+								<p class="p_like">
+									<a class="btnlike liked" href="javascript:;">
+									<span class="ilike_text">已收藏</span>
+									<span style="color: #999;">
+									(
+									<span class="ilike_num">230</span>
+									)
+									</span>
+									</a>
+								</p>
+								<p class="p_unlike">
+									<a class="btnunlike grey" bid="10883" href="javascript:;">取消收藏</a>
+								</p>
+							</div>
+							</c:forEach>
+						</div>
+					</div>
+				</c:if>
+				<c:if test="${empty buserlist}">
+					<div class="null_info">
+						<h2>您没有收藏任何企业喔!</h2>
+					</div>
+				</c:if>
 				</div>
 			</div>
 		</div>

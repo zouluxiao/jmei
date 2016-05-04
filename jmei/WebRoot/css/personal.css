@@ -982,6 +982,16 @@ input.radiobox {
     padding: 0 80px;
     text-align: left;
 }
+.profile .null_info h2 {
+    background: rgba(0, 0, 0, 0) url("../images/personal/null_icon.png") no-repeat scroll 0 0;
+    color: #797979;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 48px;
+    margin: 0;
+    padding: 0 80px;
+    text-align: left;
+}
 .profile .null_info h2, .profile .null_info div {
     background-image: url("../images/personal/null_icon.png");
     background-size: contain;
@@ -1060,4 +1070,48 @@ input.radiobox {
     margin-right: 5px;
     margin-top: 3px;
 }
-
+.profile .order_info_td p.orderList_global {
+    background: rgba(0, 0, 0, 0) url("../images/personal/global_pro_coin.png") no-repeat scroll left top;
+    height: 20px;
+    margin-bottom: 4px;
+    width: 100%;
+}
+.profile .order_table .item_title img {
+    margin: 10px 0;
+    width: 60px;
+}
+.fav_brands_item {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: #fff none repeat scroll 0 0;
+    border-color: -moz-use-text-color #dedede #dedede;
+    border-image: none;
+    border-style: none solid solid;
+    border-width: 0 1px 1px;
+    box-shadow: 0 1px 3px #ddd;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+.fav_brand {
+    border-right: 1px solid #dedede;
+    display: inline;
+    float: left;
+    height: 230px;
+    overflow: hidden;
+    padding: 20px;
+    width: 144px;
+}
+.fav_brand .img_wrap {
+    display: block;
+    height: 70px;
+    margin-top: 8px;
+    overflow: hidden;
+    width: 140px;
+}
+.sale_count {
+    color: #999;
+    padding: 2px 0;
+    text-align: center;
+}

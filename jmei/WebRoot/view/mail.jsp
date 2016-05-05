@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false" %>
+<c:set value="${pageContext.request.contextPath}" var="contextPath" scope="session"></c:set>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -15,8 +17,22 @@
 <link rel="stylesheet" type="text/css" href="../css/mallhead.css"></link>
 
 <link rel="stylesheet" type="text/css" href="../css/foot.css"></link>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/myindex.js"></script>
+<script type="text/javascript">
+ 	var i = 0;
+	var time = 0;
+	function junmper() {
+		i++;
+		if (i > 2)
+			i = 0;
+		$(".scc_container ul li").eq(i).fadeIn(100).siblings().fadeOut(100);
+		$(".sc_index a").eq(i).addClass("bg").siblings().removeClass("bg");
+	}
+	time = setInterval("junmper()", 3000); 
+</script>
 </head>
-<body style="width:1349px;height: 100%;">
+<body style="width:1349px;height: 100%;" onload="malllunbo()">
 	<!-- 头部开始 -->
 	<div class="header header_wide_lv2">
 		<div class="header_top">
@@ -46,9 +62,23 @@
 					<li><a href="">订单查询</a></li>
 					<li><a href=""> <s class="icon_favorite"></s>收藏的品牌
 					</a></li>
-					<li class="item_ijumei"><a href="">我的聚美 <s
+					<li id="myjmei" class="item_ijumei" onmouseover="onMyJmei()" onmouseout="leaveMyJmei()"><a href="">我的聚美 <s
 							class="icon_arrow_down"></s>
-					</a> <i class="icon_arrow_back"></i></li>
+					</a> <i class="icon_arrow_back"></i>
+					<div  id="myjmeiuldiv" class="sub_nav" style="display: none; height: auto; overflow: visible; padding-top: 8px; margin-top: 0px; padding-bottom: 8px; margin-bottom: 0px;">
+                    <ul id="myjmeiul">
+                        <li><a href="">我的订单</a></li>
+                        <li><a href="" rel="nofollow">我的现金券</a></li>
+                        <li><a href="" rel="nofollow">我的红包</a></li>
+                        <li><a href="" rel="nofollow">我的余额</a></li>
+                        <li><a href="" rel="nofollow">我的提现退款</a></li>
+                        <li><a href="" rel="nofollow">我的收藏</a></li>
+                        <li><a href="" rel="nofollow">我的心愿单</a></li>
+                        <li><a href="" rel="nofollow">会员中心</a></li>
+                        <li><a href="" rel="nofollow">兑换礼品卡</a></li>
+                    </ul>
+                </div>
+					</li>
 					<li class="item_mobile"><a href=""> <span class="line"></span>
 							<s class="icon_mobile"></s>手机聚美
 					</a></li>
@@ -135,28 +165,16 @@
 	</div>
 	<!-- 头部结束 -->
 	<!-- 美妆商城导航条开始 -->
-	<div id="mall_nav_box"class="mall_nav_list_wrap_new">
+	<div id="mall_nav_box" class="mall_nav_list_wrap_new">
 		<div class="mall_nav_list_wrap w1090">
-				<ul class="mall_nav_list clearfix">
-					<li class="current">
-						<a href="">美妆商城首页</a>
-					</li>
-					<li class="">
-						<a href="">个人护理</a>
-					</li>
-					<li class="">
-						<a href="">奢品美妆</a>
-					</li>
-					<li class="">
-						<a href="">护肤</a>
-					</li>
-					<li class="">
-						<a href="">彩妆</a>
-					</li>
-					<li class="">
-						<a href="">香氛</a>
-					</li>
-				</ul>
+			<ul class="mall_nav_list clearfix">
+				<li class="current"><a href="">美妆商城首页</a></li>
+				<li class=""><a href="">个人护理</a></li>
+				<li class=""><a href="">奢品美妆</a></li>
+				<li class=""><a href="">护肤</a></li>
+				<li class=""><a href="">彩妆</a></li>
+				<li class=""><a href="">香氛</a></li>
+			</ul>
 		</div>
 	</div>
 	<!-- 美妆商城导航条结束 -->
@@ -164,7 +182,7 @@
 	<div class="new_admall_box">
 		<div class="new_admall_topContent clearfix">
 			<!-- 左边区域开始 -->
-			<div  id="mtsCategory" class="new_admall_left_area mtsCategory">
+			<div id="mtsCategory" class="new_admall_left_area mtsCategory">
 				<div class="pmggw_left">
 					<!-- 左边上面文字导航部分开始 -->
 					<div class="mtsCategory_box" style="z-index:100;">
@@ -173,105 +191,431 @@
 								<div class="mc_content">
 									<h3 class="new_admall_eric_menu">全部分类</h3>
 									<ul class="new_admall_menu_content">
-										<li class="new_admall_menu_li0 item">
+										<li id="recBuserLi" class="new_admall_menu_li0 item" onmouseover="showRecBuser()" onmouseout="hideRecBuser()">
 											<h3 class="new_admall_menu_title">推荐品牌</h3>
 											<p class="new_admall_menu_cont">
-												<a href="">欧莱雅</a>
-												<a href="">菲诗小铺</a>
-												<a href="">雅诗兰黛</a>
-												<a href="">兰蔻</a>
-												<a href="">韩束</a>
-												<a href="">倩碧</a>
-												<a href="">雅顿</a>
-												<a href="">佰草集</a>
+												<a href="">欧莱雅</a> <a href="">菲诗小铺</a> <a href="">雅诗兰黛</a> <a
+													href="">兰蔻</a> <a href="">韩束</a> <a href="">倩碧</a> <a
+													href="">雅顿</a> <a href="">佰草集</a>
 											</p>
 										</li>
 										<li class="new_admall_menu_li0 item">
 											<h3 class="new_admall_menu_title">护肤</h3>
 											<p class="new_admall_menu_cont">
-												<a href="">洁面</a>
-												<a href="">化妆水</a>
-												<a href="">精华</a>
-												<a href="">乳液</a>
-												<a href="">面霜</a>
-												<a href="">眼霜</a>
-												<a href="">面膜</a>
-												<a href="">护肤套装</a>
+												<a href="">洁面</a> <a href="">化妆水</a> <a href="">精华</a> <a
+													href="">乳液</a> <a href="">面霜</a> <a href="">眼霜</a> <a
+													href="">面膜</a> <a href="">护肤套装</a>
 											</p>
 										</li>
 										<li class="new_admall_menu_li0 item">
 											<h3 class="new_admall_menu_title">彩妆</h3>
 											<p class="new_admall_menu_cont">
-												<a href="">卸妆</a>
-												<a href="">防晒霜</a>
-												<a href="">BB霜</a>
-												<a href="">粉饼干</a>
-												<a href="">眼影</a>
-												<a href="">睫毛膏</a>
-												<a href="">唇彩</a>
-												<a href="">腮红</a>
-												<a href="">彩妆套装</a>
+												<a href="">卸妆</a> <a href="">防晒霜</a> <a href="">BB霜</a> <a
+													href="">粉饼干</a> <a href="">眼影</a> <a href="">睫毛膏</a> <a
+													href="">唇彩</a> <a href="">腮红</a> <a href="">彩妆套装</a>
 											</p>
 										</li>
 										<li class="new_admall_menu_li0 item">
 											<h3 class="new_admall_menu_title">香氛</h3>
 											<p class="new_admall_menu_cont">
-												<a href="">女士香水</a>
-												<a href="">男士香水</a>
-												<a href="">中性香水</a>
-												<a href="">Q版香水</a>
-												<a href="">香水套装</a>
+												<a href="">女士香水</a> <a href="">男士香水</a> <a href="">中性香水</a>
+												<a href="">Q版香水</a> <a href="">香水套装</a>
 											</p>
 										</li>
 										<li class="new_admall_menu_li0 item">
 											<h3 class="new_admall_menu_title">个人护理</h3>
 											<p class="new_admall_menu_cont">
-												<a href="">洗发</a>
-												<a href="">护发</a>
-												<a href="">沐浴</a>
-												<a href="">润肤乳</a>
-												<a href="">牙膏</a>
-												<a href="">发膜</a>
-												<a href="">脱毛</a>
-												<a href="">护理套装</a>
+												<a href="">洗发</a> <a href="">护发</a> <a href="">沐浴</a> <a
+													href="">润肤乳</a> <a href="">牙膏</a> <a href="">发膜</a> <a
+													href="">脱毛</a> <a href="">护理套装</a>
 											</p>
 										</li>
 										<li class="new_admall_menu_li0 item">
 											<h3 class="new_admall_menu_title">男士专区</h3>
 											<p class="new_admall_menu_cont">
-												<a href="">洁面</a>
-												<a href="">爽肤水</a>
-												<a href="">乳液</a>
-												<a href="">面霜</a>
-												<a href="">精华</a>
-												<a href="">洗发</a>
-												<a href="">沐浴</a>
-												<a href="">男香</a>
-												<a href="">奢品美妆</a>
+												<a href="">洁面</a> <a href="">爽肤水</a> <a href="">乳液</a> <a
+													href="">面霜</a> <a href="">精华</a> <a href="">洗发</a> <a
+													href="">沐浴</a> <a href="">男香</a> <a href="">奢品美妆</a>
 											</p>
 										</li>
 										<li class="new_admall_menu_li0 item bottom_last">
 											<h3 class="new_admall_menu_title">奢品美妆</h3>
 											<p class="new_admall_menu_cont">
-												<a href="">雅诗兰黛</a>
-												<a href="">迪奥</a>
-												<a href="">海蓝之谜</a>
-												<a href="">希思黎</a>
-												<a href=""></a>
+												<a href="">雅诗兰黛</a> <a href="">迪奥</a> <a href="">海蓝之谜</a> <a
+													href="">希思黎</a> <a href=""></a>
 											</p>
 										</li>
 									</ul>
 								</div>
 							</div>
-							<div id="subCategory" class="subCategory" style="top: 208px; left: 216px; display: none;">
+							<div id="subCategory" class="subCategory"
+								style="top: 34px; left: 216px; display: block;">
+								<!-----国际品牌子导航 start--->
+								<div id="recBuserDiv" class="subc_con subc_con3 subc_con3_gj"
+									style="display: none;">
+									<div class="fl sub_cat_con sub_cat_con3 clearfix">
+										<div class="subc3_left_area fl">
+											<div class="subc3_item">
+												<h2 class="subc3_item_title">国际品牌</h2>
+												<div class="subc3_item_body">
+													<div class="subc3_area">
+														<a
+															href="http://arden.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">伊丽莎白雅顿</a> <a
+															href="http://lancome.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">兰蔻</a> <a
+															href="http://kiehls.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">科颜氏</a> <a
+															href="http://search.jumei.com/?filter=0-11-1&amp;search=%E8%BF%AA%E5%A5%A5&amp;from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">迪奥</a> <a
+															href="http://clinique.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">倩碧</a> <a
+															href="http://clarins.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">娇韵诗</a> <a
+															href="http://search.jumei.com/?filter=0-11-1&amp;search=%E9%9B%85%E8%AF%97%E5%85%B0%E9%BB%9B&amp;from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">雅诗兰黛</a> <a
+															href="http://skii.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">SK-II</a> <a
+															href="http://loccitane.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">欧舒丹</a> <a
+															href="http://sekkisei.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">雪肌精</a> <a
+															href="http://biotherm.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">碧欧泉</a> <a
+															href="http://guerlain.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">娇兰</a> <a
+															href="http://benefit.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">贝玲妃</a>
+													</div>
+												</div>
+											</div>
+											<div class="subc3_item">
+												<h2 class="subc3_item_title">欧美品牌</h2>
+												<div class="subc3_item_body">
+													<div class="subc3_area">
+														<a
+															href="http://marykay.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">玫琳凯</a> <a
+															href="http://lancome.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">兰蔻</a> <a
+															href="http://search.jumei.com/?filter=0-11-1&amp;search=%E9%9B%85%E6%BC%BE&amp;from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">雅漾</a> <a
+															href="http://biotherm.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">碧欧泉</a> <a
+															href="http://clinique.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">倩碧</a> <a
+															href="http://clarins.jumei.com/ ?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">娇韵诗</a> <a
+															href="http://maybelline.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">美宝莲</a> <a
+															href="http://olay.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">玉兰油</a> <a
+															href="http://decleor.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">思妍丽</a> <a
+															href="http://search.jumei.com/?filter=0-11-1&amp;search=%E8%8F%B2%E6%8B%89%E6%A0%BC%E6%85%95&amp;from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">菲拉格慕</a> <a
+															href="http://nivea.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">妮维雅</a> <a
+															href="http://aaskincare.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">英国AA网</a> <a
+															href="http://neutrogena.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">露得清</a> <a
+															href="http://2n.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">2N</a>
+													</div>
+												</div>
+											</div>
+											<div class="subc3_item clear_bottom_line">
+												<h2 class="subc3_item_title">独家品牌</h2>
+												<div class="subc3_item_body">
+													<div class="subc3_area">
+
+
+														<a
+															href="http://drwu.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">DR.WU</a> <a
+															href="http://mall.jumei.com/magiccastle/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">魔法城堡</a> <a
+															href="http://mall.jumei.com/hippofamily/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">河马家</a> <a
+															href="http://mall.jumei.com/premiumcare/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">芙优润</a> <a
+															href="http://mall.jumei.com/beautydiary/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">我的美丽日志</a> <a
+															href="http://mall.jumei.com/jiyufang/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">肌御坊</a> <a
+															href="http://mall.jumei.com/kalisetin/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">凯莉丝汀</a> <a
+															href="http://mall.jumei.com/mimime/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">咪咪蜜</a> <a
+															href="http://mall.jumei.com/suee/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">舒医</a> <a
+															href="http://mall.jumei.com/fruitlover/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">水果诱惑</a> <a
+															href="http://mall.jumei.com/eyeknow/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">眼睛说</a> <a
+															href="http://mall.jumei.com/yinquanzhiyu/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">隐泉之语</a> <a
+															href="http://mall.jumei.com/ueeti/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">优仪态</a> <a
+															href="http://mall.jumei.com/pleaseme/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">悦己美</a> <a
+															href="http://mall.jumei.com/flreons/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">梵柏莎</a>
+
+
+
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="subc3_center_area fl">
+											<div class="subc3_item">
+												<h2 class="subc3_item_title">日韩品牌</h2>
+												<div class="subc3_item_body">
+													<div class="subc3_area">
+														<a
+															href="http://mall.jumei.com/skii/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">SK-II</a> <a
+															href="http://innisfree.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">悦诗风吟</a> <a
+															href="http://kose.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">高丝</a> <a
+															href="http://aupres.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">欧珀莱</a> <a
+															href="http://missha.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">谜尚</a> <a
+															href="http://puremild.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">泊美</a> <a
+															href="http://mamonde.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">梦妆</a> <a
+															href="http://shuuemura.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">植村秀</a> <a
+															href="http://thefaceshop.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">菲诗小铺</a> <a
+															href="http://xiyanzhuanke.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">洗颜专科</a> <a
+															href="http://dhc.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">DHC</a> <a
+															href="http://charmzone.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">婵真</a> <a
+															href="http://search.jumei.com/?filter=0-11-1&amp;brand=48&amp;from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">FANCL</a> <a
+															href="http://justbb.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">嘉丝肤缇</a> <a
+															href="http://search.jumei.com/?filter=0-11-1&amp;search=freeplus&amp;from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">freeplus</a>
+													</div>
+												</div>
+											</div>
+											<div class="subc3_item">
+												<h2 class="subc3_item_title">国货品牌</h2>
+												<div class="subc3_item_body">
+													<div class="subc3_area">
+														<a
+															href="http://yunifang.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">御泥坊</a> <a
+															href="http://baiqueling.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">百雀羚</a> <a
+															href="http://meifubao.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">美肤宝</a> <a
+															href="http://inoherb.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">相宜本草</a> <a
+															href="http://kans.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">韩束</a> <a
+															href="http://magiccastle.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">魔法城堡</a> <a
+															href="http://afu.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">阿芙</a> <a
+															href="http://danzi.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">丹姿</a> <a
+															href="http://fanxishop.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">凡茜</a> <a
+															href="http://maskfamily1908.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">膜法世家1908</a> <a
+															href="http://missface.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">miss face</a> <a
+															href="http://gf.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">高夫</a> <a
+															href="http://myscheming.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">我的心机</a> <a
+															href="http://mgmask.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">美即</a> <a
+															href="http://marubi.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">丸美</a> <a
+															href="http://jiyufang.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">肌御坊</a> <a
+															href="http://pleaseme.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">悦己美</a>
+
+													</div>
+												</div>
+											</div>
+											<div class="subc3_item clear_bottom_line">
+												<h2 class="subc3_item_title">洗护品牌</h2>
+												<div class="subc3_item_body">
+													<div class="subc3_area">
+														<a
+															href="http://crest.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">宝洁</a> <a
+															href="http://dove.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">联合利华</a> <a
+															href="http://tsubaki.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">丝蓓绮</a> <a
+															href="http://lion.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">狮王</a> <a
+															href="http://ora2.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">皓乐齿</a> <a
+															href="http://spongeables.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">曼妮丝露</a> <a
+															href="http://sebamed.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">施巴</a> <a
+															href="http://algemarin.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">爱姬玛琳</a> <a
+															href="http://malizia.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">玛莉吉亚</a> <a
+															href="http://xuanqi.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">宣琪</a> <a
+															href="http://oulaiya.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">巴黎欧莱雅</a> <a
+															href="http://schwarzkopf.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank">施华蔻</a>
+
+
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="subc3_right_area fl">
+											<div class="subc3_brands_area">
+												<h2 class="subc3_brands_title">推荐品牌</h2>
+												<div class="subc3_brands_body clearfix">
+
+
+
+													<div class="sub_brand_img fl">
+														<a
+															href="http://search.jumei.com/?filter=0-11-1&amp;search=%E9%9B%85%E8%AF%97%E5%85%B0%E9%BB%9B&amp;cat=1&amp;bid=2_c&amp;from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank"><img
+															src="http://images2.jumei.com/dev_test/banner/3826/3855_180_90_021-web.jpg"
+															alt=""></a>
+													</div>
+													<div class="sub_brand_img fl">
+														<a
+															href="http://arden.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank"><img
+															src="http://images2.jumei.com/dev_test/banner/3826/3855_180_90_013-web.jpg"
+															alt=""></a>
+													</div>
+													<div class="sub_brand_img fl">
+														<a
+															href="http://clinique.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank"><img
+															src="http://images2.jumei.com/dev_test/banner/3826/3855_180_90_024-web.jpg"
+															alt=""></a>
+													</div>
+													<div class="sub_brand_img fl">
+														<a
+															href="http://loreal.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank"><img
+															src="http://images2.jumei.com/dev_test/banner/3826/3855_180_90_017-web.jpg"
+															alt=""></a>
+													</div>
+													<div class="sub_brand_img fl">
+														<a
+															href="http://search.jumei.com/?filter=0-11-1&amp;search=%E9%9B%85%E6%BC%BE&amp;from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank"><img
+															src="http://images2.jumei.com/dev_test/banner/3826/3855_180_90_022-web.jpg"
+															alt=""></a>
+													</div>
+													<div class="sub_brand_img fl">
+														<a
+															href="http://laneige.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank"><img
+															src="http://images2.jumei.com/dev_test/banner/3826/3855_180_90_012-web.jpg"
+															alt=""></a>
+													</div>
+													<div class="sub_brand_img fl">
+														<a
+															href="http://lancome.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank"><img
+															src="http://images2.jumei.com/dev_test/banner/3826/3855_180_90_015-web.jpg"
+															alt=""></a>
+													</div>
+													<div class="sub_brand_img fl">
+														<a
+															href="http://thefaceshop.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank"><img
+															src="http://images2.jumei.com/dev_test/banner/3826/3855_180_90_023-web.jpg"
+															alt=""></a>
+													</div>
+													<div class="sub_brand_img fl">
+														<a
+															href="http://mamonde.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank"><img
+															src="http://images2.jumei.com/dev_test/banner/3826/3855_180_90_018-web.jpg"
+															alt=""></a>
+													</div>
+													<div class="sub_brand_img fl">
+														<a
+															href="http://baiqueling.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank"><img
+															src="http://images2.jumei.com/dev_test/banner/3826/3855_180_90_019-web.jpg"
+															alt=""></a>
+													</div>
+
+
+
+													<div class="sub_brand_img fl">
+														<a
+															href="http://carslan.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank"><img
+															src="http://images2.jumei.com/dev_test/banner/3826/4459_180_90_004-web.jpg"
+															alt=""></a>
+													</div>
+
+
+													<div class="sub_brand_img fl">
+														<a
+															href="http://za.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank"><img
+															src="http://images2.jumei.com/dev_test/banner/3826/4459_180_90_005-web.jpg"
+															alt=""></a>
+													</div>
+													<div class="sub_brand_img fl">
+														<a
+															href="http://search.jumei.com/?filter=0-11-1&amp;search=%E8%BF%AA%E5%A5%A5&amp;from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank"><img
+															src="http://images2.jumei.com/dev_test/banner/3826/4459_180_90_007-web.jpg"
+															alt=""></a>
+													</div>
+
+
+													<div class="sub_brand_img fl">
+														<a
+															href="http://shuuemura.jumei.com/?from=mall_null_index30_top_cate_null&amp;lo=3435&amp;mat=33548"
+															target="_blank"><img
+															src="http://images2.jumei.com/dev_test/banner/3826/4459_180_90_011-web.jpg"
+															alt=""></a>
+													</div>
+
+
+
+
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<!-----国际品牌子导航 end--->
 							</div>
 						</div>
 					</div>
 					<!-- 左边上面文字导航部分结束 -->
 					<!-- 左边下面图片开始 -->
 					<div id="J_left_tuijianAd" class="left_tuijianAd" style="left:0px;">
-						<a>
-							<img src="../images/mallhead/73374_198_150_002-web.jpg"></img>
+						<a> <img src="../images/mallhead/73374_198_150_002-web.jpg"></img>
 						</a>
 					</div>
 					<!-- 左边下面图片结束 -->
@@ -281,22 +625,24 @@
 			<!-- 右边区域开始 -->
 			<div class="new_admall_right_area clearfix">
 				<!-- 图片轮播部分 -->
-				<div class="new_admall_adBanner J_new_admall_adBanner">
-					<div class="sc_container">
+				<div id="box" class="new_admall_adBanner J_new_admall_adBanner">
+					<div class="scc_container">
 						<ul class="new_admall_content">
-							<li>
-								<div>
-									<a href="">
-										<img src="../images/mallhead/73371_675_435_002-web.jpg"></img>
-									</a>
-								</div>
-							</li>
+							<li><a href=""> <img
+									src="../images/mallhead/73371_675_435_002-web.jpg"></img>
+							</a></li>
+							<li><a href=""> <img
+									src="../images/mallhead/73368_675_435_003-web.jpg"></img>
+							</a></li>
+							<li><a href=""> <img
+									src="../images/mallhead/73370_675_435_002-web.jpg"></img>
+							</a></li>
 						</ul>
 					</div>
+					<a href="##" class="prev" style="display: none;"></a> <a href="##"
+						class="next" style="display: none;"></a>
 					<div class="sc_index">
-						<a class="current">1</a>
-						<a class="">2</a>
-						<a class="">3</a>
+						<a class="bg" val="0"></a> <a val="1"></a> <a val="2"></a>
 					</div>
 				</div>
 				<!-- 右边图片区域开始 -->
@@ -316,86 +662,63 @@
 				</div>
 				<!-- 右边图片区域结束 -->
 				<!-- 品牌墙开始 -->
-				<div id="brandWallSwitchable" class="brand_wall_switchable ecope_switchable">
+				<div id="brandWallSwitchable"
+					class="brand_wall_switchable ecope_switchable">
 					<div class="sc_index clearfix">
-						<a href="" class="current">推荐品牌</a>
-						<a href="" class="">独家品牌</a>
-						<a href="" class="">欧美品牌</a>
-						<a href="" class="">日韩品牌</a>
-						<a href="" class="">国货品牌</a>
-						<a href="" class="">洗护品牌</a>
+						<a href="" class="current">推荐品牌</a> <a href="" class="">独家品牌</a> <a
+							href="" class="">欧美品牌</a> <a href="" class="">日韩品牌</a> <a href=""
+							class="">国货品牌</a> <a href="" class="">洗护品牌</a>
 						<div class="arrow_line" style="left:0px;">
 							<s class="arrow"></s>
 						</div>
 					</div>
 					<div class="sc_container" style="overflow: hidden;">
 						<ul class="sc_list">
-							<li style="position: relative; display: block; z-index: 2; top: 0px; left: 0px;">
+							<li
+								style="position: relative; display: block; z-index: 2; top: 0px; left: 0px;">
 								<ul class="brand_wall_left clearfix">
-									<li>
-										<a>
-											<img src="../images/mallhead/28437_163_100_003-web.jpg"></img>
-										</a>
-									</li>
-									<li>
-										<a>
-											<img src="../images/mallhead/28437_163_100_003-web.jpg"></img>
-										</a>
-									</li>
-									<li>
-										<a>
-											<img src="../images/mallhead/28437_163_100_003-web.jpg"></img>
-										</a>
-									</li>
-									<li>
-										<a>
-											<img src="../images/mallhead/28437_163_100_003-web.jpg"></img>
-										</a>
-									</li>
-									<li>
-										<a>
-											<img src="../images/mallhead/28437_163_100_003-web.jpg"></img>
-										</a>
-									</li>
-									<li>
-										<a>
-											<img src="../images/mallhead/28437_163_100_003-web.jpg"></img>
-										</a>
-									</li>
-									<li>
-										<a>
-											<img src="../images/mallhead/28437_163_100_003-web.jpg"></img>
-										</a>
-									</li>
-									<li>
-										<a>
-											<img src="../images/mallhead/28437_163_100_003-web.jpg"></img>
-										</a>
-									</li>
-									<li>
-										<a>
-											<img src="../images/mallhead/28437_163_100_003-web.jpg"></img>
-										</a>
-									</li>
-									<li>
-										<a>
-											<img src="../images/mallhead/28437_163_100_003-web.jpg"></img>
-										</a>
-									</li>
-									<li>
-										<a>
-											<img src="../images/mallhead/28437_163_100_003-web.jpg"></img>
-										</a>
-									</li>
-									<li>
-										<a>
-											<img src="../images/mallhead/28437_163_100_003-web.jpg"></img>
-										</a>
-									</li>
+								<%-- <c:forEach var="u" items="${sessionScope.blogos }">
+									<li><a> <img
+											src="${contextPath }/images/Buser/logo/${u.blogo}"></img>
+									</a></li>
+									</c:forEach> --%>
+									 <li><a> <img
+											src="../images/mallhead/28437_163_100_003-web.jpg"></img>
+									</a></li>
+									<li><a> <img
+											src="../images/mallhead/28437_163_100_003-web.jpg"></img>
+									</a></li>
+									<li><a> <img
+											src="../images/mallhead/28437_163_100_003-web.jpg"></img>
+									</a></li>
+									<li><a> <img
+											src="../images/mallhead/28437_163_100_003-web.jpg"></img>
+									</a></li>
+									<li><a> <img
+											src="../images/mallhead/28437_163_100_003-web.jpg"></img>
+									</a></li>
+									<li><a> <img
+											src="../images/mallhead/28437_163_100_003-web.jpg"></img>
+									</a></li>
+									<li><a> <img
+											src="../images/mallhead/28437_163_100_003-web.jpg"></img>
+									</a></li>
+									<li><a> <img
+											src="../images/mallhead/28437_163_100_003-web.jpg"></img>
+									</a></li>
+									<li><a> <img
+											src="../images/mallhead/28437_163_100_003-web.jpg"></img>
+									</a></li>
+									<li><a> <img
+											src="../images/mallhead/28437_163_100_003-web.jpg"></img>
+									</a></li>
+									<li><a> <img
+											src="../images/mallhead/28437_163_100_003-web.jpg"></img>
+									</a></li> 
 								</ul>
 								<div class="brand_wall_right">
-									<a href="">
-										<img src="../images/mallhead/38506_202_202_002-web.jpg"></img>
+									<a href=""> <img
+										src="../images/mallhead/38506_202_202_002-web.jpg"></img>
 									</a>
 								</div>
 							</li>
@@ -403,8 +726,7 @@
 					</div>
 					<!-- 箭头部分 -->
 					<div class="sc_change">
-						<a href="" class="sc_prev"></a>
-						<a href="" class="sc_next"></a>
+						<a href="" class="sc_prev"></a> <a href="" class="sc_next"></a>
 					</div>
 				</div>
 				<!-- 品牌墙结束 -->

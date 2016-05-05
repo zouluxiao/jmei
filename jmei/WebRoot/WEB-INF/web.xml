@@ -18,4 +18,84 @@
   	<servlet-name>actionServlet</servlet-name>
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Verify</servlet-name>
+    <servlet-class>com.jmei.controller.verify.Verify</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Verify</servlet-name>
+    <url-pattern>/Verify</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Verify1</servlet-name>
+    <servlet-class>com.jmei.controller.verify.Verify1</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Verify1</servlet-name>
+    <url-pattern>/Verify1</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+    <servlet-name>Verify2</servlet-name>
+    <servlet-class>com.jmei.controller.verify.Verify2</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Verify2</servlet-name>
+    <url-pattern>/Verify2</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+    <servlet-name>Verify3</servlet-name>
+    <servlet-class>com.jmei.controller.verify.Verify3</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Verify3</servlet-name>
+    <url-pattern>/Verify3</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+    <servlet-name>Verify4</servlet-name>
+    <servlet-class>com.jmei.controller.verify.Verify4</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Verify4</servlet-name>
+    <url-pattern>/Verify4</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+    <servlet-name>Verify5</servlet-name>
+    <servlet-class>com.jmei.controller.verify.Verify5</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Verify5</servlet-name>
+    <url-pattern>/Verify5</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+    <servlet-name>Verify6</servlet-name>
+    <servlet-class>com.jmei.controller.verify.Verify6</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Verify6</servlet-name>
+    <url-pattern>/Verify6</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+    <servlet-name>VerifyCode</servlet-name>
+    <servlet-class>com.jmei.controller.verify.VerifyCode</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>VerifyCode</servlet-name>
+    <url-pattern>/VerifyCode</url-pattern>
+   </servlet-mapping>
 </web-app>

@@ -416,13 +416,16 @@ input[type="submit"] {
 .textBtnsWrap {
     border: 1px solid #cfcfcf;
     height: 40px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .t_v_txt_btn {
+	float:left;
     background-repeat: no-repeat;
     cursor: default;
     float: left;
     height: 40px;
+	width: 51.3px;
+	/* border-right: 1px solid #cfcfcf; */
 }
 .input_big_wrap {
     clear: both;
@@ -464,6 +467,7 @@ input[type="submit"] {
     display: block;
     float: left;
     margin-left: 4px;
+	cursor: pointer;
 }
 .t_v_err {
     clear: both;
